@@ -1,6 +1,6 @@
 from django.urls import path
 
 
-urlspatterns = [
+urlpatterns = [
     # path()
 ]
