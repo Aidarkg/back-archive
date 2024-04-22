@@ -3,3 +3,8 @@ id_rsa
 id_rsa.pub
 __pycache__
 db.sqlite3
+gallery
+news
+media
+migrations
+.env
