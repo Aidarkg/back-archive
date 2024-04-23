@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView
 from data_media.serializers.video_data import VideoDataSerializer
-from data_media.models.video_data import VideoData
+from data_media.models import VideoData
 from rest_framework.response import Response
 from rest_framework import status
 
