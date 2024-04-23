@@ -1,0 +1,37 @@
+from django.db import models
+
+
+class Management(models.Model):
+    full_name = models.CharField(
+        max_length=150,
+        null=False,
+        blank=False,
+        verbose_name='полное имя'
+    )
+    image = models.ImageField(
+        upload_to='managements_image',
+        blank=False,
+        null=False,
+        verbose_name='фотография'
+    )
+    position = models.CharField(
+        max_length=100,
+        verbose_name='Должность',
+        blank=True,
+        null=True
+    )
+    experience = models.PositiveSmallIntegerField(
+        verbose_name='Стаж',
+        blank=True,
+        null=True,
+        default=0
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
+
+    def __str__(self) -> str:
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Руководство'
+        verbose_name_plural = 'Руководства'

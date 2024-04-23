@@ -1,7 +1,8 @@
 from django.contrib import admin
-# from data_media.models.news import News
-# from data_media.models.photo_gallery_models import PhotoGallery
+from data_media.models import News
+from data_media.models.photo_gallery_models import PhotoGallery
 from data_media.models.video_data import VideoData
+from data_media.models.management import Management
 
 
 @admin.register(VideoData)
@@ -12,5 +13,6 @@ class VideoDataAdmin(admin.ModelAdmin):
     fields = ('id', 'video', 'title', 'description', 'created_at', 'updated_at')
     readonly_fields = ('id', 'created_at', 'updated_at')
 
-# admin.site.register(PhotoGallery)
-# admin.site.register(News)
+admin.site.register(Management)
+admin.site.register(PhotoGallery)
+admin.site.register(News)
