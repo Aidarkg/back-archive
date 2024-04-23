@@ -1,1 +1,1 @@
-from views.video_data import *
+from data_media.views.video_data import *

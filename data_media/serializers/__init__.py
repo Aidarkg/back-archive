@@ -1,1 +1,1 @@
-from serializers.video_data import *
+from data_media.serializers.video_data import *

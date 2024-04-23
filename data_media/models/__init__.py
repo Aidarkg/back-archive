@@ -1,1 +1,1 @@
-from models.video_data import *
+from data_media.models.video_data import *
