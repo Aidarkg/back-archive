@@ -16,15 +16,15 @@ class Management(models.Model):
     )
     position = models.CharField(
         max_length=100,
-        verbose_name='Должность',
-        blank=True,
-        null=True
-    )
-    experience = models.PositiveSmallIntegerField(
-        verbose_name='Стаж',
         blank=True,
         null=True,
-        default=0
+        verbose_name='Должность'
+    )
+    experience = models.PositiveSmallIntegerField(
+        blank=True,
+        null=True,
+        default=0,
+        verbose_name='Стаж'
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
