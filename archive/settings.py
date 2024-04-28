@@ -27,8 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'data_media',
-    'django_filters'
+    'moderator',
 ]
 
 REST_FRAMEWORK = {
@@ -128,3 +129,11 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')  # Адрес вашего почтового сервера
+EMAIL_PORT = 587  # Порт почтового сервера
+EMAIL_USE_TLS = True  # Использовать ли TLS для безопасной передачи данных
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
