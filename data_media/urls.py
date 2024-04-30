@@ -2,7 +2,8 @@ from django.urls import path
 
 from data_media.views import VideoDataAPIView, VideoDataRetriveAPIView, \
                              NewsListAPIView, NewsDetailAPIView, \
-                             PhotoGalleryListAPIView, PhotoGalleryDetailAPIView
+                             PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
+                             ServiceListView, ServiceDetailView
 from data_media.views.management_views import ManagementListAPIView, ManagementDetailAPIView
 
 
@@ -15,4 +16,6 @@ urlpatterns = [
     path('api/v1/news/<int:id>/', NewsDetailAPIView.as_view()),
     path('api/v1/photos/', PhotoGalleryListAPIView.as_view()),
     path('api/v1/photos/<int:pk>/', PhotoGalleryDetailAPIView.as_view()),
+    path('api/v1/service/', ServiceListView.as_view()),
+    path('api/v1/service/<int:pk>/', ServiceDetailView.as_view()),
 ]

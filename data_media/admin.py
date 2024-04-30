@@ -1,8 +1,5 @@
 from django.contrib import admin
-from data_media.models import News
-from data_media.models.photo_gallery_models import PhotoGallery
-from data_media.models.video_data import VideoData
-from data_media.models.management import Management
+from data_media.models import News, PhotoGallery, VideoData, Management, Service
 
 
 @admin.register(VideoData)
@@ -16,3 +13,4 @@ class VideoDataAdmin(admin.ModelAdmin):
 admin.site.register(Management)
 admin.site.register(PhotoGallery)
 admin.site.register(News)
+admin.site.register(Service)
