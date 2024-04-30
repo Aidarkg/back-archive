@@ -1,5 +1,5 @@
 from django.contrib import admin
-from data_media.models import News, PhotoGallery, VideoData, Management, Service
+from data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS
 
 
 @admin.register(VideoData)
@@ -14,3 +14,4 @@ admin.site.register(Management)
 admin.site.register(PhotoGallery)
 admin.site.register(News)
 admin.site.register(Service)
+admin.site.register(KODEKS)
