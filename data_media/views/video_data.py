@@ -16,4 +16,3 @@ class VideoDataRetriveAPIView(RetrieveAPIView):
     serializer_class = VideoDataSerializer
     lookup_url_kwarg = 'id'
     
-    
