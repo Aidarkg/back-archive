@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django_filters',
     'data_media',
     'moderator',
+    'faq',
 ]
 
 REST_FRAMEWORK = {
@@ -119,6 +120,14 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+# подключил редис
+REDIS_HOST = config('REDIS_HOST')
+REDIS_PORT = config('REDIS_PORT')
+
+# подключил селери
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/1'
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/1'
 
 
 JAZZMIN_SETTINGS = {
