@@ -1,46 +1,27 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 
 from data_media.models.management import Management
 from ..serializers.management_serializers import ManagementSerializers
-from rest_framework import status
 
 
-class ManagementListAPIView(APIView):
-    def get(self, request):
-        management = Management.objects.all()
-        serializer_data = ManagementSerializers(management, many=True).data
-        return Response(serializer_data, status=status.HTTP_200_OK)
+class ManagementListAPIView(ListAPIView):
+    serializer_class = ManagementSerializers
+    pagination_class = PageNumberPagination
 
-    def post(self, request):
-        serializer_data = ManagementSerializers(data=request.data)
-        if serializer_data.is_valid():
-            serializer_data.save()
-            return Response(serializer_data, status=status.HTTP_201_CREATED)
-        return Response(serializer_data.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get_queryset(self):
+        queryset = Management.objects.all().order_by('-created_at')
 
+        search_query = self.request.query_params.get('search', None)
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query)
+            )
+        return queryset
+    
 
-class ManagementDetailAPIView(APIView):
-    def get_object(self, pk):
-        try:
-            return Management.objects.get(pk=pk)
-        except Management.DoesNotExist:
-            raise status.HTTP_404_NOT_FOUND
-
-    def get(self, request, pk):
-        management = self.get_object(pk)
-        serializer = ManagementSerializers(management)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def patch(self, request, pk):
-        management = self.get_object(pk)
-        serializer = ManagementSerializers(data=request.data, instance=management, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk):
-        management = self.get_object(pk)
-        management.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class ManagementDetailAPIView(RetrieveAPIView):
+    queryset = Management.objects.all()
+    serializer_class = ManagementSerializers
+    lookup_url_kwarg = 'id'

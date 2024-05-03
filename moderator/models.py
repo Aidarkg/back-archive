@@ -23,6 +23,8 @@ class Moderator(models.Model):
         verbose_name="Электронная почта",
     )
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Группа')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     class Meta:
         verbose_name = 'Модератор'
