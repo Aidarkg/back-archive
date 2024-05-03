@@ -26,8 +26,8 @@ class Management(models.Model):
         default=0,
         verbose_name='Стаж'
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='дата изменения')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     def __str__(self) -> str:
         return self.full_name
