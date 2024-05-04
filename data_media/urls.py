@@ -5,7 +5,7 @@ from data_media.views import VideoDataAPIView, VideoDataRetriveAPIView, \
                              PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
                              ServiceListView, ServiceDetailView, \
                              KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView
-from data_media.views.management_views import ManagementListAPIView, ManagementDetailAPIView
+from data_media.views.management import ManagementListAPIView, ManagementDetailAPIView
 
 
 urlpatterns = [

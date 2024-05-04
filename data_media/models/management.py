@@ -1,7 +1,8 @@
 from django.db import models
+from common.models.mixins import DateTimeMixin
 
 
-class Management(models.Model):
+class Management(DateTimeMixin):
     full_name = models.CharField(
         max_length=150,
         null=False,
@@ -26,8 +27,6 @@ class Management(models.Model):
         default=0,
         verbose_name='Стаж'
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     def __str__(self) -> str:
         return self.full_name
