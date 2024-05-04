@@ -17,32 +17,3 @@ class DateTimeMixin(models.Model):
             self.created_at = timezone.now()
         self.updated_at = timezone.now()
         return super(DateTimeMixin, self).save(*args, **kwargs)
-
-
-class InfoMixin(DateTimeMixin):
-    created_by = models.ForeignKey(
-        User,
-        models.SET_NULL,
-        'created_%(app_label)s_%(class)s',
-        null=True
-    )
-    updated_by = models.ForeignKey(
-        User,
-        models.SET_NULL,
-        'updated_%(app_label)s_%(class)s',
-        null=True
-    )
-
-    class Meta:
-        abstract = True
-
-    # def save(self, *args, **kwargs):
-    #     from crum import get_current_user
-    #
-    #     user = get_current_user()
-    #     if user and not user.pk:
-    #         user = None
-    #     if not self.pk:
-    #         self.created_by = user
-    #     self.updated_by = user
-    #     super().save(*args, **kwargs)
