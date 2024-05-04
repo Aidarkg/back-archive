@@ -34,6 +34,10 @@ class Question(DateTimeMixin):
     def __str__(self):
         return self.question_text
 
+    class Meta:
+        verbose_name = 'Вопрос пользователя'
+        verbose_name_plural = 'Вопросы пользователя'
+
 
 class Answer(DateTimeMixin):
     moderator = models.ForeignKey(
@@ -47,3 +51,7 @@ class Answer(DateTimeMixin):
         related_name='question_answer'
     )
     answer = models.TextField()
+
+    class Meta:
+        verbose_name = 'Ответ модератора'
+        verbose_name_plural = 'Ответы модератора'
