@@ -1,6 +1,13 @@
-from .generate import generate_password
+import string
+import random
 from .send_email import send_email_with_credentials
 from django.contrib.auth.models import User
+
+
+def generate_password(length=20):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for i in range(length))
+    return password
 
 
 def save_moderator(instance, *args, **kwargs):
