@@ -1,5 +1,6 @@
 from django.urls import path
 
+from data_media.search import SearchAPIView
 from data_media.views import VideoDataAPIView, VideoDataRetriveAPIView, \
                              NewsListAPIView, NewsDetailAPIView, \
                              PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
@@ -21,4 +22,6 @@ urlpatterns = [
     path('api/v1/service/<int:id>/', ServiceDetailView.as_view()),
     path('api/v1/kodeks/', KODEKSListCreateAPIView.as_view()),
     path('api/v1/kodeks/<int:id>/', KODEKSRetrieveUpdateDestroyAPIView.as_view()),
+    path('api/search/', SearchAPIView.as_view(), name='search'),
+
 ]
