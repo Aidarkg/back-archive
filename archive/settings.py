@@ -108,7 +108,7 @@ gettext = lambda s: s
 LANGUAGES = (
     ('ru', gettext('Russian')),
     ('en', gettext('English')),
-    ('kg', gettext('Kyrgyz'))
+    ('ky', gettext('Kyrgyz'))
 )
 
 STATIC_URL = 'static/'

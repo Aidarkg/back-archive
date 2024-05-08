@@ -1,7 +1,8 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 
-class BaseAdminMixin(admin.ModelAdmin):
+class BaseAdminMixin(TranslationAdmin):
     search_fields = 'title',
     list_filter = ('created_at', 'updated_at')
     list_display_links = ('id', 'title')
