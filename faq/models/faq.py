@@ -1,7 +1,9 @@
 from django.db import models
 
+from common.models.mixins import DateTimeMixin
 
-class Faq(models.Model):
+
+class Faq(DateTimeMixin):
     question = models.CharField(
         max_length=500,
         null=False,
@@ -9,5 +11,7 @@ class Faq(models.Model):
         verbose_name='Вопрос'
     )
     answer = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Вопрос-Ответ'
+        verbose_name_plural = 'Вопросы и Ответы'

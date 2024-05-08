@@ -6,4 +6,9 @@ class ManagementSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Management
-        fields = '__all__'
+        fields = (
+            'full_name',
+            'image',
+            'position',
+            'experience'
+        )

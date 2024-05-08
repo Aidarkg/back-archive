@@ -3,7 +3,7 @@ from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q
 
 from data_media.models.management import Management
-from ..serializers.management_serializers import ManagementSerializers
+from ..serializers.management import ManagementSerializers
 
 
 class ManagementListAPIView(ListAPIView):
