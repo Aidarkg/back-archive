@@ -10,16 +10,6 @@ class ManagementListAPIView(ListAPIView):
     serializer_class = ManagementSerializers
     pagination_class = PageNumberPagination
 
-    def get_queryset(self):
-        queryset = Management.objects.all().order_by('-created_at')
-
-        search_query = self.request.query_params.get('search', None)
-        if search_query:
-            queryset = queryset.filter(
-                Q(name__icontains=search_query)
-            )
-        return queryset
-    
 
 class ManagementDetailAPIView(RetrieveAPIView):
     queryset = Management.objects.all()

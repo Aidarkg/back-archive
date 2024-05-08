@@ -9,18 +9,6 @@ class KODEKSListCreateAPIView(generics.ListAPIView):
     serializer_class = KODEKSSerializer
     pagination_class = PageNumberPagination
 
-    def get_queryset(self):
-        queryset = KODEKS.objects.all().order_by('-created_at')
-
-        search_query = self.request.query_params.get('search', None)
-        
-        if search_query:
-            queryset = queryset.filter(
-                Q(title__icontains=search_query)
-            )
-        
-        return queryset
-
 
 class KODEKSRetrieveUpdateDestroyAPIView(generics.RetrieveAPIView):
     queryset = KODEKS.objects.all()

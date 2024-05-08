@@ -5,19 +5,19 @@ from .serializers import NewsSerializer,  PhotoGallerySerializer, VideoDataSeria
 from django.db.models import Q
 
 from .serializers.kodeks import KODEKSSerializer
-from .serializers.management_serializers import ManagementSerializers
+from .serializers.management import ManagementSerializers
 
 
 class SearchAPIView(APIView):
     def get(self, request, *args, **kwargs):
-        query = request.query_params.get('query', None)
+        query = request.query_params.get('search', None)
         if query is not None:
-            news = News.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+            news = News.objects.filter(Q(title__icontains=query))
             codexes = KODEKS.objects.filter(title__icontains=query)
-            photos = PhotoGallery.objects.filter(description__icontains=query)
-            videos = VideoData.objects.filter(description__icontains=query)
-            services = Service.objects.filter(name__icontains=query)
-            managementes = Management.objects.filter(name__icontains=query)
+            photos = PhotoGallery.objects.filter(title__icontains=query)
+            videos = VideoData.objects.filter(title__icontains=query)
+            services = Service.objects.filter(title__icontains=query)
+            managementes = Management.objects.filter(full_name__icontains=query)
 
             results = {
                 'news': NewsSerializer(news, many=True).data,
