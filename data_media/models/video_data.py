@@ -11,3 +11,6 @@ class VideoData(DateTimeMixin):
     class Meta:
         verbose_name = 'Видеогалерея'
         verbose_name_plural = 'Видеогалерея'
+
+    def __str__(self):
+        return self.title
