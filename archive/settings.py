@@ -10,7 +10,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-
 INSTALLED_APPS = [
     'jazzmin',
     'modeltranslation',
@@ -78,7 +77,6 @@ DATABASES = {
 }
 
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -95,8 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Asia/Bishkek'
 
@@ -315,3 +312,5 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False
 }
+
+MODELTRANSLATION_DEFAULT_LANGUAGE_CODE = "ru"

@@ -24,9 +24,9 @@ class PhotoTranslationOptions(TranslationOptions):
 
 @register(service.Service)
 class ServiceTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'status', )
+    fields = ('title', 'content', 'status')
 
 
 @register(video_data.VideoData)
 class PhotoTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', )
+    fields = ('title', 'description')

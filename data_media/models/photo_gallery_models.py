@@ -1,7 +1,9 @@
 from django.db import models
 
+from common.models.mixins import DateTimeMixin
 
-class PhotoGallery(models.Model):
+
+class PhotoGallery(DateTimeMixin):
     title = models.CharField(max_length=50, blank=False, null=False, verbose_name='Заголовок')
     description = models.TextField(max_length=1000, blank=False, null=False, verbose_name='Описание')
     picture = models.ImageField(blank=False, null=False, upload_to='gallery', verbose_name='Картинка')

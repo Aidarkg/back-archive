@@ -10,3 +10,4 @@ media
 db.sqlite3
 static
 staticfiles
+.idea
