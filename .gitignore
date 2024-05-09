@@ -5,8 +5,7 @@ id_rsa.pub
 __pycache__
 media
 .env
-*/migrations
-!*/migrations/__init__.py
+**/migrations/
 db.sqlite3
 static
 staticfiles
