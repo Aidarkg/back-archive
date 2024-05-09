@@ -7,6 +7,7 @@ from ..serializers.management import ManagementSerializers
 
 
 class ManagementListAPIView(ListAPIView):
+    queryset = Management.objects.all().order_by('-created_at')
     serializer_class = ManagementSerializers
     pagination_class = PageNumberPagination
 
@@ -14,4 +15,3 @@ class ManagementListAPIView(ListAPIView):
 class ManagementDetailAPIView(RetrieveAPIView):
     queryset = Management.objects.all()
     serializer_class = ManagementSerializers
-    lookup_url_kwarg = 'id'

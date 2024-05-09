@@ -11,7 +11,6 @@ class VideoDataAPIView(ListAPIView):
     pagination_class = PageNumberPagination
 
 
-class VideoDataRetriveAPIView(RetrieveAPIView):
+class VideoDataRetrieveAPIView(RetrieveAPIView):
     queryset = VideoData.objects.all()
     serializer_class = VideoDataSerializer
-    lookup_url_kwarg = 'id'

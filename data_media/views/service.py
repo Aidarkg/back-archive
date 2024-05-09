@@ -11,4 +11,3 @@ class ServiceListView(ListAPIView):
 class ServiceDetailView(RetrieveAPIView):
     queryset = Service.objects.all()
     serializer_class = service.ServiceSerializers
-    lookup_field = 'id'

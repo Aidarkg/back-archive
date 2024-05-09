@@ -1,6 +1,6 @@
 from django.contrib import admin
 from common.admin.mixins import BaseAdminMixin
-from data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS
+from data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -31,9 +31,17 @@ class KODEKSAdmin(BaseAdminMixin):
     fields = ['id', 'title', 'pdf_file', 'created_at', 'updated_at']
 
 
+class ContactAdmin(BaseAdminMixin):
+    list_display = ['id', 'address', 'phone', 'email', 'work_time', 'reception', 'reading_room', 'created_at', 'updated_at']
+    list_display_links = ['id', 'address']
+    search_fields = ['address']
+    fields = ['id', 'address', 'phone', 'email', 'work_time', 'reception', 'reading_room', 'created_at', 'updated_at']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(Management, ManagementAdmin)
 admin.site.register(Service)
 admin.site.register(KODEKS, KODEKSAdmin)
+admin.site.register(Contact, ContactAdmin)

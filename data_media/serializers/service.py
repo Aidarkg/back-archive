@@ -4,7 +4,7 @@ from ..models.service import *
 
 class ServiceSerializers(serializers.ModelSerializer):
     head = serializers.SerializerMethodField()
-    status=serializers.CharField(source='get_status_display',read_only=True)
+    status = serializers.CharField(source='get_status_display', read_only=True)
 
     class Meta:
         model = Service
@@ -12,5 +12,3 @@ class ServiceSerializers(serializers.ModelSerializer):
 
     def get_head(self, obj):
         return obj.head.title
-
-

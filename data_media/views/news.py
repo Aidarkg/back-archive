@@ -6,6 +6,7 @@ from data_media.serializers.news import NewsSerializer
 
 
 class NewsListAPIView(ListAPIView):
+    queryset = News.objects.all().order_by('-public_date')
     serializer_class = NewsSerializer
     pagination_class = PageNumberPagination
 
@@ -13,4 +14,3 @@ class NewsListAPIView(ListAPIView):
 class NewsDetailAPIView(RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    lookup_url_kwarg = 'id'

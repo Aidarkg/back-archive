@@ -10,6 +10,7 @@ from data_media.models import PhotoGallery
 
 
 class PhotoGalleryListAPIView(ListAPIView):
+    queryset = PhotoGallery.objects.all().order_by('-created_at')
     serializer_class = PhotoGallerySerializer
     pagination_class = PageNumberPagination
 
@@ -17,4 +18,3 @@ class PhotoGalleryListAPIView(ListAPIView):
 class PhotoGalleryDetailAPIView(RetrieveAPIView):
     queryset = PhotoGallery.objects.all()
     serializer_class = PhotoGallerySerializer
-    lookup_url_kwarg = 'id'

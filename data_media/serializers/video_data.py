@@ -5,4 +5,4 @@ from data_media.models.video_data import VideoData
 class VideoDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoData
-        fields = '__all__'
+        fields = ('title', 'description', 'video')

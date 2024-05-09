@@ -3,7 +3,6 @@ from data_media.models import PhotoGallery
 
 
 class PhotoGallerySerializer(serializers.ModelSerializer):
-
     class Meta:
         model = PhotoGallery
-        fields = '__all__'
+        fields = ('title', 'description', 'picture')

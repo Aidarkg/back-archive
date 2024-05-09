@@ -6,4 +6,4 @@ from data_media.models import News
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = '__all__'
+        fields = ('title', 'image', 'description', 'detailed_description', 'public_date')
