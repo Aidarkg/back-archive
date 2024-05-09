@@ -1,11 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import News, KODEKS, PhotoGallery, VideoData, Service, Management
-from .serializers import NewsSerializer,  PhotoGallerySerializer, VideoDataSerializer, ServiceSerializers
+from data_media.models import News, KODEKS, PhotoGallery, VideoData, Service, Management
+from data_media.serializers import NewsSerializer,  PhotoGallerySerializer, VideoDataSerializer, ServiceSerializers
 from django.db.models import Q
 
-from .serializers.kodeks import KODEKSSerializer
-from .serializers.management import ManagementSerializers
+from data_media.serializers.kodeks import KODEKSSerializer
+from data_media.serializers.management import ManagementSerializers
 
 
 class SearchAPIView(APIView):
