@@ -5,3 +5,4 @@ from apps.data_media.models.management import *
 from apps.data_media.models.service import *
 from apps.data_media.models.kodeks import *
 from apps.data_media.models.quick_contacts_models import *
+from apps.data_media.models.visitors import *

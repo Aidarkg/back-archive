@@ -1,13 +1,13 @@
 from django.urls import path
 
 from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
-                             NewsListAPIView, NewsDetailAPIView, \
-                             PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
-                             ServiceListView, \
-                             KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
-                             SearchAPIView, ContactListAPIView, ContactDetailAPIView
-from apps.data_media.views.management import ManagementListAPIView, ManagementDetailAPIView
-
+    NewsListAPIView, NewsDetailAPIView, \
+    PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
+    ServiceListView, \
+    KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
+    SearchAPIView, ContactListAPIView, ContactDetailAPIView, \
+    VisitorsAPIView, \
+    ManagementListAPIView, ManagementDetailAPIView
 
 urlpatterns = [
     path('api/v1/video/', VideoDataAPIView.as_view()),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/v1/contacts', ContactListAPIView.as_view()),
     path('api/v1/contacts/<int:pk>', ContactDetailAPIView.as_view()),
     path('api/v1/search/', SearchAPIView.as_view(), name='search'),
+    path('api/v1/visitors/', VisitorsAPIView.as_view()),
 
 ]
