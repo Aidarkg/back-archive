@@ -9,8 +9,8 @@ class VideoDataAdmin(BaseAdminMixin):
 
 
 class PhotoGalleryAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'description', 'picture', 'created_at', 'updated_at']
-    fields = ['id', 'title', 'description', 'picture', 'created_at', 'updated_at']
+    list_display = ['id', 'title', 'description', 'picture']
+    fields = ['id', 'title', 'description', 'picture']
 
 
 class NewsAdmin(BaseAdminMixin):

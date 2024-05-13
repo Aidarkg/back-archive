@@ -6,7 +6,7 @@ from apps.data_media.models import PhotoGallery
 
 
 class PhotoGalleryListAPIView(ListAPIView):
-    queryset = PhotoGallery.objects.all().order_by('-created_at')
+    queryset = PhotoGallery.objects.all()
     serializer_class = PhotoGallerySerializer
     pagination_class = PageNumberPagination
 
