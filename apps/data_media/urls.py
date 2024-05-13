@@ -8,7 +8,7 @@ from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
     SearchAPIView, ContactListAPIView, ContactDetailAPIView, \
     VisitorsAPIView, \
     ManagementListAPIView, ManagementDetailAPIView
-from apps.data_media.views.organization import OrganizationAPIView
+from apps.data_media.views.organization import OrganizationListView
 
 urlpatterns = [
     path('api/v1/video/', VideoDataAPIView.as_view()),
@@ -26,6 +26,6 @@ urlpatterns = [
     path('api/v1/contacts/<int:pk>', ContactDetailAPIView.as_view()),
     path('api/v1/search/', SearchAPIView.as_view(), name='search'),
     path('api/v1/visitors/', VisitorsAPIView.as_view()),
-    path('api/v1/organizations/', OrganizationAPIView.as_view(), name='organizations'),
+    path('api/v1/organizations/', OrganizationListView.as_view(), name='organizations'),
 
 ]
