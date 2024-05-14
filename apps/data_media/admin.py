@@ -52,11 +52,16 @@ class OrganizationAdmin(BaseAdminMixin):
     fields = ['title', 'logo']
 
 
+class ServiceAdmin(BaseAdminMixin):
+    list_display = ['id', 'title', 'status', 'created_at', 'updated_at']
+    fields = ['title', 'status']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(Management, ManagementAdmin)
-admin.site.register(Service)
+admin.site.register(Service, ServiceAdmin)
 admin.site.register(KODEKS, KODEKSAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Organization, OrganizationAdmin)
