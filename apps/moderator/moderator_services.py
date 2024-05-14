@@ -33,5 +33,5 @@ def save_moderator(instance, *args, **kwargs):
 
         instance.user = user
 
-        send_email_with_credentials(instance, password)
+        # send_email_with_credentials(instance, password)
 

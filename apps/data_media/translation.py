@@ -1,5 +1,6 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import kodeks, management, news, photo_gallery_models, service, video_data, quick_contacts_models
+from .models import kodeks, management, news, photo_gallery_models, service, video_data, quick_contacts_models, \
+    organization
 
 
 @register(kodeks.KODEKS)
@@ -35,3 +36,8 @@ class PhotoTranslationOptions(TranslationOptions):
 @register(quick_contacts_models.Contact)
 class ContactTranslationOptions(TranslationOptions):
     fields = ('address', 'reception', 'reading_room')
+
+
+@register(organization.Organization)
+class OrganizationTranslationOptions(TranslationOptions):
+    fields = ('title',)
