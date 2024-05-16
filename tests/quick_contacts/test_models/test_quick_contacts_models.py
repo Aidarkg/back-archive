@@ -18,19 +18,16 @@ class QuickContactsModelsTestCase(TestCase):
     def test_contact_creation(self):
         self.assertTrue(isinstance(self.contact, Contact))
 
-    def test_email_field_type(self):
-        self.assertEqual(type(self.contact.email), EmailField)
-
     def test_field_content(self):
-        self.assertEqual(type(self.contact.email), EmailField)
         self.assertEqual(self.contact.address, 'Test address')
+        self.assertEqual(self.contact.email, 'test@gmail.com')
 
     def test_max_length(self):
         max_length_address = self.contact._meta.get_field('address').max_length
         max_length_phone = self.contact._meta.get_field('phone').max_length
         max_length_work_time = self.contact._meta.get_field('work_time').max_length
         max_length_reception = self.contact._meta.get_field('reception').max_length
-        max_length_reading_room = self.contact._meta.get_field('reading room').max_length
+        max_length_reading_room = self.contact._meta.get_field('reading_room').max_length
         self.assertEqual(max_length_address, 255)
         self.assertEqual(max_length_phone, 20)
         self.assertEqual(max_length_work_time, 100),
