@@ -9,3 +9,5 @@ static
 staticfiles
 .idea
 **/.docker.env
+*/migrations/*
+!*/migrations/__init__.py
