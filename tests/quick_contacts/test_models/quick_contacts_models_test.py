@@ -10,7 +10,7 @@ class QuickContactsModelsTestCase(TestCase):
             address='Test address',
             phone='0555777111',
             email='test@gmail.com',
-            work_phone='Test work time',
+            work_time='Test work time',
             reception='Test reception',
             reading_room='Test reading room'
         )
