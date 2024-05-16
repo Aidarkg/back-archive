@@ -8,7 +8,6 @@ from apps.data_media.models import PhotoGallery
 
 class PhotoGalleryAPITests(APITestCase):
     def setUp(self):
-        # Добавление тестовых данных
         self.photo1 = PhotoGallery.objects.create(
             title='Photo 1',
             description='Description 1',
@@ -23,7 +22,6 @@ class PhotoGalleryAPITests(APITestCase):
         self.detail_url = reverse('photo-gallery-detail', kwargs={'pk': self.photo1.pk})
 
     def tearDown(self):
-        # Удаление всех объектов PhotoGallery и связанных файлов изображений
         for photo in PhotoGallery.objects.all():
             if photo.picture:
                 if default_storage.exists(photo.picture.name):
@@ -33,17 +31,15 @@ class PhotoGalleryAPITests(APITestCase):
     def test_photo_list(self):
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Проверяем, что в ответе содержатся данные о всех фотографиях
+
         self.assertEqual(len(response.data['results']), 2)
-        # Проверяем, что пагинация работает правильно
+
         self.assertIn('next', response.data)
         self.assertIn('previous', response.data)
 
     def test_photo_detail(self):
         response = self.client.get(self.detail_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Проверяем, что данные соответствуют запрашиваемой фотографии
+
         self.assertEqual(response.data['title'], 'Photo 1')
         self.assertEqual(response.data['description'], 'Description 1')
-        # print(response.data)
-        # self.assertTrue('test1.jpg' in response.data['picture'])

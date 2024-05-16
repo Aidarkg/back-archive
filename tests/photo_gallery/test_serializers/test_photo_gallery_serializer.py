@@ -7,7 +7,6 @@ from io import BytesIO
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 
-# Не забудьте удалить лишние тестовые изображения с media/gallery
 def get_test_image():
     file = BytesIO()
     image = Image.new('RGB', (100, 100), 'white')  # Создаём простое белое изображение
@@ -25,7 +24,6 @@ class PhotoGallerySerializerTestCase(TestCase):
         )
         self.serializer = PhotoGallerySerializer(self.photo)
 
-    # Проверяем наличие всех полей в сериализаторе
     def test_serializer_fields(self):
         expected_fields = {
             'title',
@@ -34,7 +32,6 @@ class PhotoGallerySerializerTestCase(TestCase):
         }
         self.assertEqual(set(self.serializer.data.keys()), expected_fields)
 
-    # Проверяем корректность сериализованных данных
     def test_serialized_fields(self):
         expected_title = 'Test photo'
         expected_description = 'Test description'
@@ -45,7 +42,6 @@ class PhotoGallerySerializerTestCase(TestCase):
         self.assertTrue(picture_url.endswith('.jpg'))
 
     def tearDown(self):
-        # Удаление всех объектов PhotoGallery и связанных файлов изображений
         for photo in PhotoGallery.objects.all():
             if photo.picture:
                 if default_storage.exists(photo.picture.name):
