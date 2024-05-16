@@ -3,7 +3,7 @@ from apps.data_media.models.quick_contacts_models import Contact
 from apps.data_media.serializers.quick_contacts_serializers import ContactSerializer
 
 
-class PhotoGallerySerializerTestCase(TestCase):
+class QuickContactSerializerTestCase(TestCase):
     def setUp(self):
         self.contact = Contact.objects.create(
             address='Test address',
