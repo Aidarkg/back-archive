@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from decouple import config
 
-
 from config.settings.jazzmin_settings import JAZZMIN_SETTINGS, JAZZMIN_UI_TWEAKS
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -140,7 +139,7 @@ JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
 
 CACHES = {
-'default': {
+    'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': 'unique-snowflake',
     },
@@ -152,5 +151,3 @@ CACHES = {
         }
     }
 }
-
-
