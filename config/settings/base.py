@@ -1,11 +1,13 @@
+import os
 from pathlib import Path
 from decouple import config
+
+
 from config.settings.jazzmin_settings import JAZZMIN_SETTINGS, JAZZMIN_UI_TWEAKS
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -20,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_redis',
     'drf_yasg',
     'django_filters',
     'apps.data_media',
@@ -135,3 +138,19 @@ CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/1'
 
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
+
+CACHES = {
+'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    },
+    'redis_cache': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',  # Пример адреса и порта Redis
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+
