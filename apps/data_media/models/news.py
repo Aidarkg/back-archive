@@ -8,8 +8,6 @@ class News(DateTimeMixin):
     image = models.ImageField(upload_to='news', verbose_name="Картинка")
     description = models.TextField(verbose_name="Краткое описание")
     detailed_description = models.TextField(verbose_name="Полное описание")
-    created_at = models.DateField(auto_now_add=True, verbose_name="Дата публикации")
-    updated_at = models.DateField(auto_now_add=True, verbose_name="Дата обновления")
 
     def __str__(self):
         return self.title

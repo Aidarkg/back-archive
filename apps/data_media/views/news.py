@@ -5,8 +5,9 @@ from apps.data_media.serializers.news import NewsSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
+
 class NewsListAPIView(ListAPIView):
-    queryset = News.objects.all().order_by('-created_at')
+    queryset = News.objects.all().order_by('-public_date')
     serializer_class = NewsSerializer
     pagination_class = PageNumberPagination
 
@@ -19,7 +20,6 @@ class NewsDetailAPIView(RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
-    @method_decorator(cache_page(60*5))
+    @method_decorator(cache_page(60 * 5))
     def retrieve(self, request, *args, **kwargs):
         return super(NewsDetailAPIView, self).retrieve(request, *args, **kwargs)
-
