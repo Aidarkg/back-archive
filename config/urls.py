@@ -10,6 +10,7 @@ from config.yasg import urlpatterns as yasg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
     path('api/v1/question/create/', question_create_view, name='question-create'),
 ]
 

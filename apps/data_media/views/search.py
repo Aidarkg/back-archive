@@ -5,7 +5,7 @@ from apps.data_media.serializers import NewsSerializer,  PhotoGallerySerializer,
 from django.db.models import Q
 
 from apps.data_media.serializers.kodeks import KODEKSSerializer
-from apps.data_media.serializers.management import ManagementSerializers
+from apps.data_media.serializers.management import ManagementListSerializers
 
 
 class SearchAPIView(APIView):
@@ -25,7 +25,7 @@ class SearchAPIView(APIView):
                 'photos': PhotoGallerySerializer(photos, many=True).data,
                 'videos': VideoDataSerializer(videos, many=True).data,
                 'services': ServiceSerializers(services, many=True).data,
-                'managementes': ManagementSerializers(managementes, many=True).data
+                'managementes': ManagementListSerializers(managementes, many=True).data
 
             }
 

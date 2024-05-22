@@ -1,16 +1,15 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
-
-from apps.data_media.models.management import Management
-from ..serializers.management import ManagementSerializers
+from ..serializers.management import ManagementListSerializers, ManagementDetailsSerializers
+from ..services.management import ManagementService
 
 
 class ManagementListAPIView(ListAPIView):
-    queryset = Management.objects.all().order_by('-created_at')
-    serializer_class = ManagementSerializers
+    queryset = ManagementService.get_managements()
+    serializer_class = ManagementListSerializers
     pagination_class = PageNumberPagination
 
 
 class ManagementDetailAPIView(RetrieveAPIView):
-    queryset = Management.objects.all()
-    serializer_class = ManagementSerializers
+    queryset = ManagementService.get_managements()
+    serializer_class = ManagementDetailsSerializers
