@@ -1,7 +1,7 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, Visit, \
-    Organization, ManagementWork, ManagementEducation
+    Organization, ManagementWork, ManagementEducation, Photo
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -9,9 +9,22 @@ class VideoDataAdmin(BaseAdminMixin):
     fields = ['video', 'title', 'description']
 
 
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    extra = 25
+    verbose_name_plural = 'Фотографии'
+
+
 class PhotoGalleryAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'description', 'picture', 'created_at', 'updated_at']
+    list_display = ('id', 'title', 'description', 'created_at', 'updated_at')
     fields = ['title', 'description', 'picture']
+    list_display_links = ('id', 'title')
+    inlines = [PhotoInline]
+
+    # def get_photo_count(self, obj):
+    #     return obj.photos.count()
+    #
+    # get_photo_count.short_description = 'Photo Count'
 
 
 class NewsAdmin(BaseAdminMixin):

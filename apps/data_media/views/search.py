@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from apps.data_media.models import News, KODEKS, PhotoGallery, VideoData, Service, Management
-from apps.data_media.serializers import NewsSerializer,  PhotoGallerySerializer, VideoDataSerializer, ServiceSerializers
+from apps.data_media.serializers import NewsSerializer,  PhotoSerializer, VideoDataSerializer, ServiceSerializers
 from django.db.models import Q
 
 from apps.data_media.serializers.kodeks import KODEKSSerializer
@@ -22,7 +22,7 @@ class SearchAPIView(APIView):
             results = {
                 'news': NewsSerializer(news, many=True).data,
                 'codexes': KODEKSSerializer(codexes, many=True).data,
-                'photos': PhotoGallerySerializer(photos, many=True).data,
+                'photos': PhotoSerializer(photos, many=True).data,
                 'videos': VideoDataSerializer(videos, many=True).data,
                 'services': ServiceSerializers(services, many=True).data,
                 'managementes': ManagementListSerializers(managementes, many=True).data

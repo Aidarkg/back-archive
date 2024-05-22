@@ -11,3 +11,4 @@ staticfiles
 **/.docker.env
 */migrations/*
 !*/migrations/__init__.py
+apps_cache
