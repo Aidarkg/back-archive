@@ -15,9 +15,8 @@ def send_mail(question_id, **kwargs):
         message = f' {answer}'
     else:
         message = f'{question.question_text}'
-
     sm(
-        f'Тема вопроса: {question.topic_question}',
+        f'Вопрос от : {question.full_name}',
         message,
         from_email=from_email,
         recipient_list=recipient_list,

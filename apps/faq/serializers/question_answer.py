@@ -1,7 +1,7 @@
+import re
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from apps.faq.models import Question
-from apps.faq.tasks import send_mail
-from django.conf import settings
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -9,10 +9,8 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         fields = ('full_name', 'email', 'phone_number', 'question_text')
 
-    def save(self, *args, **kwargs):
-        question = super(QuestionSerializer, self).save()
-        send_mail.delay(
-            question.id,
-            from_email=question.email,
-            recipient_list=[settings.EMAIL_HOST_USER],
-        )
+    def validate_phone_number(self, value):
+        pattern = r'^\+996\d{9}$'
+        if not re.match(pattern, value):
+            raise ValidationError('Номер телефона должен быть в действующем международном формате.')
+        return value
