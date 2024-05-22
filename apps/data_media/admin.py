@@ -1,34 +1,59 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, Visit
+from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, Visit, \
+    Organization, ManagementWork, ManagementEducation, Photo
 
 
 class VideoDataAdmin(BaseAdminMixin):
     list_display = ['id', 'title', 'description', 'created_at', 'updated_at']
-    fields = ['id', 'video', 'title', 'description', 'created_at', 'updated_at']
+    fields = ['video', 'title', 'description']
+
+
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    extra = 25
+    verbose_name_plural = 'Фотографии'
 
 
 class PhotoGalleryAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'description', 'picture', 'created_at', 'updated_at']
-    fields = ['id', 'title', 'description', 'picture', 'created_at', 'updated_at']
+    list_display = ('id', 'title', 'description', 'created_at', 'updated_at')
+    fields = ['title', 'description', 'picture']
+    list_display_links = ('id', 'title')
+    inlines = [PhotoInline]
+
+    # def get_photo_count(self, obj):
+    #     return obj.photos.count()
+    #
+    # get_photo_count.short_description = 'Photo Count'
 
 
 class NewsAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'description', 'detailed_description', 'image', 'created_at', 'updated_at']
-    fields = ['id', 'title', 'description', 'detailed_description', 'image', 'created_at', 'updated_at']
+    list_display = ['id', 'title', 'description', 'detailed_description', 'image', 'public_date']
+    fields = ['title', 'description', 'detailed_description', 'image', 'public_date']
+
+
+class ManagementWorkInline(admin.TabularInline):
+    model = ManagementWork
+    extra = 2
+
+
+class ManagementEducationInline(admin.TabularInline):
+    model = ManagementEducation
+    extra = 2
 
 
 class ManagementAdmin(BaseAdminMixin):
-    list_display = ['id', 'full_name', 'image', 'position', 'experience', 'created_at', 'updated_at']
-    list_display_links = ['id', 'full_name']
-    search_fields = ['full_name']
+    list_display = ('id', 'full_name', 'image', 'position', 'created_at', 'updated_at')
+    list_display_links = ('id', 'full_name')
+    search_fields = ('full_name',)
 
-    fields = ['id', 'full_name', 'image', 'position', 'experience', 'created_at', 'updated_at']
+    fields = ('full_name', 'image', 'position', )
+    inlines = (ManagementWorkInline, ManagementEducationInline, )
 
 
 class KODEKSAdmin(BaseAdminMixin):
     list_display = ['id', 'title', 'pdf_file', 'created_at', 'updated_at']
-    fields = ['id', 'title', 'pdf_file', 'created_at', 'updated_at']
+    fields = ['title', 'pdf_file']
 
 
 class ContactAdmin(BaseAdminMixin):
@@ -36,14 +61,24 @@ class ContactAdmin(BaseAdminMixin):
                     'updated_at']
     list_display_links = ['id', 'address']
     search_fields = ['address']
-    fields = ['id', 'address', 'phone', 'email', 'work_time', 'reception', 'reading_room', 'created_at', 'updated_at']
+    fields = ['address', 'phone', 'email', 'work_time', 'reception', 'reading_room']
 
 
 class VisitAdmin(BaseAdminMixin):
     list_display = ['id', 'date', 'count']
     list_display_links = ['id', 'date']
     search_fields = ['date']
-    fields = ['id', 'date', 'count']
+    fields = ['date', 'count']
+
+
+class OrganizationAdmin(BaseAdminMixin):
+    list_display = ['id', 'title', 'created_at', 'updated_at']
+    fields = ['title', 'logo']
+
+
+class ServiceAdmin(BaseAdminMixin):
+    list_display = ['id', 'title', 'status', 'created_at', 'updated_at']
+    fields = ['title', 'status']
 
 
 admin.site.register(News, NewsAdmin)
@@ -53,4 +88,5 @@ admin.site.register(Management, ManagementAdmin)
 admin.site.register(Service)
 admin.site.register(KODEKS, KODEKSAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Organization, OrganizationAdmin)
 # admin.site.register(Visit, VisitAdmin)

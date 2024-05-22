@@ -1,6 +1,6 @@
 import string
 import random
-from .send_email import send_email_with_credentials
+from .tasks import send_email_with_credentials
 from django.contrib.auth.models import User
 
 
@@ -32,6 +32,4 @@ def save_moderator(instance, *args, **kwargs):
         user.groups.add(instance.group)
 
         instance.user = user
-
-        send_email_with_credentials(instance, password)
-
+        send_email_with_credentials.delay(user.id, password)

@@ -8,7 +8,7 @@ class ModeratorAdmin(admin.ModelAdmin):
     search_fields = ['username']
     list_filter = ['created_at', 'updated_at']
 
-    fields = ['id', 'username', 'email', 'group', 'created_at', 'updated_at']
+    fields = ['username', 'email', 'group']
     readonly_fields = ['id', 'created_at', 'updated_at']
 
 
