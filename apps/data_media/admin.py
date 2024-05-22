@@ -1,7 +1,7 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, Visit, \
-    Organization
+    Organization, ManagementWork, ManagementEducation
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -19,12 +19,23 @@ class NewsAdmin(BaseAdminMixin):
     fields = ['title', 'description', 'detailed_description', 'image']
 
 
-class ManagementAdmin(BaseAdminMixin):
-    list_display = ['id', 'full_name', 'image', 'position', 'experience', 'created_at', 'updated_at']
-    list_display_links = ['id', 'full_name']
-    search_fields = ['full_name']
+class ManagementWorkInline(admin.TabularInline):
+    model = ManagementWork
+    extra = 2
 
-    fields = ['full_name', 'image', 'position', 'experience']
+
+class ManagementEducationInline(admin.TabularInline):
+    model = ManagementEducation
+    extra = 2
+
+
+class ManagementAdmin(BaseAdminMixin):
+    list_display = ('id', 'full_name', 'image', 'position', 'created_at', 'updated_at')
+    list_display_links = ('id', 'full_name')
+    search_fields = ('full_name',)
+
+    fields = ('full_name', 'image', 'position', )
+    inlines = (ManagementWorkInline, ManagementEducationInline, )
 
 
 class KODEKSAdmin(BaseAdminMixin):

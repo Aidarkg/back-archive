@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'rest_framework',
     'django_redis',
     'drf_yasg',
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'apps.data_media',
     'apps.moderator',
     'apps.faq',
+
 ]
 
 REST_FRAMEWORK = {
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -145,9 +148,14 @@ CACHES = {
     },
     'redis_cache': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis:6379/1',  # Пример адреса и порта Redis
+        'LOCATION': f'redis://{REDIS_HOST}:6379/1',  # Пример адреса и порта Redis
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
 }
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

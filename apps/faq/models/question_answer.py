@@ -1,6 +1,5 @@
 from django.db import models
 from apps.common.models.mixins import DateTimeMixin
-from apps.faq.validators import validate_phone_number
 from apps.moderator.models import Moderator
 
 
@@ -19,10 +18,9 @@ class Question(DateTimeMixin):
     )
     phone_number = models.CharField(
         max_length=20,
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
         verbose_name='Номер телефона',
-        validators=[validate_phone_number]
     )
     question_text = models.CharField(
         max_length=500,
@@ -50,7 +48,12 @@ class Answer(DateTimeMixin):
         on_delete=models.DO_NOTHING,
         related_name='question_answer'
     )
-    answer = models.TextField()
+    answer = models.TextField(
+        max_length=500,
+        null=False,
+        blank=False,
+        verbose_name='Ответ'
+    )
 
     class Meta:
         verbose_name = 'Ответ модератора'
