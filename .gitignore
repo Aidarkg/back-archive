@@ -6,9 +6,9 @@ media
 **/migrations/
 db.sqlite3
 static
-staticfiles
 .idea
 **/.docker.env
 */migrations/*
 !*/migrations/__init__.py
 apps_cache
+faker.py
