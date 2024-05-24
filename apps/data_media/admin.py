@@ -42,7 +42,7 @@ class ManagementAdmin(BaseAdminMixin):
     list_display_links = ('id', 'full_name')
     search_fields = ('full_name',)
 
-    fields = ('full_name', 'image', 'position',)
+    fields = ('full_name', 'image', 'position', 'birth_date', 'clas_chin')
     inlines = (ManagementWorkInline, ManagementEducationInline,)
 
 
