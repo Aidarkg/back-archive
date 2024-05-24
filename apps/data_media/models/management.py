@@ -39,7 +39,7 @@ class Management(DateTimeMixin):
     class Meta:
         verbose_name = 'Руководство'
         verbose_name_plural = 'Руководства'
-        ordering = ('-created_at', )
+        ordering = ('-created_at',)
 
 
 class ManagementEducation(models.Model):

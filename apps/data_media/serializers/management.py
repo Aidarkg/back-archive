@@ -3,7 +3,6 @@ from ..models.management import Management, ManagementEducation, ManagementWork
 
 
 class ManagementListSerializers(serializers.ModelSerializer):
-
     class Meta:
         model = Management
         fields = (
@@ -14,14 +13,12 @@ class ManagementListSerializers(serializers.ModelSerializer):
 
 
 class ManagementEducationSerializers(serializers.ModelSerializer):
-
     class Meta:
         model = ManagementEducation
         fields = ('year', 'place', 'specialization')
 
 
 class ManagementWorkSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ManagementWork
         fields = ('start_year', 'end_year', 'place', 'position')
@@ -34,6 +31,7 @@ class ManagementDetailsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Management
         fields = (
+            'id',
             'full_name',
             'image',
             'position',

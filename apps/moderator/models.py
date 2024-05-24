@@ -2,29 +2,23 @@ from django.db import models
 from django.contrib.auth.models import User, Group
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from .validate import validate_username, validate_email
 from .moderator_services import save_moderator
+from apps.common.models.mixins import DateTimeMixin
 
 
-class Moderator(models.Model):
+class Moderator(DateTimeMixin):
     user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
 
     username = models.CharField(
         max_length=150,
         unique=True,
-        validators=[validate_username],
-        error_messages={"unique": "Модератор с таким именем уже существует."},
         verbose_name="Имя пользователя"
     )
     email = models.EmailField(
-        validators=[validate_email],
         unique=True,
-        error_messages={"unique": "Модератор с такой электронной почтой уже существует."},
         verbose_name="Электронная почта",
     )
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Группа')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     class Meta:
         verbose_name = 'Модератор'

@@ -1,5 +1,6 @@
 from ..models import Management
 
+
 class ManagementService:
     @staticmethod
     def get_managements():
