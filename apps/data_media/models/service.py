@@ -10,7 +10,7 @@ ISFREE = (
 
 class Service(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
-    status = models.CharField(max_length=10, choices=ISFREE, verbose_name='Статус')
+    status = models.CharField(max_length=20, verbose_name='Статус')
 
     class Meta:
         verbose_name = 'Услуга'
