@@ -1,7 +1,7 @@
 from django.urls import path
 from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
     NewsListAPIView, NewsDetailAPIView, \
-    PhotoGalleryListAPIView, PhotoGalleryDetailAPIView,  \
+    PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
     ServiceListView, \
     KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
     SearchAPIView, ContactListAPIView, ContactDetailAPIView, \
@@ -9,12 +9,13 @@ from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
     ManagementListAPIView, ManagementDetailAPIView
 from apps.data_media.views.organization import OrganizationListView
 
+
 urlpatterns = [
     path('api/v1/video/', VideoDataAPIView.as_view(), name='video-data-list'),
     path('api/v1/video/<int:pk>', VideoDataRetrieveAPIView.as_view(), name='video-data-detail'),
     path('api/v1/management/', ManagementListAPIView.as_view(), name='management-list'),
     path('api/v1/management/<int:pk>/', ManagementDetailAPIView.as_view(), name='management-detail'),
-    path('api/v1/news/', NewsListAPIView.as_view() , name='news-list'),
+    path('api/v1/news/', NewsListAPIView.as_view(), name='news-list'),
     path('api/v1/news/<int:pk>/', NewsDetailAPIView.as_view(), name='news-detail'),
     path('api/v1/photos/', PhotoGalleryListAPIView.as_view(), name='photo-gallery-list'),
     path('api/v1/photos/<int:pk>/', PhotoGalleryDetailAPIView.as_view(), name='photo-gallery-detail'),
