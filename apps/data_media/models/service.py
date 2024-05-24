@@ -2,11 +2,6 @@ from django.db import models
 
 from apps.common.models.mixins import DateTimeMixin
 
-ISFREE = (
-    ('free', 'Беслатно'),
-    ('paid', 'Платно')
-)
-
 
 class Service(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
