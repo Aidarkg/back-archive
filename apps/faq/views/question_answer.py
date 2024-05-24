@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from apps.faq.serializers.question_answer import QuestionSerializer
 from ..services.question_answer import QuestionAnswerService
 
+
 @api_view(['POST'])
 def question_create_view(request):
     serializer = QuestionSerializer(data=request.data)

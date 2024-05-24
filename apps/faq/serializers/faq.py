@@ -3,7 +3,6 @@ from apps.faq.models import Faq
 
 
 class FaqSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Faq
-        fields = 'question', 'answer'
+        fields = ('id', 'question', 'answer')
