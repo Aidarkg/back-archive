@@ -1,11 +1,11 @@
 from django.db import models
-
+from apps.data_media.services.photo_compress import WEBPField
 from apps.common.models.mixins import DateTimeMixin
 
 
 class Photo(models.Model):
     gallery = models.ForeignKey('PhotoGallery', on_delete=models.CASCADE, related_name='photo')
-    photo = models.ImageField(upload_to='gallery/photos', verbose_name='Изображение')
+    photo = WEBPField(upload_to='gallery_photo', verbose_name='Изображение')
 
     def __str__(self):
         return f"Photo {self.id}"
@@ -14,7 +14,7 @@ class Photo(models.Model):
 class PhotoGallery(DateTimeMixin):
     title = models.TextField(verbose_name='Заголовок')
     description = models.TextField(max_length=1000, blank=False, null=False, verbose_name='Описание')
-    picture = models.ImageField(blank=False, null=False, upload_to='gallery/logo', verbose_name='Картинка')
+    picture = WEBPField(blank=False, null=False, upload_to='gallery/logo', verbose_name='Картинка')
 
     def __str__(self):
         return self.title
