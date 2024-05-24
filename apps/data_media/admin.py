@@ -30,11 +30,13 @@ class NewsAdmin(BaseAdminMixin):
 class ManagementWorkInline(admin.TabularInline):
     model = ManagementWork
     extra = 2
+    verbose_name_plural = 'Деятельность'
 
 
 class ManagementEducationInline(admin.TabularInline):
     model = ManagementEducation
     extra = 2
+    verbose_name_plural = 'Образование'
 
 
 class ManagementAdmin(BaseAdminMixin):
