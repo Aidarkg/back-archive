@@ -5,7 +5,7 @@ from apps.common.models.mixins import DateTimeMixin
 
 class VideoData(DateTimeMixin):
     video = models.FileField(upload_to='video', verbose_name='Видео')
-    title = models.CharField(max_length=255, verbose_name='Название')
+    title = models.TextField(verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
