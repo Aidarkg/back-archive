@@ -21,11 +21,6 @@ class PhotoGalleryAdmin(BaseAdminMixin):
     list_display_links = ('id', 'title')
     inlines = [PhotoInline]
 
-    # def get_photo_count(self, obj):
-    #     return obj.photos.count()
-    #
-    # get_photo_count.short_description = 'Photo Count'
-
 
 class NewsAdmin(BaseAdminMixin):
     list_display = ['id', 'title', 'description', 'detailed_description', 'image', 'public_date']
@@ -47,8 +42,8 @@ class ManagementAdmin(BaseAdminMixin):
     list_display_links = ('id', 'full_name')
     search_fields = ('full_name',)
 
-    fields = ('full_name', 'image', 'position', )
-    inlines = (ManagementWorkInline, ManagementEducationInline, )
+    fields = ('full_name', 'image', 'position',)
+    inlines = (ManagementWorkInline, ManagementEducationInline,)
 
 
 class KODEKSAdmin(BaseAdminMixin):

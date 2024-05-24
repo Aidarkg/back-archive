@@ -22,3 +22,6 @@ class PhotoGallery(DateTimeMixin):
     class Meta:
         verbose_name = 'Фотогалерея'
         verbose_name_plural = 'Фотогалерея'
+
+    def count_photo(self):
+        return self.photo.count()

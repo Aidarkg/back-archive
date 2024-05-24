@@ -5,7 +5,7 @@ from apps.data_media.models import PhotoGallery, Photo
 class PhotoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhotoGallery
-        fields = ['id', 'title', 'description', 'picture']
+        fields = ['id', 'title', 'description', 'picture', 'count_photo']
 
 
 class PhotoSerializer(serializers.ModelSerializer):

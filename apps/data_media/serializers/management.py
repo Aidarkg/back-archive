@@ -34,6 +34,7 @@ class ManagementDetailsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Management
         fields = (
+            'id',
             'full_name',
             'image',
             'position',
