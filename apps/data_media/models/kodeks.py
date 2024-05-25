@@ -5,8 +5,8 @@ from apps.common.models.mixins import DateTimeMixin
 class KODEKS(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
     pdf_file = models.FileField(upload_to='pdf_files/', verbose_name='Файл')
-    date_file = models.DateField(null=True, blank=True, verbose_name='Дата')
-    document_number = models.IntegerField(null=True, blank=True, verbose_name='Номер документа')
+    date_file = models.DateField(verbose_name='Дата')
+    document_number = models.IntegerField(verbose_name='Номер документа')
 
     def __str__(self):
         return self.title
