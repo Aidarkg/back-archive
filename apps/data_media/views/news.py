@@ -7,7 +7,7 @@ from django.views.decorators.cache import cache_page
 
 
 class NewsListAPIView(ListAPIView):
-    queryset = News.objects.all().order_by('-public_date')
+    queryset = News.objects.all()
     serializer_class = NewsSerializer
     pagination_class = PageNumberPagination
 

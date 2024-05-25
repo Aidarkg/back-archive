@@ -7,3 +7,4 @@ from apps.data_media.views.search import *
 from apps.data_media.views.quck_contacts_views import *
 from apps.data_media.views.visitors import *
 from apps.data_media.views.management import *
+from apps.data_media.views.main import *

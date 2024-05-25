@@ -5,7 +5,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class KODEKSListCreateAPIView(generics.ListAPIView):
-    queryset = KODEKS.objects.all().order_by('-created_at')
+    queryset = KODEKS.objects.all()
     serializer_class = KODEKSSerializer
     pagination_class = PageNumberPagination
 

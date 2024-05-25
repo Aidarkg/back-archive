@@ -7,3 +7,4 @@ from apps.data_media.models.kodeks import *
 from apps.data_media.models.quick_contacts_models import *
 from apps.data_media.models.visitors import *
 from apps.data_media.models.organization import *
+from apps.data_media.models.visitors import *

@@ -7,7 +7,7 @@ from django.views.decorators.cache import cache_page
 
 
 class VideoDataAPIView(ListAPIView):
-    queryset = VideoData.objects.all().order_by('-created_at')
+    queryset = VideoData.objects.all()
     serializer_class = VideoDataSerializer
     pagination_class = PageNumberPagination
 

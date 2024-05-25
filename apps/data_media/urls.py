@@ -6,7 +6,8 @@ from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
     KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
     SearchAPIView, ContactListAPIView, ContactDetailAPIView, \
     VisitorsAPIView, \
-    ManagementListAPIView, ManagementDetailAPIView
+    ManagementListAPIView, ManagementDetailAPIView, \
+    MainAPIView
 from apps.data_media.views.organization import OrganizationListView
 
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('api/v1/search/', SearchAPIView.as_view(), name='search'),
     path('api/v1/visitors/', VisitorsAPIView.as_view(), name='visitors-list'),
     path('api/v1/organizations/', OrganizationListView.as_view(), name='organizations'),
+    path('api/v1/main/', MainAPIView.as_view(), name='main'),
 
 ]

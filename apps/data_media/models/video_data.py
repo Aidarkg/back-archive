@@ -14,3 +14,4 @@ class VideoData(DateTimeMixin):
     class Meta:
         verbose_name = 'Видеогалерея'
         verbose_name_plural = 'Видеогалерея'
+        ordering = ['-created_at']
