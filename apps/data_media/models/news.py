@@ -7,7 +7,7 @@ class News(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
     image = models.ImageField(upload_to='news', verbose_name="Картинка")
     description = models.TextField(verbose_name="Описание")
-    public_date = models.DateField(verbose_name="Дата публикации")
+    public_date = models.DateTimeField(verbose_name="Дата публикации")
 
     def __str__(self):
         return self.title
