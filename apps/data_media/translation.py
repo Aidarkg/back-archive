@@ -25,7 +25,7 @@ class ManagementWorkTranslationOptions(TranslationOptions):
 
 @register(news.News)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'detailed_description')
+    fields = ('title', 'description')
 
 
 @register(photo_gallery_models.PhotoGallery)
