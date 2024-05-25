@@ -10,7 +10,17 @@ class KodeksTranslationOptions(TranslationOptions):
 
 @register(management.Management)
 class ManagementTranslationOptions(TranslationOptions):
-    fields = ('full_name', 'position')
+    fields = ('full_name', 'position', 'clas_chin')
+
+
+@register(management.ManagementEducation)
+class ManagementEducationTranslationOptions(TranslationOptions):
+    fields = ('place', 'specialization')
+
+
+@register(management.ManagementWork)
+class ManagementWorkTranslationOptions(TranslationOptions):
+    fields = ('place', 'position')
 
 
 @register(news.News)

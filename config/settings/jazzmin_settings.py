@@ -102,6 +102,18 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
+        "data_media.VideoData": "fas fa-video",
+        "data_media.PhotoGallery": "fas fa-image",
+        "data_media.KODEKS": "fas fa-code",
+        "data_media.Contact": "fas fa-address-book",
+        "data_media.News": "fas fa-newspaper",
+        "data_media.Organization": "fas fa-sitemap",
+        "data_media.Management": "fas fa-user-tie",
+        "data_media.Service": "fas fa-clipboard",
+        "moderator.Moderator": "fab fa-black-tie",
+        "faq.FAQ": "fas fa-comments",
+        "faq.Question": "fas fa-question",
+        "faq.Answer": "far fa-comment-dots"
     },
 
     # Значки, которые используются, когда не указаны вручную
