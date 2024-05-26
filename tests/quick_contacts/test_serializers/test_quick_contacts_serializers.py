@@ -18,6 +18,7 @@ class QuickContactSerializerTestCase(TestCase):
 
     def test_serializer_fields(self):
         expected_fields = {
+            'id',
             'address',
             'phone',
             'email',
