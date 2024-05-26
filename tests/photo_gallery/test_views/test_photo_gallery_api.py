@@ -3,7 +3,17 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
+from PIL import Image
+from io import BytesIO
 from apps.data_media.models import PhotoGallery
+
+
+def get_test_image():
+    file = BytesIO()
+    image = Image.new('RGB', (100, 100), 'white')  # Создаём простое белое изображение
+    image.save(file, 'JPEG')
+    file.seek(0)
+    return SimpleUploadedFile('test.jpg', file.read(), content_type='image/jpeg')
 
 
 class PhotoGalleryAPITests(APITestCase):
@@ -11,12 +21,12 @@ class PhotoGalleryAPITests(APITestCase):
         self.photo1 = PhotoGallery.objects.create(
             title='Photo 1',
             description='Description 1',
-            picture=SimpleUploadedFile(name='test1.jpg', content=b'test1 image content', content_type='image/jpeg')
+            picture=get_test_image()
         )
         self.photo2 = PhotoGallery.objects.create(
             title='Photo 2',
             description='Description 2',
-            picture=SimpleUploadedFile(name='test2.jpg', content=b'test2 image content', content_type='image/jpeg')
+            picture=get_test_image()
         )
         self.list_url = reverse('photo-gallery-list')
         self.detail_url = reverse('photo-gallery-detail', kwargs={'pk': self.photo1.pk})
