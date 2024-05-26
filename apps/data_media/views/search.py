@@ -9,7 +9,7 @@ from apps.data_media.serializers import (
 )
 
 class CustomPagination(LimitOffsetPagination):
-    default_limit = 2
+    default_limit = 10
     max_limit = 100
 
 
