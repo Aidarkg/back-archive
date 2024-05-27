@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'apps.data_media',
     'apps.moderator',
     'apps.faq',
+    'apps.contacts',
 
 ]
 
@@ -148,7 +149,7 @@ CACHES = {
     },
     'redis_cache': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'redis://{REDIS_HOST}:6379/1',  # Пример адреса и порта Redis
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/1',  # Пример адреса и порта Redis
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }

@@ -11,15 +11,15 @@ class NewsListAPIView(ListAPIView):
     serializer_class = NewsSerializer
     pagination_class = PageNumberPagination
 
-    @method_decorator(cache_page(60 * 2))
-    def retrieve(self, request, *args, **kwargs):
-        return super(NewsListAPIView, self).list(request, *args, **kwargs)
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class NewsDetailAPIView(RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
 
-    @method_decorator(cache_page(60 * 5))
-    def retrieve(self, request, *args, **kwargs):
-        return super(NewsDetailAPIView, self).retrieve(request, *args, **kwargs)
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)

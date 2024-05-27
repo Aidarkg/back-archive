@@ -5,7 +5,7 @@ from apps.common.models.mixins import DateTimeMixin
 
 class Photo(models.Model):
     gallery = models.ForeignKey('PhotoGallery', on_delete=models.CASCADE, related_name='photo')
-    photo = WEBPField(upload_to='gallery_photo', verbose_name='Изображение')
+    photo = WEBPField(upload_to='gallery/photos', verbose_name='Изображение')
 
     def __str__(self):
         return f"Photo {self.id}"

@@ -19,7 +19,7 @@ class PhotoListSerializer(serializers.ModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = 'photo'.split()
+        fields = ['photo']
 
 
 class PhotoGallerySerializer(serializers.ModelSerializer):
