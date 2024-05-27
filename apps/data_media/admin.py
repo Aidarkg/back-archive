@@ -1,11 +1,11 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, \
+from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
     Organization, ManagementWork, ManagementEducation, Photo
 
 
 class VideoDataAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'description', 'created_at', 'updated_at']
+    list_display = ['title', 'description', 'public_date']
     fields = ['video', 'title', 'description', 'public_date']
 
 
@@ -16,14 +16,14 @@ class PhotoInline(admin.TabularInline):
 
 
 class PhotoGalleryAdmin(BaseAdminMixin):
-    list_display = ('id', 'title', 'description', 'created_at', 'updated_at')
-    fields = ['title', 'description', 'picture']
-    list_display_links = ('id', 'title')
+    list_display = ('title', 'description', 'public_date')
+    fields = ['title', 'description', 'picture', 'public_date']
+    list_display_links = ('title',)
     inlines = [PhotoInline]
 
 
 class NewsAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'image', 'public_date']
+    list_display = ['title', 'image', 'public_date']
     fields = ['title', 'description', 'image', 'public_date']
 
 
@@ -40,8 +40,8 @@ class ManagementEducationInline(admin.TabularInline):
 
 
 class ManagementAdmin(BaseAdminMixin):
-    list_display = ('id', 'full_name', 'image', 'position', 'created_at', 'updated_at')
-    list_display_links = ('id', 'full_name')
+    list_display = ('full_name', 'image', 'position', 'created_at', 'updated_at')
+    list_display_links = ('full_name',)
     search_fields = ('full_name',)
 
     fields = ('full_name', 'image', 'position', 'start_year', 'birth_date', 'clas_chin')
@@ -54,21 +54,13 @@ class KODEKSAdmin(BaseAdminMixin):
     fields = ['document_number', 'title', 'pdf_file', 'date_file']
 
 
-class ContactAdmin(BaseAdminMixin):
-    list_display = ['id', 'address', 'phone', 'email', 'work_time', 'reception', 'reading_room', 'created_at',
-                    'updated_at']
-    list_display_links = ['id', 'address']
-    search_fields = ['address']
-    fields = ['address', 'phone', 'email', 'work_time', 'reception', 'reading_room']
-
-
 class OrganizationAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'created_at', 'updated_at']
+    list_display = ['title', 'created_at', 'updated_at']
     fields = ['title', 'logo']
 
 
 class ServiceAdmin(BaseAdminMixin):
-    list_display = ['id', 'title', 'status', 'created_at', 'updated_at']
+    list_display = ['title', 'status', 'created_at', 'updated_at']
     fields = ['title', 'status']
 
 
@@ -78,5 +70,4 @@ admin.site.register(PhotoGallery, PhotoGalleryAdmin)
 admin.site.register(Management, ManagementAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(KODEKS, KODEKSAdmin)
-admin.site.register(Contact, ContactAdmin)
 admin.site.register(Organization, OrganizationAdmin)

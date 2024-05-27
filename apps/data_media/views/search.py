@@ -7,6 +7,9 @@ from apps.data_media.serializers import (
     NewsSerializer, KODEKSSerializer, PhotoGallerySerializer, VideoDataSerializer,
     ServiceSerializers, ManagementListSerializers
 )
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 
 class CustomPagination(LimitOffsetPagination):
     default_limit = 10
@@ -14,6 +17,10 @@ class CustomPagination(LimitOffsetPagination):
 
 
 class SearchAPIView(APIView):
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get(self, request, *args, **kwargs):
         query = request.query_params.get('search', None)
         if query is not None:

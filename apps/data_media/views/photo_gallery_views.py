@@ -12,15 +12,15 @@ class PhotoGalleryListAPIView(ListAPIView):
     serializer_class = PhotoListSerializer
     pagination_class = PageNumberPagination
 
-    @method_decorator(cache_page(60 * 2))
-    def retrieve(self, request, *args, **kwargs):
-        return super(PhotoGalleryListAPIView, self).list(request, *args, **kwargs)
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class PhotoGalleryDetailAPIView(RetrieveAPIView):
     queryset = PhotoGallery.objects.all()
     serializer_class = PhotoGallerySerializer
 
-    @method_decorator(cache_page(60 * 5))
-    def retrieve(self, request, *args, **kwargs):
-        return super(PhotoGalleryDetailAPIView, self).retrieve(request, *args, **kwargs)
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
