@@ -83,9 +83,12 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
 
     # Список приложений (и/или моделей) для определения порядка бокового меню (не обязательно включать все приложения/модели)
-    "order_with_respect_to": ['moderator',
-                              'data_media', 'data_media.VideoData', 'data_media.PhotoGallery',
-                              'faq'],
+    "order_with_respect_to": [
+        'moderator',
+        'contacts', 'contacts.ArchiveContact',
+        'data_media', 'data_media.VideoData', 'data_media.PhotoGallery',
+        'faq'
+    ],
 
     # Пользовательские ссылки для добавления в группы приложений, сгруппированные по имени приложения
     "custom_links": {
@@ -102,6 +105,21 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
+        "data_media.VideoData": "fas fa-video",
+        "data_media.PhotoGallery": "fas fa-image",
+        "data_media.KODEKS": "fas fa-code",
+        "data_media.News": "fas fa-newspaper",
+        "data_media.Organization": "fas fa-sitemap",
+        "data_media.Management": "fas fa-user-tie",
+        "data_media.Service": "fas fa-clipboard",
+        "moderator.Moderator": "fab fa-black-tie",
+        "faq.FAQ": "fas fa-comments",
+        "faq.Question": "fas fa-question",
+        "faq.Answer": "far fa-comment-dots",
+        "contacts.ArchiveContact": "fas fa-address-book",
+        "contacts.Anticore": "fas fa-address-card",
+        "contacts.CollCenter": "fas fa-headset",
+        "contacts.Contact": "fas fa-phone",
     },
 
     # Значки, которые используются, когда не указаны вручную

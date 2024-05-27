@@ -17,6 +17,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('apps.data_media.urls')),
     path('', include('apps.faq.urls')),
+    path('', include('apps.contacts.urls'))
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,9 +4,10 @@ from apps.data_media.views import VideoDataAPIView, VideoDataRetrieveAPIView, \
     PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
     ServiceListView, \
     KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
-    SearchAPIView, ContactListAPIView, ContactDetailAPIView, \
+    SearchAPIView, \
     VisitorsAPIView, \
-    ManagementListAPIView, ManagementDetailAPIView
+    ManagementListAPIView, ManagementDetailAPIView, \
+    MainAPIView
 from apps.data_media.views.organization import OrganizationListView
 
 
@@ -22,10 +23,9 @@ urlpatterns = [
     path('api/v1/service/', ServiceListView.as_view(), name='services-list'),
     path('api/v1/kodeks/', KODEKSListCreateAPIView.as_view(), name='kodeks-list'),
     path('api/v1/kodeks/<int:pk>/', KODEKSRetrieveUpdateDestroyAPIView.as_view(), name='kodeks-detail'),
-    path('api/v1/contacts', ContactListAPIView.as_view(), name='contacts-list'),
-    path('api/v1/contacts/<int:pk>', ContactDetailAPIView.as_view(), name='contacts-detail'),
     path('api/v1/search/', SearchAPIView.as_view(), name='search'),
     path('api/v1/visitors/', VisitorsAPIView.as_view(), name='visitors-list'),
     path('api/v1/organizations/', OrganizationListView.as_view(), name='organizations'),
+    path('api/v1/main/', MainAPIView.as_view(), name='main'),
 
 ]

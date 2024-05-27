@@ -6,9 +6,12 @@ class ManagementListSerializers(serializers.ModelSerializer):
     class Meta:
         model = Management
         fields = (
+            'id',
             'full_name',
             'image',
             'position',
+            'start_year',
+            'end_year'
         )
 
 
@@ -21,7 +24,7 @@ class ManagementEducationSerializers(serializers.ModelSerializer):
 class ManagementWorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = ManagementWork
-        fields = ('start_year', 'end_year', 'place', 'position')
+        fields = ('year', 'place', 'position')
 
 
 class ManagementDetailsSerializers(serializers.ModelSerializer):

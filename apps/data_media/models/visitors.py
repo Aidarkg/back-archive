@@ -1,8 +1,9 @@
-from django.utils import timezone
-
 from django.db import models
 
 
-class Visit(models.Model):
-    date = models.DateField(default=timezone.now)
-    count = models.IntegerField(default=0)
+class Visitors(models.Model):
+    counter = models.IntegerField(default=0)
+
+    def increase_count(self):
+        self.counter += 1
+        self.save()

@@ -1,5 +1,6 @@
 from django.db import models
 from apps.common.models.mixins import DateTimeMixin
+import datetime
 
 
 class Management(DateTimeMixin):
@@ -21,6 +22,9 @@ class Management(DateTimeMixin):
         null=True,
         verbose_name='Должность'
     )
+    start_year = models.IntegerField(
+        verbose_name='Год начала работы'
+    )
     birth_date = models.DateField(
         blank=True,
         null=True,
@@ -32,6 +36,11 @@ class Management(DateTimeMixin):
         null=True,
         verbose_name='Классный чин'
     )
+
+    @property
+    def end_year(self):
+        current_year = datetime.datetime.now().year
+        return current_year
 
     def __str__(self) -> str:
         return self.full_name
@@ -71,15 +80,9 @@ class ManagementEducation(models.Model):
 
 
 class ManagementWork(models.Model):
-    start_year = models.PositiveSmallIntegerField(
-        blank=False,
-        null=False,
-        verbose_name='Год начало работы'
-    )
-    end_year = models.PositiveSmallIntegerField(
-        blank=False,
-        null=False,
-        verbose_name='Год окончания работы'
+    year = models.CharField(
+        max_length=100,
+        verbose_name='Годы работы'
     )
     place = models.CharField(
         max_length=100,

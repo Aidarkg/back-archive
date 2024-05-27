@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from apps.data_media.models import Visitors
 
 
-class VisitSerializer(serializers.Serializer):
-    total_visits = serializers.IntegerField()
-    today_visits = serializers.IntegerField()
+class VisitorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visitors
+        fields = ['counter']
