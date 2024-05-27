@@ -4,11 +4,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.exceptions import APIException
 from rest_framework import status
 
-from apps.data_media.models import News, PhotoGallery, VideoData, Organization, Contact, Visit
+from apps.data_media.models import News, PhotoGallery, VideoData, Organization, Contact, Visitors
 from apps.faq.models.faq import Faq
 
 from apps.data_media.serializers import NewsSerializer, PhotoListSerializer, VideoDataSerializer, \
-    OrganizationSerializer, ContactSerializer, VisitSerializer, PhotoGallerySerializer
+    OrganizationSerializer, ContactSerializer, VisitorSerializer, PhotoGallerySerializer
 from apps.faq.serializers.faq import FaqSerializer
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, Visit, \
+from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, Contact, \
     Organization, ManagementWork, ManagementEducation, Photo
 
 
@@ -62,13 +62,6 @@ class ContactAdmin(BaseAdminMixin):
     fields = ['address', 'phone', 'email', 'work_time', 'reception', 'reading_room']
 
 
-class VisitAdmin(BaseAdminMixin):
-    list_display = ['id', 'date', 'count']
-    list_display_links = ['id', 'date']
-    search_fields = ['date']
-    fields = ['date', 'count']
-
-
 class OrganizationAdmin(BaseAdminMixin):
     list_display = ['id', 'title', 'created_at', 'updated_at']
     fields = ['title', 'logo']
@@ -87,4 +80,3 @@ admin.site.register(Service, ServiceAdmin)
 admin.site.register(KODEKS, KODEKSAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Organization, OrganizationAdmin)
-# admin.site.register(Visit, VisitAdmin)
