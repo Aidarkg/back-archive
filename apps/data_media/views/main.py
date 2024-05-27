@@ -24,10 +24,10 @@ class MainAPIView(APIView):
             visit = Visit.objects.all()
 
             data = {
-                'news': NewsSerializer(news, many=True).data,
-                'photo_gallery': PhotoListSerializer(photogallery, many=True).data,
-                'video_gallery': VideoDataSerializer(video_data, many=True).data,
-                'organization': OrganizationSerializer(organization, many=True).data,
+                'news': NewsSerializer(news, many=True, context={'request': request}).data,
+                'photo_gallery': PhotoListSerializer(photogallery, many=True, context={'request': request}).data,
+                'video_gallery': VideoDataSerializer(video_data, many=True, context={'request': request}).data,
+                'organization': OrganizationSerializer(organization, many=True, context={'request': request}).data,
                 'contact': ContactSerializer(contact, many=True).data,
                 'faq': FaqSerializer(faqs, many=True).data,
                 'visit': VisitSerializer(visit, many=True).data,

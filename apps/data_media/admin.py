@@ -6,7 +6,7 @@ from apps.data_media.models import News, PhotoGallery, VideoData, Management, Se
 
 class VideoDataAdmin(BaseAdminMixin):
     list_display = ['id', 'title', 'description', 'created_at', 'updated_at']
-    fields = ['video', 'title', 'description']
+    fields = ['video', 'title', 'description', 'public_date']
 
 
 class PhotoInline(admin.TabularInline):
@@ -44,7 +44,7 @@ class ManagementAdmin(BaseAdminMixin):
     list_display_links = ('id', 'full_name')
     search_fields = ('full_name',)
 
-    fields = ('full_name', 'image', 'position', 'birth_date', 'clas_chin')
+    fields = ('full_name', 'image', 'position', 'start_year', 'birth_date', 'clas_chin')
     inlines = (ManagementWorkInline, ManagementEducationInline,)
 
 

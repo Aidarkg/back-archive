@@ -13,8 +13,9 @@ class Photo(models.Model):
 
 class PhotoGallery(DateTimeMixin):
     title = models.TextField(verbose_name='Заголовок')
-    description = models.TextField(max_length=1000, blank=False, null=False, verbose_name='Описание')
-    picture = WEBPField(blank=False, null=False, upload_to='gallery/logo', verbose_name='Картинка')
+    description = models.TextField(verbose_name='Описание')
+    picture = WEBPField(upload_to='gallery/logo', verbose_name='Картинка')
+    public_date = models.DateTimeField(verbose_name='Дата публикации')
 
     def __str__(self):
         return self.title
@@ -22,7 +23,7 @@ class PhotoGallery(DateTimeMixin):
     class Meta:
         verbose_name = 'Фотогалерея'
         verbose_name_plural = 'Фотогалерея'
-        ordering = ['-created_at']
+        ordering = ['-public_date']
 
     def count_photo(self):
         return self.photo.count()
