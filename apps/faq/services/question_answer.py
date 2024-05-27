@@ -10,8 +10,9 @@ class QuestionAnswerService:
     def send_question(question) -> None:
         moder = Moderator.objects.all()
         email_list = [moderator.email for moderator in moder]
-        send_mail.delay(
-            question.id,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=email_list,
-        )
+        if email_list:
+            send_mail.delay(
+                question.id,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=email_list,
+            )
