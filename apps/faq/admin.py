@@ -6,8 +6,8 @@ from apps.common.admin.mixins import BaseAdminMixin
 
 
 class FaqAdmin(BaseAdminMixin):
-    list_display = ('id', 'question', 'answer', 'created_at', 'updated_at')
-    list_display_links = ('id', 'question')
+    list_display = ('question', 'answer', 'created_at', 'updated_at')
+    list_display_links = ('question', 'answer')
     search_fields = ('question',)
     fields = ('question', 'answer',)
 

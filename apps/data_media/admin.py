@@ -40,7 +40,7 @@ class ManagementEducationInline(admin.TabularInline):
 
 
 class ManagementAdmin(BaseAdminMixin):
-    list_display = ('full_name', 'image', 'position', 'created_at', 'updated_at')
+    list_display = ('full_name', 'image', 'position', 'clas_chin')
     list_display_links = ('full_name',)
     search_fields = ('full_name',)
 
@@ -55,7 +55,7 @@ class KODEKSAdmin(BaseAdminMixin):
 
 
 class OrganizationAdmin(BaseAdminMixin):
-    list_display = ['title', 'created_at', 'updated_at']
+    list_display = ['title', 'logo', 'created_at', 'updated_at']
     fields = ['title', 'logo']
 
 
