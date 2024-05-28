@@ -4,7 +4,7 @@ from apps.common.models.mixins import DateTimeMixin
 
 class KODEKS(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
-    pdf_file = models.FileField(upload_to='pdf_files/', verbose_name='Файл')
+    pdf_file = models.FileField(upload_to='pdf_files', verbose_name='Файл')
 
     def __str__(self):
         return self.title

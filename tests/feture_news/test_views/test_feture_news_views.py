@@ -9,12 +9,12 @@ class NewsAPITests(APITestCase):
         self.news = News.objects.create(
             title='Test title',
             description='Test content',
-            publish_date='2024-05-20',
+            public_date='2024-05-20',
         )
         self.news2 = News.objects.create(
             title='Test title 2',
             description='Test content 2',
-            publish_date='2024-05-21',
+            public_date='2024-05-21',
         )
         self.list_url = reverse('news-list')
         self.detail_url = reverse('news-detail', kwargs={'pk': self.news.pk})
@@ -33,4 +33,4 @@ class NewsAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(response.data['title'], 'Test title')
-        self.assertEqual(response.data['description'], 'Test description')
+        self.assertEqual(response.data['description'], 'Test content')
