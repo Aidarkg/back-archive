@@ -8,8 +8,7 @@ class ModeratorAdmin(admin.ModelAdmin):
     search_fields = ['username']
     list_filter = ['created_at', 'updated_at']
 
-    fields = ['username', 'email', 'group']
-    readonly_fields = ['id', 'created_at', 'updated_at']
+    fields = ['username', 'email', 'group', 'is_active']
 
 
 admin.site.register(Moderator, ModeratorAdmin)

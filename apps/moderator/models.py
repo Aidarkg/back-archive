@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from .moderator_services import save_moderator
+from .tasks import send_email_with_credentials
 from apps.common.models.mixins import DateTimeMixin
 
 
@@ -19,6 +20,7 @@ class Moderator(DateTimeMixin):
         verbose_name="Электронная почта",
     )
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Группа')
+    is_active = models.BooleanField(default=False, verbose_name='Отправить данные?')
 
     class Meta:
         verbose_name = 'Модератор'

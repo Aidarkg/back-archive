@@ -11,6 +11,7 @@ def generate_password(length=20):
 
 
 def save_moderator(instance, *args, **kwargs):
+    password = generate_password()
     if instance.user_id:
         user = instance.user
         user.username = instance.username
@@ -21,7 +22,6 @@ def save_moderator(instance, *args, **kwargs):
         user.groups.add(instance.group)
 
     else:
-        password = generate_password()
         user = User.objects.create_user(
             username=instance.username,
             email=instance.email,
@@ -30,6 +30,7 @@ def save_moderator(instance, *args, **kwargs):
             is_active=True,
         )
         user.groups.add(instance.group)
-
         instance.user = user
-        send_email_with_credentials(user.id, password)
+
+    if instance.is_active:
+        send_email_with_credentials(instance.username, password, instance.email)

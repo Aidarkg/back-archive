@@ -6,13 +6,10 @@ from celery import shared_task
 
 
 @shared_task
-def send_email_with_credentials(id, password):
-    instance = User.objects.get(id=id)
-    login = instance.username
-
+def send_email_with_credentials(username, password, email):
     subject = 'Архив президента Кыргызской Республики'
     message = render_to_string('register_moder.html', {
-        'login': login,
+        'login': username,
         'password': password
     })
 
@@ -21,5 +18,5 @@ def send_email_with_credentials(id, password):
         message='',
         html_message=message,
         from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[instance.email],
+        recipient_list=[email],
     )
