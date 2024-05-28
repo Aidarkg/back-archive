@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ответ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        h2 {
+            color: #333333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            color: #555555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        strong {
+            color: #007bff;
+        }
+        .disclaimer {
+            color: #777777;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h2>Ответ на ваш вопрос</h2>
+        <p><strong>Ваш вопрос:</strong> {{ question }}</p>
+        <p><strong>Ответ:</strong> {{ answer }}</p>
+        <p class="disclaimer">Не отвечайте на это сообщение.</p>
+    </div>
+</body>
+</html>

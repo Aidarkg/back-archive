@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Faq, Question, Answer
+from apps.moderator.models import Moderator
+
+from .models import Faq, Question
 from apps.common.admin.mixins import BaseAdminMixin
-from .forms import AnswerForm
 
 
-@admin.register(Faq)
 class FaqAdmin(BaseAdminMixin):
     list_display = ('id', 'question', 'answer', 'created_at', 'updated_at')
     list_display_links = ('id', 'question')
@@ -12,13 +12,24 @@ class FaqAdmin(BaseAdminMixin):
     fields = ('question', 'answer',)
 
 
-@admin.register(Answer)
-class AnswerAdmin(admin.ModelAdmin):
-    form = AnswerForm
-    list_display = ('id', 'question', 'created_at', 'updated_at')
-    search_fields = ('question', 'moderator',)
-    fields = ('moderator', 'question', 'answer')
-    raw_id_fields = ('moderator', 'question')
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'question_text', 'answer', 'moderator')
+    list_display_links = ('full_name', 'question_text')
+    search_fields = ('full_name',)
+
+    fields = ('full_name', 'email', 'phone_number', 'question_text', 'answer', 'is_active')
+    readonly_fields = ('full_name', 'email', 'phone_number', 'question_text')
+
+    def save_model(self, request, obj, form, change):
+        try:
+            moderator = Moderator.objects.get(user=request.user)
+            if obj.pk:
+                obj.moderator = moderator
+        except Moderator.DoesNotExist as e:
+            pass
+
+        super().save_model(request, obj, form, change)
 
 
-admin.site.register(Question)
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Faq, FaqAdmin)

@@ -4,7 +4,7 @@ from apps.common.models.mixins import DateTimeMixin
 
 class KODEKS(DateTimeMixin):
     title = models.TextField(verbose_name='Название')
-    pdf_file = models.FileField(upload_to='pdf_files/', verbose_name='Файл')
+    pdf_file = models.FileField(upload_to='pdf_files', verbose_name='Файл')
     date_file = models.DateField(verbose_name='Дата')
     document_number = models.IntegerField(verbose_name='Номер документа')
 
@@ -12,6 +12,6 @@ class KODEKS(DateTimeMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Кодекс'
-        verbose_name_plural = 'Кодексы'
+        verbose_name = 'НПА'
+        verbose_name_plural = 'НПА'
         ordering = ['-date_file']

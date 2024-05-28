@@ -49,7 +49,7 @@ class ManagementAdmin(BaseAdminMixin):
 
 
 class KODEKSAdmin(BaseAdminMixin):
-    list_display = ['document_number', 'title', 'pdf_file', 'created_at', 'updated_at']
+    list_display = ['document_number', 'title', 'pdf_file', 'date_file']
     list_display_links = ('document_number', 'title')
     fields = ['document_number', 'title', 'pdf_file', 'date_file']
 
