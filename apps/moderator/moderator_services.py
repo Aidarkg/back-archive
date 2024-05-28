@@ -32,4 +32,4 @@ def save_moderator(instance, *args, **kwargs):
         user.groups.add(instance.group)
 
         instance.user = user
-        send_email_with_credentials.delay(user.id, password)
+        send_email_with_credentials(user.id, password)

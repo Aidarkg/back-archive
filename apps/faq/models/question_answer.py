@@ -47,7 +47,7 @@ class Question(DateTimeMixin):
     def save(self, *args, **kwargs):
         try:
             if self.is_active:
-                send_answer_mail.delay(self.question_text, self.answer, self.email)
+                send_answer_mail(self.question_text, self.answer, self.email)
         except Exception as e:
             pass
         super().save(*args, **kwargs)
