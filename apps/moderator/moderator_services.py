@@ -2,6 +2,12 @@ import string
 import random
 from .tasks import send_email_with_credentials
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
+
+def validate_username(value):
+    if User.objects.filter(username=value):
+        raise ValidationError("Пользователь с таким именем пользователя уже существует")
 
 
 def generate_password(length=20):

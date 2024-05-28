@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User, Group
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from .moderator_services import save_moderator
+from .moderator_services import save_moderator, validate_username
 from .tasks import send_email_with_credentials
 from apps.common.models.mixins import DateTimeMixin
 
@@ -12,6 +12,7 @@ class Moderator(DateTimeMixin):
 
     username = models.CharField(
         max_length=150,
+        validators=[validate_username],
         unique=True,
         verbose_name="Имя пользователя"
     )
