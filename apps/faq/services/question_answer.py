@@ -1,4 +1,3 @@
-from apps import moderator
 from apps.faq.tasks import send_mail
 from django.conf import settings
 

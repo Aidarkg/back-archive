@@ -27,4 +27,4 @@ class PhotoGallerySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PhotoGallery
-        fields = ['id', 'title', 'description', 'picture', 'photo']
+        fields = ['id', 'title', 'description', 'public_date', 'picture', 'photo']

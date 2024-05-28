@@ -11,7 +11,15 @@ class VideoDataAPIView(ListAPIView):
     serializer_class = VideoDataSerializer
     pagination_class = PageNumberPagination
 
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
 
 class VideoDataRetrieveAPIView(RetrieveAPIView):
     queryset = VideoData.objects.all()
     serializer_class = VideoDataSerializer
+
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
