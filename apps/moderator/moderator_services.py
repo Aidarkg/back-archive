@@ -39,4 +39,4 @@ def save_moderator(instance, *args, **kwargs):
         instance.user = user
 
     if instance.is_active:
-        send_email_with_credentials(instance.username, password, instance.email)
+        send_email_with_credentials.delay(instance.username, password, instance.email)

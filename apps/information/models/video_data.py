@@ -34,7 +34,7 @@ class VideoLink(DateTimeMixin):
 
     def save(self, *args, **kwargs):
         try:
-            cover = cover_video(self.video_link)
+            cover = cover_video.delay(self.video_link)
             self.cover = cover
         except Exception as e:
             pass
