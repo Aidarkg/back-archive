@@ -1,8 +1,8 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from apps.data_media.models.kodeks import KODEKS
-from apps.data_media.serializers.kodeks import KODEKSSerializer
+from apps.information.models.kodeks import KODEKS
+from apps.information.serializers.kodeks import KODEKSSerializer
 
 class KODEKSSerializerTestCase(APITestCase):
     @classmethod

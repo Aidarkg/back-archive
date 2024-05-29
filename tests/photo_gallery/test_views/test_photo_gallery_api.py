@@ -5,7 +5,7 @@ from rest_framework.test import APITestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 from io import BytesIO
-from apps.data_media.models import PhotoGallery
+from apps.information.models import PhotoGallery
 
 
 def get_test_image():

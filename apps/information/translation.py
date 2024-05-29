@@ -40,9 +40,14 @@ class ServiceTranslationOptions(TranslationOptions):
 
 @register(video_data.VideoData)
 class PhotoTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title',)
 
 
 @register(organization.Organization)
 class OrganizationTranslationOptions(TranslationOptions):
+    fields = ('title',)
+
+
+@register(video_data.VideoLink)
+class VideoLinkTranslationOptions(TranslationOptions):
     fields = ('title',)

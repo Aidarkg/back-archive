@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from django.db.models import Q
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
-from apps.data_media.models import PhotoGallery, KODEKS, News, VideoData, Service, Management
-from apps.data_media.serializers import (
+from apps.information.models import PhotoGallery, KODEKS, News, VideoData, Service, Management
+from apps.information.serializers import (
     NewsSerializer, KODEKSSerializer, PhotoListSerializer, VideoDataSerializer,
     ServiceSerializers, ManagementListSerializers
 )

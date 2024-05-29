@@ -1,6 +1,6 @@
 from django.test import TestCase
-from apps.data_media.models.news import News
-from apps.data_media.serializers.news import NewsSerializer
+from apps.information.models.news import News
+from apps.information.serializers.news import NewsSerializer
 
 
 class NewsSerializerTestCase(TestCase):

@@ -1,6 +1,6 @@
 from django.test import TestCase
-from apps.data_media.models.quick_contacts_models import Contact
-from apps.data_media.serializers.quick_contacts_serializers import ContactSerializer
+from apps.information.models.quick_contacts_models import Contact
+from apps.information.serializers.quick_contacts_serializers import ContactSerializer
 
 
 class QuickContactSerializerTestCase(TestCase):

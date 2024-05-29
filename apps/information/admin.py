@@ -1,12 +1,12 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.data_media.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
-    Organization, ManagementWork, ManagementEducation, Photo
+from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
+    Organization, ManagementWork, ManagementEducation, Photo, VideoLink
 
 
 class VideoDataAdmin(BaseAdminMixin):
-    list_display = ['title', 'description', 'public_date']
-    fields = ['video', 'title', 'description', 'public_date']
+    list_display = ['title', 'public_date']
+    fields = ['video', 'title', 'public_date']
 
 
 class PhotoInline(admin.TabularInline):
@@ -64,6 +64,13 @@ class ServiceAdmin(BaseAdminMixin):
     fields = ['title', 'status']
 
 
+class VideoLinkAdmin(BaseAdminMixin):
+    list_display = ['title', 'video_link', 'cover', 'public_date']
+    list_display_links = ['title', 'video_link']
+    fields = ['title', 'video_link', 'cover', 'public_date']
+    readonly_fields = ['cover']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
@@ -71,3 +78,4 @@ admin.site.register(Management, ManagementAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(KODEKS, KODEKSAdmin)
 admin.site.register(Organization, OrganizationAdmin)
+admin.site.register(VideoLink, VideoLinkAdmin)

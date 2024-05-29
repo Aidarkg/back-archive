@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.data_media.models.kodeks import KODEKS
+from apps.information.models.kodeks import KODEKS
 
 
 class KODEKSSerializer(serializers.ModelSerializer):

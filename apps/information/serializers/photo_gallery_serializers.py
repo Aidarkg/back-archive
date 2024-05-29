@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.data_media.models import PhotoGallery, Photo
+from apps.information.models import PhotoGallery, Photo
 
 
 class PhotoListSerializer(serializers.ModelSerializer):

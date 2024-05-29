@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.data_media.models.organization import Organization
+from apps.information.models.organization import Organization
 
 
 class OrganizationSerializer(serializers.ModelSerializer):

@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'django_redis',
     'drf_yasg',
     'django_filters',
-    'apps.data_media',
+    'apps.information',
     'apps.moderator',
     'apps.faq',
     'apps.contacts',

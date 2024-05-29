@@ -6,11 +6,11 @@ from rest_framework import status
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
-from apps.data_media.models import News, PhotoGallery, VideoData, Organization, Visitors
+from apps.information.models import News, PhotoGallery, VideoData, Organization, Visitors
 from apps.contacts.models import Contact
 from apps.faq.models.faq import Faq
 
-from apps.data_media.serializers import NewsSerializer, PhotoListSerializer, VideoDataSerializer, \
+from apps.information.serializers import NewsSerializer, PhotoListSerializer, VideoDataSerializer, \
     OrganizationSerializer, VisitorSerializer, PhotoGallerySerializer
 from apps.contacts.serializers.contact_serializers import ContactSerializer
 from apps.faq.serializers.faq import FaqSerializer

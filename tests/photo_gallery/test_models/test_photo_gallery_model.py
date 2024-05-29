@@ -1,5 +1,5 @@
 from django.core.files.storage import default_storage
-from apps.data_media.models.photo_gallery_models import PhotoGallery, Photo
+from apps.information.models.photo_gallery_models import PhotoGallery, Photo
 
 from django.test import TestCase
 

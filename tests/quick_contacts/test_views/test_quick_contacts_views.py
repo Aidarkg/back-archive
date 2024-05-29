@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from apps.data_media.models.quick_contacts_models import Contact
+from apps.information.models.quick_contacts_models import Contact
 
 
 class QuickContactAPITests(APITestCase):

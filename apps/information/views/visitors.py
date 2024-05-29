@@ -2,8 +2,8 @@ from datetime import date
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.data_media.models import Visitors
-from apps.data_media.serializers import VisitorSerializer
+from apps.information.models import Visitors
+from apps.information.serializers import VisitorSerializer
 
 
 class VisitorsAPIView(APIView):

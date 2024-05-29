@@ -1,5 +1,5 @@
 from django.db import models
-from apps.data_media.services.photo_compress import WEBPField
+from apps.information.services.photo_compress import WEBPField
 from apps.common.models.mixins import DateTimeMixin
 
 

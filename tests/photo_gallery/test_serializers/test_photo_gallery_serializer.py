@@ -1,7 +1,7 @@
 from django.core.files.storage import default_storage
 from django.test import TestCase
-from apps.data_media.models.photo_gallery_models import PhotoGallery, Photo
-from apps.data_media.serializers.photo_gallery_serializers import PhotoGallerySerializer, PhotoSerializer
+from apps.information.models.photo_gallery_models import PhotoGallery, Photo
+from apps.information.serializers.photo_gallery_serializers import PhotoGallerySerializer, PhotoSerializer
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import SimpleUploadedFile

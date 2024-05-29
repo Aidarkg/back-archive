@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
-from apps.data_media.models.organization import Organization
-from apps.data_media.serializers.organization import OrganizationSerializer
+from apps.information.models.organization import Organization
+from apps.information.serializers.organization import OrganizationSerializer
 
 
 class OrganizationListView(ListAPIView):

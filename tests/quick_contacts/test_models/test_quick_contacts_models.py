@@ -1,5 +1,5 @@
 from django.forms import EmailField
-from apps.data_media.models.quick_contacts_models import Contact
+from apps.information.models.quick_contacts_models import Contact
 
 from django.test import TestCase
 

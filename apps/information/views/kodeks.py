@@ -1,6 +1,6 @@
 from rest_framework import generics
-from apps.data_media.models.kodeks import KODEKS
-from apps.data_media.serializers.kodeks import KODEKSSerializer
+from apps.information.models.kodeks import KODEKS
+from apps.information.serializers.kodeks import KODEKSSerializer
 from rest_framework.pagination import PageNumberPagination
 
 

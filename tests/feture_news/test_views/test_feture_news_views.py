@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from apps.data_media.models.news import News
+from apps.information.models.news import News
 
 
 class NewsAPITests(APITestCase):

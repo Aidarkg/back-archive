@@ -15,7 +15,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include('apps.data_media.urls')),
+    path('', include('apps.information.urls')),
     path('', include('apps.faq.urls')),
     path('', include('apps.contacts.urls'))
 )

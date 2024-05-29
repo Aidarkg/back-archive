@@ -1,5 +1,5 @@
 from django.test import TestCase
-from apps.data_media.models.kodeks import KODEKS
+from apps.information.models.kodeks import KODEKS
 
 class KODEKSTestCase(TestCase):
     @classmethod
