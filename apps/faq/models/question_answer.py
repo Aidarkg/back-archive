@@ -51,4 +51,3 @@ class Question(DateTimeMixin):
         except Exception as e:
             pass
         super().save(*args, **kwargs)
-

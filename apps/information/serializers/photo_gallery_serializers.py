@@ -4,10 +4,11 @@ from apps.information.models import PhotoGallery, Photo
 
 class PhotoListSerializer(serializers.ModelSerializer):
     picture = serializers.SerializerMethodField()
+    count = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = PhotoGallery
-        fields = ['id', 'title', 'description', 'picture', 'count_photo', 'public_date']
+        fields = ['id', 'title', 'description', 'picture', 'public_date', 'count']
 
     def get_picture(self, obj):
         request = self.context.get('request')

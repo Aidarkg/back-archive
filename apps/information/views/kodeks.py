@@ -1,15 +1,15 @@
 from rest_framework import generics
-from apps.information.models.kodeks import KODEKS
 from apps.information.serializers.kodeks import KODEKSSerializer
 from rest_framework.pagination import PageNumberPagination
+from ..services.kodeks import KodeksService
 
 
 class KODEKSListCreateAPIView(generics.ListAPIView):
-    queryset = KODEKS.objects.all()
+    queryset = KodeksService.get_all_kodeks()
     serializer_class = KODEKSSerializer
     pagination_class = PageNumberPagination
 
 
 class KODEKSRetrieveUpdateDestroyAPIView(generics.RetrieveAPIView):
-    queryset = KODEKS.objects.all()
+    queryset = KodeksService.get_all_kodeks()
     serializer_class = KODEKSSerializer

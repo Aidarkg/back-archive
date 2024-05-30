@@ -1,10 +1,12 @@
+import pdb
+
 from rest_framework import serializers
 
 from apps.information.models import News
 
 
 class NewsSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = News

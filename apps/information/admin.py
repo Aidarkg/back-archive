@@ -23,8 +23,8 @@ class PhotoGalleryAdmin(BaseAdminMixin):
 
 
 class NewsAdmin(BaseAdminMixin):
-    list_display = ['title', 'image', 'public_date']
-    fields = ['title', 'description', 'image', 'public_date']
+    list_display = ('title', 'image', 'public_date')
+    fields = ('title', 'description', 'image', 'public_date')
 
 
 class ManagementWorkInline(admin.TabularInline):

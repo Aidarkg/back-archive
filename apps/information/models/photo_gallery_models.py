@@ -24,6 +24,3 @@ class PhotoGallery(DateTimeMixin):
         verbose_name = 'Фотогалерея'
         verbose_name_plural = 'Фотогалерея'
         ordering = ['-public_date']
-
-    def count_photo(self):
-        return self.photo.count()

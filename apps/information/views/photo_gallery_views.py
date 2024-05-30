@@ -2,13 +2,13 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
 from apps.information.serializers import PhotoGallerySerializer, PhotoListSerializer
-from apps.information.models import PhotoGallery
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from ..services.photo_gallery import PhotoGalleryService
 
 
 class PhotoGalleryListAPIView(ListAPIView):
-    queryset = PhotoGallery.objects.all()
+    queryset = PhotoGalleryService.get_all_photos()
     serializer_class = PhotoListSerializer
     pagination_class = PageNumberPagination
 
@@ -18,7 +18,7 @@ class PhotoGalleryListAPIView(ListAPIView):
 
 
 class PhotoGalleryDetailAPIView(RetrieveAPIView):
-    queryset = PhotoGallery.objects.all()
+    queryset = PhotoGalleryService.get_all_photos()
     serializer_class = PhotoGallerySerializer
 
     @method_decorator(cache_page(60))
