@@ -11,7 +11,7 @@ from apps.contacts.models import Contact
 from apps.faq.models.faq import Faq
 
 from apps.information.serializers import NewsSerializer, PhotoListSerializer, VideoDataSerializer, \
-    OrganizationSerializer, VisitorSerializer, PhotoGallerySerializer
+    OrganizationSerializer, VisitorSerializer
 from apps.contacts.serializers.contact_serializers import ContactSerializer
 from apps.faq.serializers.faq import FaqSerializer
 

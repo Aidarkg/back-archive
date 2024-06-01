@@ -10,8 +10,8 @@ from config.yasg import urlpatterns as yasg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("__debug__/", include("debug_toolbar.urls")),
     path('api/v1/question/create/', question_create_view, name='question-create'),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 urlpatterns += i18n_patterns(
@@ -22,3 +22,6 @@ urlpatterns += i18n_patterns(
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += yasg
+
+# if settings.DEBUG:
+#     urlpatterns += (path("__debug__/", include("debug_toolbar.urls"))),
