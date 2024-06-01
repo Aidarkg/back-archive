@@ -24,7 +24,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Приветственный текст на экране входа
-    "welcome_sign": "Добро пожаловать в библиотеку",
+    "welcome_sign": "Добро пожаловать в Архив президента",
 
     # Авторское право в подвале
     "copyright": "Acme Library Ltd",

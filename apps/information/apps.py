@@ -6,3 +6,6 @@ class DataMediaConfig(AppConfig):
     name = 'apps.information'
     verbose_name = 'Данные'
     verbose_name_plural = 'Данные'
+
+    def ready(self):
+        import apps.information.services.signals
