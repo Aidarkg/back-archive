@@ -1,7 +1,6 @@
 from django.db import models
 from apps.common.models.mixins import DateTimeMixin
 from apps.moderator.models import Moderator
-from apps.faq.services.answer_mail import send_answer_mail
 
 
 class Question(DateTimeMixin):
@@ -43,12 +42,3 @@ class Question(DateTimeMixin):
     class Meta:
         verbose_name = 'Вопрос пользователя'
         verbose_name_plural = 'Вопросы пользователя'
-
-    def save(self, *args, **kwargs):
-        try:
-            if self.is_active:
-                send_answer_mail.delay(self.question_text, self.answer, self.email)
-        except Exception as e:
-            pass
-        super().save(*args, **kwargs)
-

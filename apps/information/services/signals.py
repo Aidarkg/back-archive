@@ -7,13 +7,11 @@ from django.dispatch import receiver
 
 @shared_task
 def save_cover(link):
-    print("Обложка сохранилось")
     path = cover_video(link)
     VideoLink.objects.filter(video_link=link).update(cover=path)
 
 
 @receiver(pre_save, sender=VideoLink)
 def video_link(sender, instance, **kwargs):
-    print('Сигнал сработал')
     link = instance.video_link
-    save_cover(link)
+    save_cover.delay(link)

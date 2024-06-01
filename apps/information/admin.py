@@ -68,7 +68,6 @@ class VideoLinkAdmin(BaseAdminMixin):
     list_display = ['title', 'video_link', 'cover', 'public_date']
     list_display_links = ['title', 'video_link']
     fields = ['title', 'video_link', 'cover', 'public_date']
-    readonly_fields = ['cover']
 
 
 admin.site.register(News, NewsAdmin)

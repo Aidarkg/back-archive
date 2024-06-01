@@ -6,3 +6,6 @@ class ModeratorConfig(AppConfig):
     name = 'apps.moderator'
     verbose_name = 'Модераторы'
     verbose_name_plural = 'Модераторы'
+
+    def ready(self):
+        import apps.moderator.tasks
