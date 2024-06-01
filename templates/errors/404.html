@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'errors/404/style.css' %}">
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="error">
+            <div>
+                <img src="{% static 'errors/404/404PageNotFound' %}" alt="незарегистрированный пользователь">
+            </div>
+            <h1>Нет такой страницы</h1>
+            <div class="errorBtn">
+                <button class="btnBlue" onclick="window.location.href='{{ url }}/admin'">
+                    На главную
+                </button>
+                <button class="btnGrey" onclick="history.back()">
+                    <img src="{% static 'errors/404/Vector.svg' %}" alt="Назад">
+                    Назад
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
