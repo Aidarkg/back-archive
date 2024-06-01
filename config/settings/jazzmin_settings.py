@@ -3,7 +3,7 @@ JAZZMIN_SETTINGS = {
     "site_title": "Администрирование библиотеки",
 
     # Заголовок на экране входа (максимум 19 символов) (по умолчанию будет использоваться current_admin_site.site_header, если отсутствует или None)
-    "site_header": "Администрация архива президента",
+    "site_header": "Архив президента",
 
     # Заголовок бренда (максимум 19 символов) (по умолчанию будет использоваться current_admin_site.site_header, если отсутствует или None)
     "site_brand": "Архив президента",
@@ -85,6 +85,7 @@ JAZZMIN_SETTINGS = {
     # Список приложений (и/или моделей) для определения порядка бокового меню (не обязательно включать все приложения/модели)
     "order_with_respect_to": [
         'moderator',
+        "auth",
         'contacts', 'contacts.ArchiveContact',
         'information', 'information.VideoData', 'information.VideoLink', 'information.PhotoGallery',
         'faq'
