@@ -3,17 +3,11 @@ from django.core.mail import send_mail as sm
 from django.template.loader import render_to_string
 from django.conf import settings
 from apps.faq.models import Question
-from apps.common.middleware import base_url
-from apps.common.utils import get_current_request
 
 
 @shared_task
-def send_mail(instance, recipient_list):
-    request = get_current_request()
-    url = base_url(request)
-    question_id = instance.id
-
-    question = Question.objects.get(id=instance.id)
+def send_mail(instance_id, recipient_list, url):
+    question = Question.objects.get(id=instance_id)
 
     subject = 'Архив президента Кыргызской Республики'
     question_text = question.question_text
@@ -29,7 +23,7 @@ def send_mail(instance, recipient_list):
         'phone_number': phone_number,
         'question': question_text,
         'url': url,
-        'id': question_id
+        'id': instance_id
     })
 
     sm(
