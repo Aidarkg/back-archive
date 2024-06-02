@@ -24,7 +24,6 @@ class VideoLink(DateTimeMixin):
     public_date = models.DateTimeField(verbose_name='Дата публикации')
     cover = models.ImageField(
         upload_to='video/cover',
-        default=None,
         null=True,
         blank=True,
         verbose_name='Обложка',

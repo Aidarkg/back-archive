@@ -2,7 +2,6 @@ import string
 import random
 import yt_dlp
 from django.core.validators import URLValidator
-from celery import shared_task
 
 
 def validate_link(link):

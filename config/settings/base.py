@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from decouple import config
 
@@ -121,9 +122,9 @@ LANGUAGES = (
 MODELTRANSLATION_DEFAULT_LANGUAGE_CODE = "ru"
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
+    os.path.join(BASE_DIR, 'staticfiles'),
 ]
 
 MEDIA_URL = 'media/'
@@ -174,3 +175,5 @@ CORS_ORIGIN_WHITELIST = [
     'http://*:*',
     'http://*',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['http://34.173.93.49']
