@@ -17,3 +17,13 @@ DATABASES = {
         'PASSWORD': config('POSTGRES_PASSWORD'),
     }
 }
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/usr/src/app/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/usr/src/app/media/'
+
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://localhost:82"]
