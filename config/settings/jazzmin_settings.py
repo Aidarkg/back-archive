@@ -87,7 +87,7 @@ JAZZMIN_SETTINGS = {
         'moderator',
         "auth",
         'contacts', 'contacts.ArchiveContact',
-        'information', 'information.VideoData', 'information.VideoLink', 'information.PhotoGallery',
+        'information', 'information.Logo', 'information.VideoData', 'information.VideoLink', 'information.PhotoGallery',
         'faq'
     ],
 
@@ -114,6 +114,7 @@ JAZZMIN_SETTINGS = {
         "information.Organization": "fas fa-sitemap",
         "information.Management": "fas fa-user-tie",
         "information.Service": "fas fa-clipboard",
+        "information.Logo": "fab fa-slack",
         "moderator.Moderator": "fab fa-black-tie",
         "faq.FAQ": "fas fa-comments",
         "faq.Question": "fas fa-question",

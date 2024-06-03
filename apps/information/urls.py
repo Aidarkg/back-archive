@@ -7,13 +7,12 @@ from apps.information.views import VideoDataAPIView, \
     SearchAPIView, \
     VisitorsAPIView, \
     ManagementListAPIView, ManagementDetailAPIView, \
-    MainAPIView, VideoLinkAPIView
+    MainAPIView
 from apps.information.views.organization import OrganizationListView
 
 
 urlpatterns = [
     path('api/v1/video/', VideoDataAPIView.as_view(), name='video-data-list'),
-    path('api/v1/video_link/', VideoLinkAPIView.as_view(), name='video-link-data-list'),
     path('api/v1/management/', ManagementListAPIView.as_view(), name='management-list'),
     path('api/v1/management/<int:pk>/', ManagementDetailAPIView.as_view(), name='management-detail'),
     path('api/v1/news/', NewsListAPIView.as_view(), name='news-list'),
