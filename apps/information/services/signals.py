@@ -14,4 +14,4 @@ def save_cover(link):
 @receiver(pre_save, sender=VideoLink)
 def video_link(sender, instance, **kwargs):
     link = instance.video_link
-    save_cover.delay(link)
+    save_cover(link)

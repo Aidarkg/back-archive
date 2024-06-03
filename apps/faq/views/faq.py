@@ -1,8 +1,8 @@
 from rest_framework.generics import ListAPIView
 from apps.faq.serializers import FaqSerializer
-from ..services.faq import FaqService
+from apps.faq.models import Faq
 
 
 class FaqListAPIView(ListAPIView):
-    queryset = FaqService.get_faqs()
+    queryset = Faq
     serializer_class = FaqSerializer

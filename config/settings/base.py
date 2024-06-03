@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_redis',
-    'drf_yasg',
+    'drf_spectacular',
     'django_filters',
     'apps.information',
     'apps.moderator',
@@ -44,8 +44,17 @@ REST_FRAMEWORK = {
 
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],
 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Archive President',
+    'DESCRIPTION': 'Archive Presidents description',
+    'VERSION': '1.0.0',
 }
 
 MIDDLEWARE = [

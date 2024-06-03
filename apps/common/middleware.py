@@ -1,4 +1,3 @@
-import re
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
@@ -7,10 +6,9 @@ from apps.common.utils import set_current_request
 
 
 def base_url(request):
-    url = request.build_absolute_uri()
-    pattern = r'^https?://[^/]+'
-    match = re.match(pattern, url)
-    url = match.group()
+    scheme = request.scheme
+    host = request.get_host()
+    url = f'{scheme}://{host}'
     return url
 
 

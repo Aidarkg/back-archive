@@ -1,13 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User, Group
-from .moderator_services import save_moderator
+from .moderator_services import save_moderator, generate_password
 from apps.common.models.mixins import DateTimeMixin
 
 
 class Moderator(DateTimeMixin):
     user = models.OneToOneField(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
     )
 
     username = models.CharField(
@@ -41,8 +43,10 @@ class Moderator(DateTimeMixin):
         verbose_name_plural = 'Модераторы'
 
     def save(self, *args, **kwargs):
-        save_moderator(self, *args, **kwargs)
+        password = generate_password()
+        self.password = password
         super().save(*args, **kwargs)
+        save_moderator(self, *args, **kwargs)
 
     def __str__(self):
         return self.username

@@ -9,12 +9,15 @@ from apps.common.middleware import base_url
 
 
 @receiver(post_save, sender=Question)
-def question_pre_save(sender, instance, **kwargs):
+def question_pre_save(sender, instance, created, **kwargs):
     request = get_current_request()
     url = base_url(request)
+
     moder = Moderator.objects.all()
     email_list = [moderator.email for moderator in moder]
-    if instance.is_active:
-        send_answer_mail.apply_async(args=(instance.question_text, instance.answer, instance.email))
-    if instance.answer is None:
-        send_mail.apply_async(args=(instance.id, email_list, url))
+
+    if created and instance.answer is None:
+        send_mail(instance.id, email_list, url)
+
+    elif instance.is_active:
+        send_answer_mail(instance.question_text, instance.answer, instance.email)

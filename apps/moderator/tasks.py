@@ -32,10 +32,13 @@ def data_mail_save(sender, instance, **kwargs):
     request = get_current_request()
     url = base_url(request)
     if instance.is_active:
-        send_email_with_credentials.delay(instance.username, instance.password, instance.email, url)
+        send_email_with_credentials(instance.username, instance.password, instance.email, url)
 
 
 @receiver(post_delete, sender=Moderator)
 def delete_user(sender, instance, **kwargs):
-    user = instance.user
-    user.delete()
+    try:
+        user = instance.user
+        user.delete()
+    except Exception as e:
+        pass
