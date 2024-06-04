@@ -20,4 +20,4 @@ def question_pre_save(sender, instance, created, **kwargs):
         send_mail(instance.id, email_list, url)
 
     elif instance.is_active:
-        send_answer_mail(instance.question_text, instance.answer, instance.email)
+        send_answer_mail.delay(instance.question_text, instance.answer, instance.email)
