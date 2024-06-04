@@ -1,4 +1,3 @@
-from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 from apps.information.serializers.video_data import VideoDataSerializer, VideoLinkSerializer
@@ -19,16 +18,11 @@ class VideoDataAPIView(APIView):
         video_file = VideoData.objects.all()
         video_link = VideoLink.objects.all()
 
-        queryset = list(video_file) + list(video_link)
+        ser_video_file = VideoDataSerializer(video_file, many=True).data
+        ser_video_link = VideoLinkSerializer(video_link, many=True).data
 
-        page = paginator.paginate_queryset(queryset, request)
+        combined_data = ser_video_file + ser_video_link
 
-        serializer = []
+        paginate_data = paginator.paginate_queryset(combined_data, request)
 
-        for obj in page:
-            if isinstance(obj, VideoData):
-                serializer.append({'video_file': (VideoDataSerializer(obj, context={'request': request})).data})
-            elif isinstance(obj, VideoLink):
-                serializer.append({'video_link': (VideoLinkSerializer(obj, context={'request': request})).data})
-
-        return paginator.get_paginated_response(serializer)
+        return paginator.get_paginated_response(paginate_data)

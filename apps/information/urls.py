@@ -7,7 +7,7 @@ from apps.information.views import VideoDataAPIView, \
     SearchAPIView, \
     VisitorsAPIView, \
     ManagementListAPIView, ManagementDetailAPIView, \
-    MainAPIView
+    MainAPIView, PhotoHomeDetailAPIView
 from apps.information.views.organization import OrganizationListView
 
 
@@ -19,6 +19,7 @@ urlpatterns = [
     path('api/v1/news/<int:pk>/', NewsDetailAPIView.as_view(), name='news-detail'),
     path('api/v1/photos/', PhotoGalleryListAPIView.as_view(), name='photo-gallery-list'),
     path('api/v1/photos/<int:pk>/', PhotoGalleryDetailAPIView.as_view(), name='photo-gallery-detail'),
+    path('api/v1/photo_home/<int:pk>/', PhotoHomeDetailAPIView.as_view(), name='photo-home-detail'),
     path('api/v1/service/', ServiceListView.as_view(), name='services-list'),
     path('api/v1/kodeks/', KODEKSListCreateAPIView.as_view(), name='kodeks-list'),
     path('api/v1/kodeks/<int:pk>/', KODEKSRetrieveUpdateDestroyAPIView.as_view(), name='kodeks-detail'),

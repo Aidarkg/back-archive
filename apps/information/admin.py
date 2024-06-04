@@ -1,7 +1,7 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
-    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo
+    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -77,6 +77,13 @@ class LogoAdmin(admin.ModelAdmin):
     ordering = ['-created_at']
 
 
+class PhotoHomeAdmin(BaseAdminMixin):
+    list_display = ['title', 'photo', 'created_at', 'updated_at']
+    list_display_links = ['title']
+    ordering = ['-created_at']
+    fields = ['photo', 'title', 'description']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
@@ -86,3 +93,4 @@ admin.site.register(KODEKS, KODEKSAdmin)
 admin.site.register(Organization, OrganizationAdmin)
 admin.site.register(VideoLink, VideoLinkAdmin)
 admin.site.register(Logo, LogoAdmin)
+admin.site.register(PhotoHome, PhotoHomeAdmin)

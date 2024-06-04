@@ -4,5 +4,5 @@ from apps.faq.models import Faq
 
 
 class FaqListAPIView(ListAPIView):
-    queryset = Faq
+    queryset = Faq.objects.all()
     serializer_class = FaqSerializer

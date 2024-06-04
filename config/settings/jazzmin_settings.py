@@ -109,6 +109,7 @@ JAZZMIN_SETTINGS = {
         "information.VideoData": "fas fa-video",
         "information.VideoLink": "fab fa-youtube",
         "information.PhotoGallery": "fas fa-image",
+        "information.PhotoHome": "far fa-calendar-check",
         "information.KODEKS": "fas fa-code",
         "information.News": "fas fa-newspaper",
         "information.Organization": "fas fa-sitemap",
