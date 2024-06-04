@@ -1,9 +1,10 @@
 from django.db import models
 from apps.common.models.mixins import DateTimeMixin
+from apps.information.services.photo_compress import WEBPField
 
 
 class Logo(DateTimeMixin):
-    logo = models.ImageField(upload_to='main_logo', verbose_name='Логотип')
+    logo = WEBPField(upload_to='main_logo', verbose_name='Логотип')
 
     def __str__(self):
         return str(self.id)
