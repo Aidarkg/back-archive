@@ -185,4 +185,21 @@ CORS_ORIGIN_WHITELIST = [
     'http://*',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://34.173.93.49']
+CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82',]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "Accept-Encoding",
+    "authorization",
+    "content-type",
+    "Accept-Language",
+    "Accept-Location",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
