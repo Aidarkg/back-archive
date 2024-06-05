@@ -13,13 +13,13 @@ from apps.information.views.organization import OrganizationListView
 
 urlpatterns = [
     path('video/', VideoDataAPIView.as_view(), name='video-data-list'),
-    path('video_link/', VideoLinkAPIView.as_view(), name='video-link-data-list'),
     path('management/', ManagementListAPIView.as_view(), name='management-list'),
     path('management/<int:pk>/', ManagementDetailAPIView.as_view(), name='management-detail'),
     path('news/', NewsListAPIView.as_view(), name='news-list'),
     path('news/<int:pk>/', NewsDetailAPIView.as_view(), name='news-detail'),
     path('photos/', PhotoGalleryListAPIView.as_view(), name='photo-gallery-list'),
     path('photos/<int:pk>/', PhotoGalleryDetailAPIView.as_view(), name='photo-gallery-detail'),
+    path('photo_home/<int:pk>/', PhotoHomeDetailAPIView.as_view(), name='photo-home-detail'),
     path('service/', ServiceListView.as_view(), name='services-list'),
     path('kodeks/', KODEKSListCreateAPIView.as_view(), name='kodeks-list'),
     path('kodeks/<int:pk>/', KODEKSRetrieveUpdateDestroyAPIView.as_view(), name='kodeks-detail'),

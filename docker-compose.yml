@@ -4,7 +4,7 @@ services:
   back-end:
     build: .
     container_name: back-end
-    command: sh -c "python manage.py makemigrations contacts moderator information faq && python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000" # python manage.py makemigrations contacts moderator information faq
     volumes:
       - .:/app
       - static_volume:/usr/src/app/static
