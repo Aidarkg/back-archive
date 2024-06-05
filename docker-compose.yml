@@ -1,30 +1,60 @@
-version: '3'
-
-name: "archive_president"
-
+version: "3"
 services:
-  web:
+  django:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
+    container_name: web
     ports:
-      - "8000:8000"
+      - "8002:8002"
+    volumes:
+      - .:/app
+      - static_volume:/docker_demo/static
+      - media_volume:/docker_demo/media
+    command: >
+      sh -c "python manage.py makemigrations faq moderator information &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn config.wsgi:application --bind 0.0.0.0:8002"
     depends_on:
       - redis
-      - celery
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "82:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/docker_demo/static
+      - media_volume:/docker_demo/media
+    depends_on:
+      - django
+    networks:
+      - app_network
 
   redis:
-    image: redis:latest
-    restart: always
+    image: redis
     container_name: redis
     ports:
       - "6379:6379"
+    networks:
+      - app_network
 
   celery:
     build: .
-    command: celery -A config.settings worker --loglevel=info
-    volumes:
-      - .:/code
+    container_name: celery
+    command: celery -A config worker -l INFO
     depends_on:
+      - django
       - redis
+    networks:
+      - app_network
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
+
+networks:
+  app_network:
