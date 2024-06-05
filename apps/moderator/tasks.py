@@ -27,11 +27,11 @@ def send_email_with_credentials(username, password, email, url):
     )
 
 
-@receiver(pre_save, sender=Moderator)
-def data_mail_save(sender, instance, **kwargs):
+@receiver(post_save, sender=Moderator)
+def data_mail_save(sender, instance, created, **kwargs):
     request = get_current_request()
     url = base_url(request)
-    if instance.is_active:
+    if created:
         send_email_with_credentials.delay(instance.username, instance.password, instance.email, url)
 
 

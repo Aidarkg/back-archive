@@ -29,13 +29,11 @@ class Moderator(DateTimeMixin):
         help_text='Пароль будет генерирован автоматически'
     )
     group = models.ForeignKey(
-        Group,
-        on_delete=models.CASCADE,
+        'CustomGroup',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         verbose_name='Группа'
-    )
-    is_active = models.BooleanField(
-        default=False,
-        verbose_name='Отправить данные?'
     )
 
     class Meta:
@@ -43,10 +41,17 @@ class Moderator(DateTimeMixin):
         verbose_name_plural = 'Модераторы'
 
     def save(self, *args, **kwargs):
-        password = generate_password()
-        self.password = password
+        if self.pk is None:
+            password = generate_password()
+            self.password = password
         super().save(*args, **kwargs)
         save_moderator(self, *args, **kwargs)
 
     def __str__(self):
         return self.username
+
+
+class CustomGroup(Group):
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'

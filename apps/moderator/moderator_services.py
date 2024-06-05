@@ -15,7 +15,6 @@ def save_moderator(instance, *args, **kwargs):
         if instance.user_id:
             user = instance.user
             user.username = instance.username
-            user.set_password(instance.password)
             user.email = instance.email
             user.save()
 
