@@ -1,14 +1,13 @@
 from celery import shared_task
 from django.core.mail import send_mail as sm
 from django.template.loader import render_to_string
+from django.conf import settings
 from apps.faq.models import Question
 
 
 @shared_task
-def send_mail(question_id, **kwargs):
-    question = Question.objects.get(id=question_id)
-    from_email = kwargs.get('from_email')
-    recipient_list = kwargs.get('recipient_list')
+def send_mail(instance_id, recipient_list, url):
+    question = Question.objects.get(id=instance_id)
 
     subject = 'Архив президента Кыргызской Республики'
     question_text = question.question_text
@@ -23,13 +22,15 @@ def send_mail(question_id, **kwargs):
         'email': email,
         'phone_number': phone_number,
         'question': question_text,
+        'url': url,
+        'id': instance_id
     })
 
     sm(
         subject=subject,
         message='',
         html_message=message,
-        from_email=from_email,
+        from_email=settings.EMAIL_HOST_USER,
         recipient_list=recipient_list,
         fail_silently=False
     )

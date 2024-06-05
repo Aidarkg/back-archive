@@ -13,6 +13,6 @@ class News(DateTimeMixin):
         return self.title
 
     class Meta:
-        verbose_name = "Новость"
-        verbose_name_plural = "Новости"
+        verbose_name = "Публикация"
+        verbose_name_plural = "Публикации"
         ordering = ['-public_date']

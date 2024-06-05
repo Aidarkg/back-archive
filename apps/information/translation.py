@@ -51,3 +51,8 @@ class OrganizationTranslationOptions(TranslationOptions):
 @register(video_data.VideoLink)
 class VideoLinkTranslationOptions(TranslationOptions):
     fields = ('title',)
+
+
+@register(photo_gallery_models.PhotoHome)
+class PhotoHomeTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')

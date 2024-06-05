@@ -7,7 +7,7 @@ from apps.information.views import VideoDataAPIView, \
     SearchAPIView, \
     VisitorsAPIView, \
     ManagementListAPIView, ManagementDetailAPIView, \
-    MainAPIView, VideoLinkAPIView
+    MainAPIView, PhotoHomeDetailAPIView
 from apps.information.views.organization import OrganizationListView
 
 

@@ -16,3 +16,4 @@ class Contact(DateTimeMixin):
     class Meta:
         verbose_name = 'Контакты'
         verbose_name_plural = 'Контакты'
+        ordering = ['-created_at']

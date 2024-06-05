@@ -3,7 +3,7 @@ JAZZMIN_SETTINGS = {
     "site_title": "Администрирование библиотеки",
 
     # Заголовок на экране входа (максимум 19 символов) (по умолчанию будет использоваться current_admin_site.site_header, если отсутствует или None)
-    "site_header": "Администрация архива президента",
+    "site_header": "Архив президента",
 
     # Заголовок бренда (максимум 19 символов) (по умолчанию будет использоваться current_admin_site.site_header, если отсутствует или None)
     "site_brand": "Архив президента",
@@ -24,14 +24,14 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Приветственный текст на экране входа
-    "welcome_sign": "Добро пожаловать в библиотеку",
+    "welcome_sign": "Добро пожаловать в Архив президента",
 
     # Авторское право в подвале
     "copyright": "Acme Library Ltd",
 
     # Список администраторов модели для поиска из строки поиска, строка поиска опущена, если исключена
     # Если вы хотите использовать одно поле поиска, вам не нужно использовать список, вы можете использовать простую строку
-    "search_model": ["auth.User", "auth.Group"],
+    "search_model": ["moderator.Moderator", "moderator.CustomGroup"],
 
     # Имя поля в модели пользователя, которое содержит поле изображения/URL/Charfield или функцию обратного вызова, которая получает пользователя
     "user_avatar": None,
@@ -46,14 +46,11 @@ JAZZMIN_SETTINGS = {
         # URL, который будет развернут (Разрешения могут быть добавлены)
         {"name": "Главная", "url": "admin:index", "permissions": ["auth.view_user"]},
 
-        # Внешний URL, который открывается в новом окне (Разрешения могут быть добавлены)
-        {"name": "Поддержка", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-
         # модель администратора, на которую будет ссылка (Проверяются разрешения для модели)
-        {"model": "auth.User"},
+        {"model": "moderator.Moderator"},
 
         # Приложение с выпадающим меню на все его страницы моделей (Проверяются разрешения для моделей)
-        {"app": "books"},
+        {"app": "information"},
     ],
 
     #############
@@ -61,10 +58,9 @@ JAZZMIN_SETTINGS = {
     #############
 
     # Дополнительные ссылки для включения в меню пользователя в верхнем правом углу (тип url "app" не разрешен)
-    "usermenu_links": [
-        {"name": "Поддержка", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
-    ],
+    # "usermenu_links": [
+    #     {"model": "moderator.Moderator"}
+    # ],
 
     #############
     # Side Menu #
@@ -85,20 +81,21 @@ JAZZMIN_SETTINGS = {
     # Список приложений (и/или моделей) для определения порядка бокового меню (не обязательно включать все приложения/модели)
     "order_with_respect_to": [
         'moderator',
+        "auth",
         'contacts', 'contacts.ArchiveContact',
-        'information', 'information.VideoData', 'information.VideoLink', 'information.PhotoGallery',
+        'information', 'information.Logo', 'information.VideoData', 'information.VideoLink', 'information.PhotoGallery',
         'faq'
     ],
 
     # Пользовательские ссылки для добавления в группы приложений, сгруппированные по имени приложения
-    "custom_links": {
-        "books": [{
-            "name": "Создать сообщение",
-            "url": "make_messages",
-            "icon": "fas fa-comments",
-            "permissions": ["books.view_book"]
-        }]
-    },
+    # "custom_links": {
+    #     "books": [{
+    #         "name": "Создать сообщение",
+    #         "url": "make_messages",
+    #         "icon": "fas fa-comments",
+    #         "permissions": ["books.view_book"]
+    #     }]
+    # },
 
     # Пользовательские значки для приложений/моделей бокового меню
     "icons": {
@@ -108,12 +105,15 @@ JAZZMIN_SETTINGS = {
         "information.VideoData": "fas fa-video",
         "information.VideoLink": "fab fa-youtube",
         "information.PhotoGallery": "fas fa-image",
+        "information.PhotoHome": "far fa-calendar-check",
         "information.KODEKS": "fas fa-code",
         "information.News": "fas fa-newspaper",
         "information.Organization": "fas fa-sitemap",
         "information.Management": "fas fa-user-tie",
         "information.Service": "fas fa-clipboard",
+        "information.Logo": "fab fa-slack",
         "moderator.Moderator": "fab fa-black-tie",
+        "moderator.CustomGroup": "fas fa-users",
         "faq.FAQ": "fas fa-comments",
         "faq.Question": "fas fa-question",
         "faq.Answer": "far fa-comment-dots",
@@ -142,7 +142,7 @@ JAZZMIN_SETTINGS = {
     # Указываете ли шрифт из fonts.googleapis.com (используйте custom_css для предоставления шрифта в противном случае)
     "use_google_fonts_cdn": True,
     # Показывать ли пользовательский интерфейс настройки в боковой панели
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
@@ -161,10 +161,10 @@ JAZZMIN_SETTINGS = {
 }
 
 JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": True,
-    "footer_small_text": True,
-    "body_small_text": False,
-    "brand_small_text": True,
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": True,
+    "brand_small_text": False,
     "brand_colour": False,
     "accent": "accent-primary",
     "navbar": "navbar-white navbar-light",
@@ -174,13 +174,13 @@ JAZZMIN_UI_TWEAKS = {
     "footer_fixed": False,
     "sidebar_fixed": False,
     "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_small_text": True,
+    "sidebar_nav_small_text": False,
     "sidebar_disable_expand": True,
     "sidebar_nav_child_indent": True,
     "sidebar_nav_compact_style": True,
     "sidebar_nav_legacy_style": True,
     "sidebar_nav_flat_style": True,
-    "theme": "lumen",
+    "theme": "default",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-outline-primary",
@@ -192,3 +192,4 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False
 }
+

@@ -17,8 +17,8 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display_links = ('full_name', 'question_text')
     search_fields = ('full_name',)
 
-    fields = ('full_name', 'email', 'phone_number', 'question_text', 'answer', 'is_active')
-    readonly_fields = ('full_name', 'email', 'phone_number', 'question_text')
+    fields = ('full_name', 'email', 'phone_number', 'question_text', 'answer', 'is_active', 'created_at')
+    readonly_fields = ('full_name', 'email', 'phone_number', 'question_text', 'created_at')
 
     def save_model(self, request, obj, form, change):
         try:

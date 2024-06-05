@@ -6,3 +6,6 @@ class FaqConfig(AppConfig):
     name = 'apps.faq'
     verbose_name = 'Вопросы-Ответы'
     verbose_name_plural = 'Вопросы-Ответы'
+
+    def ready(self):
+        import apps.faq.services.signals

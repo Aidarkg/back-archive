@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Уведомление</title>
     <style>
         body {
@@ -30,8 +32,19 @@
         strong {
             color: #007bff;
         }
-        .password {
-            white-space: nowrap;
+        .button {
+            display: block;
+            width: max-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #0056b3;
         }
         .disclaimer {
             color: #777777;
@@ -48,7 +61,7 @@
         <p><strong>Почта:</strong> {{ email }}</p>
         <p><strong>Номер телефона:</strong> {{ phone_number }}</p>
         <p><strong>Вопрос:</strong> {{ question }}</p>
-        <p class="disclaimer">Не отвечайте на это сообщение.</p>
+        <a href="{{ url }}/admin/faq/question/{{ id }}" class="button">Ответить на вопрос</a>
     </div>
 </body>
 </html>

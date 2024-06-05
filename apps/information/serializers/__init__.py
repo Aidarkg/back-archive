@@ -6,3 +6,4 @@ from apps.information.serializers.kodeks import *
 from apps.information.serializers.organization import *
 from apps.information.serializers.management import *
 from apps.information.serializers.visitors import *
+from apps.information.serializers.logo import *

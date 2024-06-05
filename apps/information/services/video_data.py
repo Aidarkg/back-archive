@@ -1,10 +1,7 @@
-import os
 import string
 import random
 import yt_dlp
-from celery import shared_task
 from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
 
 
 def validate_link(link):
@@ -18,8 +15,10 @@ def generate_letters(length=10):
     return ''.join(random.choice(letters) for _ in range(length))
 
 
-@shared_task
 def cover_video(video_url):
+    if '&' in video_url:
+        video_url = video_url.split('&')[0]
+
     title = generate_letters()
     ydl_opts = {
         'skip_download': True,

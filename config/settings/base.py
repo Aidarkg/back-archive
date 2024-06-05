@@ -51,11 +51,21 @@ REST_FRAMEWORK = {
 
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
 }
 
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Archive President',
+    'DESCRIPTION': 'Archive Presidents description',
+    'VERSION': '1.0.0',
+}
+
 MIDDLEWARE = [
+    'apps.common.middleware.CustomErrorMiddleware',
     'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.information.models import PhotoGallery, Photo
+from apps.information.models import PhotoGallery, Photo, PhotoHome
 
 
 class PhotoListSerializer(serializers.ModelSerializer):
@@ -9,12 +9,6 @@ class PhotoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhotoGallery
         fields = ['id', 'title', 'description', 'picture', 'public_date', 'count']
-
-    def get_picture(self, obj):
-        request = self.context.get('request')
-        if request is not None:
-            return request.build_absolute_uri(obj.picture.url)
-        return obj.picture.url
 
 
 class PhotoSerializer(serializers.ModelSerializer):
@@ -29,3 +23,15 @@ class PhotoGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = PhotoGallery
         fields = ['id', 'title', 'description', 'public_date', 'picture', 'photo']
+
+
+class PhotoHomeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhotoHome
+        fields = ['id', 'photo']
+
+
+class PhotoHomeDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhotoHome
+        fields = ['photo', 'title', 'description']

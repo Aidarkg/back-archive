@@ -24,3 +24,20 @@ class PhotoGallery(DateTimeMixin):
         verbose_name = 'Фотогалерея'
         verbose_name_plural = 'Фотогалерея'
         ordering = ['-public_date']
+
+    def count_photo(self):
+        return self.photo.count()
+
+
+class PhotoHome(DateTimeMixin):
+    title = models.CharField(max_length=300, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    photo = models.ImageField(upload_to='gallery/home', verbose_name='Фото')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Историческое фото'
+        verbose_name_plural = 'Исторические фото'
+        ordering = ['-created_at']
