@@ -8,6 +8,7 @@ from apps.information.serializers import (PhotoGallerySerializer, PhotoListSeria
 from apps.information.models import PhotoGallery, PhotoHome
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from ..services.photo_gallery import PhotoGalleryService
 
 
 class PhotoGalleryListAPIView(APIView):
@@ -30,7 +31,7 @@ class PhotoGalleryListAPIView(APIView):
 
 
 class PhotoGalleryDetailAPIView(RetrieveAPIView):
-    queryset = PhotoGallery.objects.all()
+    queryset = PhotoGalleryService.get_all_photos()
     serializer_class = PhotoGallerySerializer
 
     @method_decorator(cache_page(60))

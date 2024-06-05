@@ -22,7 +22,7 @@ class Management(DateTimeMixin):
         null=True,
         verbose_name='Должность'
     )
-    start_year = models.IntegerField(
+    start_year = models.PositiveSmallIntegerField(
         verbose_name='Год начала работы'
     )
     birth_date = models.DateField(

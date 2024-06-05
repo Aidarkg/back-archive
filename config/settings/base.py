@@ -8,15 +8,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 
-if config('DEBUG') == 'True':
-    DEBUG = True
-else:
-    DEBUG = False
+PRODUCTION = config('PRODUCTION', cast=bool, default=False)
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
+APPS = [
+    'apps.information',
+    'apps.moderator',
+    'apps.faq',
+    'apps.contacts',
+]
+
+ADDITIONAL_APPS = [
+    'corsheaders',
+    'rest_framework',
+    'django_redis',
+    'drf_yasg',
+    'django_filters',
+]
+
+PARTY_THEME_APPS = [
     'jazzmin',
+]
+
+INSTALLED_APPS = [
+    *PARTY_THEME_APPS,
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -24,17 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
-    'corsheaders',
-    'rest_framework',
-    'django_redis',
-    'drf_spectacular',
-    'django_filters',
-    'apps.information',
-    'apps.moderator',
-    'apps.faq',
-    'apps.contacts',
-
+    *ADDITIONAL_APPS,
+    *APPS,
 ]
 
 REST_FRAMEWORK = {
@@ -69,7 +76,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -92,12 +98,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -130,14 +131,11 @@ LANGUAGES = (
 )
 MODELTRANSLATION_DEFAULT_LANGUAGE_CODE = "ru"
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),
-]
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles/')
+STATIC_URL = '/static/'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -159,6 +157,7 @@ CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/1'
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
 
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -173,16 +172,22 @@ CACHES = {
     }
 }
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'http://localhost:5176',
     'http://localhost:3000',
-    'http://*:*',
-    'http://*',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://34.173.93.49']
+if not PRODUCTION:
+    from .dev import *
+else:
+    from .prod import *
+
+
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    INTERNAL_IPS = ["127.0.0.1"]
+
+from .jazzmin_settings import JAZZMIN_SETTINGS

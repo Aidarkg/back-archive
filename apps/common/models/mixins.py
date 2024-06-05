@@ -6,8 +6,8 @@ User = get_user_model()
 
 
 class DateTimeMixin(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания', null=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения', null=True, blank=True)
+    created_at = models.DateTimeField(verbose_name='Дата создания', null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name='Дата изменения', null=True, blank=True)
 
     class Meta:
         abstract = True

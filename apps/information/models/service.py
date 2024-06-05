@@ -4,7 +4,7 @@ from apps.common.models.mixins import DateTimeMixin
 
 
 class Service(DateTimeMixin):
-    title = models.TextField(verbose_name='Название')
+    title = models.TextField(verbose_name='Название', max_length=300)
     status = models.CharField(max_length=20, verbose_name='Статус')
 
     class Meta:

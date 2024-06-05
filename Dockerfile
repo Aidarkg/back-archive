@@ -1,14 +1,10 @@
-FROM python:3.10.0-slim
+FROM python:3.10-slim as builder
 
-RUN mkdir docker_demo
-WORKDIR docker_demo
+WORKDIR usr/src/app
 
-COPY requirements.txt /docker_demo/
-RUN pip install -r requirements.txt
-COPY . /docker_demo/
+COPY requirements/prod.txt .
+RUN pip install -r prod.txt
+COPY . .
+COPY .docker.env ./.env
 
-COPY .docker.env /docker_demo/.env
-ENV APP=DOCKER_DEMO
-
-RUN python manage.py makemigrations faq moderator information
-RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput

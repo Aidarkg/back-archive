@@ -3,9 +3,12 @@ from apps.information.models import PhotoGallery, Photo, PhotoHome
 
 
 class PhotoListSerializer(serializers.ModelSerializer):
+    picture = serializers.SerializerMethodField()
+    count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = PhotoGallery
-        fields = ['id', 'title', 'description', 'picture', 'count_photo', 'public_date']
+        fields = ['id', 'title', 'description', 'picture', 'public_date', 'count']
 
 
 class PhotoSerializer(serializers.ModelSerializer):

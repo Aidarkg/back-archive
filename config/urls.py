@@ -1,4 +1,3 @@
-from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -10,15 +9,17 @@ from config.yasg import urlpatterns as yasg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("__debug__/", include("debug_toolbar.urls")),
     path('api/v1/question/create/', question_create_view, name='question-create'),
-]
-
-urlpatterns += i18n_patterns(
-    path('', include('apps.information.urls')),
+    path('api/v1/', include('apps.information.urls')),
     path('', include('apps.faq.urls')),
     path('', include('apps.contacts.urls'))
-)
+]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += yasg
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
