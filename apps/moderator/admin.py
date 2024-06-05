@@ -9,8 +9,7 @@ class ModeratorAdmin(admin.ModelAdmin):
     search_fields = ['username']
     list_filter = ['created_at', 'updated_at']
 
-    fields = ['username', 'email', 'password', 'group']
-    readonly_fields = ['password']
+    fields = ['username', 'email', 'group']
 
 
 class CustomGroupAdmin(admin.ModelAdmin):
