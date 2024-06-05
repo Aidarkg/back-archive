@@ -1,29 +1,32 @@
-from .base import *
+from decouple import config as env
 
-DEBUG = True
+from config.settings.base import BASE_DIR
 
-INSTALLED_APPS += ['debug_toolbar', ]
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+STATICFILES_DIRS = [
+  BASE_DIR.joinpath('static/')
+]
 
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware',]
-
-
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT', cast=int),
     }
 }
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/usr/src/app/static/'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/usr/src/app/media/'
-
-
-CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://localhost:82"]
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = 3600

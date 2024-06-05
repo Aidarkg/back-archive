@@ -1,11 +1,12 @@
-from .base import *
+from pathlib import Path
 
-DEBUG = True
+from .env_reader import env
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-INSTALLED_APPS += ['debug_toolbar', ]
-
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware',]
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {

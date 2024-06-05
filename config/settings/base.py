@@ -8,10 +8,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 
+PRODUCTION = config('PRODUCTION', cast=bool, default=False)
+
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
+APPS = [
+    'apps.information',
+    'apps.moderator',
+    'apps.faq',
+    'apps.contacts',
+]
+
+ADDITIONAL_APPS = [
+    'corsheaders',
+    'rest_framework',
+    'django_redis',
+    'drf_yasg',
+    'django_filters',
+]
+
+PARTY_THEME_APPS = [
     'jazzmin',
+]
+
+INSTALLED_APPS = [
+    *PARTY_THEME_APPS,
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,15 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'django_redis',
-    'drf_yasg',
-    'django_filters',
-    'apps.information',
-    'apps.moderator',
-    'apps.faq',
-    'apps.contacts',
+    *ADDITIONAL_APPS,
+    *APPS,
 ]
 
 REST_FRAMEWORK = {
@@ -107,14 +121,11 @@ LANGUAGES = (
 )
 MODELTRANSLATION_DEFAULT_LANGUAGE_CODE = "ru"
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
-]
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles/')
+STATIC_URL = '/static/'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -136,6 +147,7 @@ CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/1'
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 JAZZMIN_UI_TWEAKS = JAZZMIN_UI_TWEAKS
 
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -150,14 +162,22 @@ CACHES = {
     }
 }
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'http://localhost:5176',
     'http://localhost:3000',
-    'http://*:*',
-    'http://*',
 ]
+
+if not PRODUCTION:
+    from .dev import *
+else:
+    from .prod import *
+
+
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    INTERNAL_IPS = ["127.0.0.1"]
+
+from .jazzmin_settings import JAZZMIN_SETTINGS
