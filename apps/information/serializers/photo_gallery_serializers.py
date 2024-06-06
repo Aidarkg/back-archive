@@ -3,7 +3,6 @@ from apps.information.models import PhotoGallery, Photo, PhotoHome
 
 
 class PhotoListSerializer(serializers.ModelSerializer):
-    picture = serializers.SerializerMethodField()
     count = serializers.IntegerField(read_only=True)
 
     class Meta:
