@@ -4,9 +4,9 @@ from apps.common.models.mixins import DateTimeMixin
 
 
 class News(DateTimeMixin):
-    title = models.TextField(verbose_name='Название')
+    title = models.CharField(verbose_name='Название', max_length=300)
     image = models.ImageField(upload_to='news', verbose_name="Картинка")
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание", max_length=1000)
     public_date = models.DateTimeField(verbose_name="Дата публикации")
 
     def __str__(self):

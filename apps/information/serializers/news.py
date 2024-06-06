@@ -1,3 +1,5 @@
+import pdb
+
 from rest_framework import serializers
 
 from apps.information.models import News
