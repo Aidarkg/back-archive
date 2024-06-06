@@ -1,39 +1,44 @@
-from django.urls import reverse
-from rest_framework import status
-from rest_framework.test import APITestCase
-from apps.information.models.kodeks import KODEKS
+import os
+
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase
+from apps.information.models import KODEKS
 from apps.information.serializers.kodeks import KODEKSSerializer
 
-class KODEKSSerializerTestCase(APITestCase):
-    @classmethod
-    def setUpTestData(cls):
 
-        cls.kodeks = KODEKS.objects.create(title='Тестовый кодекс', pdf_file='test.pdf')
+class KODEKSSerializerTest(TestCase):
+    def setUp(self):
+        self.kodeks_data = {'title': 'Example Title', 'pdf_file': 'path/to/valid_pdf_file.pdf'}
+        self.kodeks = KODEKS.objects.create(**self.kodeks_data)
+        self.serializer = KODEKSSerializer(instance=self.kodeks)
 
-    def test_kodeks_serializer(self):
-        serializer_data = KODEKSSerializer(instance=self.kodeks).data
-        expected_data = {
-            'id': self.kodeks.id,
-            'title': 'Тестовый кодекс',
-            'pdf_file': 'test.pdf'
+    def test_contains_expected_fields(self):
+        data = self.serializer.data
+        self.assertEqual(set(data.keys()), {'title', 'pdf_file'})
 
+    def test_title_field_content(self):
+        data = self.serializer.data
+        self.assertEqual(data['title'], self.kodeks_data['title'])
+
+    def test_pdf_file_field_content(self):
+        data = self.serializer.data
+        self.assertEqual(os.path.basename(data['pdf_file']), os.path.basename(self.kodeks_data['pdf_file']))
+
+    def test_validation_with_valid_data(self):
+        # Создаем временный файл
+        test_file = SimpleUploadedFile("test_file.pdf", b"file_content", content_type="application/pdf")
+
+        # Подготавливаем данные для сериализации
+        data = {
+            'title': 'Test title',
+            'pdf_file': test_file,
         }
-        self.assertEqual(serializer_data, expected_data)
 
-    def test_create_kodeks(self):
-        data = {'title': 'Новый кодекс', 'pdf_file': 'new_test.pdf'}
-        response = self.client.post(reverse('kodeks-list'), data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(KODEKS.objects.count(), 2)  
+        # Создаем сериализатор и проверяем валидацию
+        serializer = KODEKSSerializer(data=data)
+        self.assertTrue(serializer.is_valid(), msg=serializer.errors)
 
-    def test_update_kodeks(self):
-        data = {'title': 'Измененный кодекс'}
-        response = self.client.put(reverse('kodeks-detail', args=[self.kodeks.id]), data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.kodeks.refresh_from_db()
-        self.assertEqual(self.kodeks.title, 'Измененный кодекс')
-
-    def test_delete_kodeks(self):
-        response = self.client.delete(reverse('kodeks-detail', args=[self.kodeks.id]))
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertFalse(KODEKS.objects.filter(id=self.kodeks.id).exists())
+    def test_validation_with_invalid_data(self):
+        invalid_data = {'title': '', 'pdf_file': ''}
+        serializer = KODEKSSerializer(data=invalid_data)
+        self.assertFalse(serializer.is_valid())

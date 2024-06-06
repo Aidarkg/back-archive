@@ -10,12 +10,10 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# if config('DEBUG') == 'True':
-#     DEBUG = True
-# else:
-#     DEBUG = False
-
-
+if config('DEBUG') == 'True':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -53,7 +51,6 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
 }
-
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Archive President',

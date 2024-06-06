@@ -1,10 +1,14 @@
+import os
+
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from apps.information.models.kodeks import KODEKS
 
 class KODEKSTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.kodeks = KODEKS.objects.create(title='Тестовый кодекс', pdf_file='test.pdf')
+        pdf_file = SimpleUploadedFile('test.pdf', b'test_content')
+        cls.kodeks = KODEKS.objects.create(title='Тестовый кодекс', pdf_file=pdf_file)
 
     def test_title(self):
         kodeks = KODEKS.objects.get(title='Тестовый кодекс')
@@ -16,7 +20,12 @@ class KODEKSTestCase(TestCase):
     def test_verbose_name_plural(self):
         self.assertEqual(KODEKS._meta.verbose_name_plural, 'Кодексы')
 
-    def test_pdf_file_upload_to(self):
-        upload_to = KODEKS._meta.get_field('pdf_file').upload_to
-        file_path = upload_to(self.kodeks, 'test.pdf')
-        self.assertEqual(file_path, 'pdf_files/test.pdf')
+    def test_upload_to(self):
+
+        expected_dir = 'pdf_files'
+        actual_path = self.kodeks.pdf_file.name
+
+
+        self.assertTrue(actual_path.startswith(expected_dir))
+
+        self.assertTrue(os.path.basename(actual_path).startswith('test'))

@@ -28,4 +28,4 @@ class NewsModelTestCase(TestCase):
         self.assertIsInstance(self.news.public_date, str)
 
     def test_verbose_name_plural(self):
-        self.assertEqual(str(News._meta.verbose_name_plural), 'news')
+        self.assertEqual(str(News._meta.verbose_name_plural), 'Новости')
