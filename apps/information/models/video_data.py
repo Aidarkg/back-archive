@@ -5,8 +5,8 @@ from apps.information.services.video_data import validate_link
 
 
 class VideoData(DateTimeMixin):
+    title = models.CharField(max_length=500, verbose_name='Название')
     video = models.FileField(upload_to='video', verbose_name='Видео')
-    title = models.CharField(verbose_name='Название', max_length=300)
     public_date = models.DateTimeField(verbose_name='Дата публикации')
 
     def __str__(self):
@@ -19,7 +19,7 @@ class VideoData(DateTimeMixin):
 
 
 class VideoLink(DateTimeMixin):
-    title = models.CharField(verbose_name='Название', max_length=300)
+    title = models.CharField(max_length=500, verbose_name='Название')
     video_link = models.CharField(max_length=300, validators=[validate_link], verbose_name='Ссылка на видео')
     public_date = models.DateTimeField(verbose_name='Дата публикации')
     cover = models.ImageField(

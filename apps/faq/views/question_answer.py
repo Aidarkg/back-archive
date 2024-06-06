@@ -2,7 +2,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from apps.faq.serializers.question_answer import QuestionSerializer
-from apps.faq.models import Question
 
 
 @api_view(['POST'])

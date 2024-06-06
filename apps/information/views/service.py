@@ -1,8 +1,8 @@
-from ..serializers import service
 from rest_framework.generics import ListAPIView
-from ..services.service import ServiceModelService
+from apps.information.serializers import service
+from apps.information.models import Service
 
 
 class ServiceListView(ListAPIView):
-    queryset = ServiceModelService.get_all_services()
+    queryset = Service.objects.all()
     serializer_class = service.ServiceSerializers

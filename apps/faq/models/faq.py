@@ -4,16 +4,10 @@ from apps.common.models.mixins import DateTimeMixin
 
 
 class Faq(DateTimeMixin):
-    question = models.CharField(
-        max_length=500,
-        null=False,
-        blank=False,
+    question = models.TextField(
         verbose_name='Вопрос'
     )
     answer = models.TextField(
-        max_length=500,
-        null=False,
-        blank=False,
         verbose_name='Ответ'
     )
 

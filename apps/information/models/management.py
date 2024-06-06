@@ -6,18 +6,14 @@ import datetime
 class Management(DateTimeMixin):
     full_name = models.CharField(
         max_length=300,
-        null=False,
-        blank=False,
         verbose_name='полное имя'
     )
     image = models.ImageField(
         upload_to='managements_image',
-        blank=False,
-        null=False,
         verbose_name='фотография'
     )
     position = models.CharField(
-        max_length=300,
+        max_length=500,
         blank=True,
         null=True,
         verbose_name='Должность'
@@ -31,7 +27,7 @@ class Management(DateTimeMixin):
         verbose_name='Дата рождения'
     )
     clas_chin = models.CharField(
-        max_length=300,
+        max_length=500,
         blank=True,
         null=True,
         verbose_name='Классный чин'
@@ -53,20 +49,14 @@ class Management(DateTimeMixin):
 
 class ManagementEducation(models.Model):
     year = models.PositiveSmallIntegerField(
-        blank=False,
-        null=False,
         verbose_name='Год образования'
     )
     place = models.CharField(
-        max_length=300,
-        blank=False,
-        null=False,
+        max_length=500,
         verbose_name='Место образования'
     )
     specialization = models.CharField(
-        max_length=300,
-        null=False,
-        blank=False,
+        max_length=500,
         verbose_name='Специальность'
     )
     management = models.ForeignKey(
@@ -85,13 +75,11 @@ class ManagementWork(models.Model):
         verbose_name='Годы работы'
     )
     place = models.CharField(
-        max_length=300,
-        blank=False,
-        null=False,
+        max_length=500,
         verbose_name='Место работы'
     )
     position = models.CharField(
-        max_length=300,
+        max_length=500,
         blank=True,
         null=True,
         verbose_name='Должность'

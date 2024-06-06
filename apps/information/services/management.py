@@ -1,4 +1,4 @@
-from ..models import Management
+from apps.information.models import Management
 
 
 class ManagementService:

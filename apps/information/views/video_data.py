@@ -18,8 +18,8 @@ class VideoDataAPIView(APIView):
         video_file = VideoData.objects.all()
         video_link = VideoLink.objects.all()
 
-        ser_video_file = VideoDataSerializer(video_file, many=True).data
-        ser_video_link = VideoLinkSerializer(video_link, many=True).data
+        ser_video_file = VideoDataSerializer(video_file, many=True, context={'request': request}).data
+        ser_video_link = VideoLinkSerializer(video_link, many=True, context={'request': request}).data
 
         combined_data = ser_video_file + ser_video_link
 

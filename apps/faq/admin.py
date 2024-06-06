@@ -1,7 +1,7 @@
 from django.contrib import admin
 from apps.moderator.models import Moderator
 
-from .models import Faq, Question
+from apps.faq.models import Faq, Question
 from apps.common.admin.mixins import BaseAdminMixin
 
 

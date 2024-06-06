@@ -12,7 +12,7 @@ class Photo(models.Model):
 
 
 class PhotoGallery(DateTimeMixin):
-    title = models.TextField(verbose_name='Заголовок')
+    title = models.CharField(max_length=500, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
     picture = WEBPField(upload_to='gallery/logo', verbose_name='Картинка')
     public_date = models.DateTimeField(verbose_name='Дата публикации')
@@ -30,7 +30,7 @@ class PhotoGallery(DateTimeMixin):
 
 
 class PhotoHome(DateTimeMixin):
-    title = models.CharField(max_length=300, verbose_name='Название')
+    title = models.CharField(max_length=500, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     photo = models.ImageField(upload_to='gallery/home', verbose_name='Фото')
 

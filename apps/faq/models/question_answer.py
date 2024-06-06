@@ -13,7 +13,7 @@ class Question(DateTimeMixin):
         verbose_name='Email'
     )
     phone_number = models.CharField(
-        max_length=20,
+        max_length=50,
         null=True,
         blank=True,
         verbose_name='Номер телефона',

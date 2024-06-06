@@ -11,8 +11,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/question/create/', question_create_view, name='question-create'),
     path('api/v1/', include('apps.information.urls')),
-    path('', include('apps.faq.urls')),
-    path('', include('apps.contacts.urls'))
+    path('api/v1/', include('apps.faq.urls')),
+    path('api/v1/', include('apps.contacts.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

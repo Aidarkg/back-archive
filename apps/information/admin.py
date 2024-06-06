@@ -16,15 +16,15 @@ class PhotoInline(admin.TabularInline):
 
 
 class PhotoGalleryAdmin(BaseAdminMixin):
-    list_display = ('title', 'description', 'public_date')
+    list_display = ['title', 'picture', 'public_date']
     fields = ['title', 'description', 'picture', 'public_date']
-    list_display_links = ('title',)
+    list_display_links = ['title']
     inlines = [PhotoInline]
 
 
 class NewsAdmin(BaseAdminMixin):
-    list_display = ('title', 'image', 'public_date')
-    fields = ('title', 'description', 'image', 'public_date')
+    list_display = ['title', 'image', 'public_date']
+    fields = ['title', 'description', 'image', 'public_date']
 
 
 class ManagementWorkInline(admin.TabularInline):
@@ -40,17 +40,17 @@ class ManagementEducationInline(admin.TabularInline):
 
 
 class ManagementAdmin(BaseAdminMixin):
-    list_display = ('full_name', 'image', 'position', 'clas_chin')
-    list_display_links = ('full_name',)
-    search_fields = ('full_name',)
+    list_display = ['full_name', 'image', 'position', 'clas_chin']
+    list_display_links = ['full_name']
+    search_fields = ['full_name']
 
-    fields = ('full_name', 'image', 'position', 'start_year', 'birth_date', 'clas_chin')
+    fields = ['full_name', 'image', 'position', 'start_year', 'birth_date', 'clas_chin']
     inlines = (ManagementWorkInline, ManagementEducationInline,)
 
 
 class KODEKSAdmin(BaseAdminMixin):
     list_display = ['document_number', 'title', 'pdf_file', 'date_file']
-    list_display_links = ('document_number', 'title')
+    list_display_links = ['document_number', 'title']
     fields = ['document_number', 'title', 'pdf_file', 'date_file']
 
 

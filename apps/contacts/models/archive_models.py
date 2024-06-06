@@ -17,7 +17,7 @@ class ArchiveContact(DateTimeMixin):
 
 class Reception(models.Model):
     weekdays = models.CharField(max_length=200, verbose_name='В будние дни')
-    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='reception')  # Изменено здесь
+    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='reception')
 
     def __str__(self):
         return self.weekdays
@@ -30,7 +30,7 @@ class Schedule(models.Model):
     weekdays = models.CharField(max_length=200, verbose_name='В будние дни')
     _break = models.CharField(max_length=100, verbose_name='Перерыв')
     weekend = models.CharField(max_length=100, default='Выходной', verbose_name='Суббота и Воскресенье')
-    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='schedule')  # Изменено здесь
+    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='schedule')
 
     def __str__(self):
         return self.weekdays
@@ -41,7 +41,7 @@ class Schedule(models.Model):
 
 class ReadingRoom(models.Model):
     weekdays = models.CharField(max_length=200, verbose_name='В будние дни')
-    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='reading_room')  # Изменено здесь
+    general = models.ForeignKey('ArchiveContact', on_delete=models.CASCADE, related_name='reading_room')
 
     def __str__(self):
         return self.weekdays
