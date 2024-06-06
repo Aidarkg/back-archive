@@ -177,15 +177,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5173',
-    'http://localhost:5176',
-    'http://localhost:3000',
-    'http://*:*',
-    'http://*',
-]
+CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82', 'http://34.173.93.49']
 
-CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82',]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = [
     "accept",
@@ -200,6 +194,3 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
-
