@@ -1,6 +1,7 @@
 from django.db import models
 from apps.information.services.photo_compress import WEBPField
 from apps.common.models.mixins import DateTimeMixin
+from apps.information.services.photo_exception import PhotoException
 
 
 class Photo(models.Model):
@@ -36,6 +37,11 @@ class PhotoHome(DateTimeMixin):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if PhotoHome.objects.all().count() >= 5:
+            raise PhotoException('Можно добавить только 5 фото, измените старое!')
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Историческое фото'

@@ -1,4 +1,4 @@
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 
@@ -9,23 +9,22 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 
 
-class PhotoGalleryListAPIView(APIView):
+class PhotoGalleryListAPIView(ListAPIView):
+    queryset = PhotoGallery.objects.all()
+    serializer_class = PhotoListSerializer
+
     @method_decorator(cache_page(60))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
-    def get(self, request):
-        paginator = PageNumberPagination()
 
-        photo_home = PhotoHome.objects.all()[:5]
-        photos = PhotoGallery.objects.all()
+class PhotoHomeListAPIView(ListAPIView):
+    queryset = PhotoHome.objects.all()
+    serializer_class = PhotoHomeListSerializer
 
-        paginated_photos = paginator.paginate_queryset(photos, request)
-        serializer = {
-            'photo_home': PhotoHomeListSerializer(photo_home, many=True, context={'request': request}).data,
-            'gallery': PhotoListSerializer(paginated_photos, many=True, context={'request': request}).data
-        }
-        return paginator.get_paginated_response(serializer)
+    @method_decorator(cache_page(60))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class PhotoGalleryDetailAPIView(RetrieveAPIView):
