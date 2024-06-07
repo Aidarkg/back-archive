@@ -6,5 +6,4 @@ media
 **/migrations/
 db.sqlite3
 static
-staticfiles
 .idea

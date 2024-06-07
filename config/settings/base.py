@@ -180,7 +180,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82', 'http://34.173.93.49']
+CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82', 'http://34.171.136.120']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
