@@ -39,7 +39,7 @@ class PhotoHome(DateTimeMixin):
         return self.title
 
     def save(self, *args, **kwargs):
-        if PhotoHome.objects.all().count() >= 5:
+        if not self.pk and PhotoHome.objects.all().count() >= 5:
             raise PhotoException('Можно добавить только 5 фото, измените старое!')
         super().save(*args, **kwargs)
 
