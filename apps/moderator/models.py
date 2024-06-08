@@ -30,9 +30,7 @@ class Moderator(DateTimeMixin):
     )
     group = models.ForeignKey(
         'CustomGroup',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        on_delete=models.CASCADE,
         verbose_name='Группа'
     )
 
