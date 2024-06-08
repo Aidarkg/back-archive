@@ -1,6 +1,7 @@
 import string
 import random
 import yt_dlp
+from django.conf import settings
 from django.core.validators import URLValidator
 
 
@@ -20,10 +21,11 @@ def cover_video(video_url):
         video_url = video_url.split('&')[0]
 
     title = generate_letters()
+    output_path = f'{settings.MEDIA_ROOT}/video/cover/{title}.%(ext)s'
     ydl_opts = {
         'skip_download': True,
         'writethumbnail': True,
-        'outtmpl': f'media/video/cover/{title}.%(ext)s',
+        'outtmpl': output_path,
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
