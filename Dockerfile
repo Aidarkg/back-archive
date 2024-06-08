@@ -7,7 +7,7 @@ COPY requirements.txt /docker_demo/
 COPY . /docker_demo/
 COPY .docker.env /docker_demo/.env
 
-RUN python -m pip install --upgrade pip && \
-    pip install -r requirements.txt \
+RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 
