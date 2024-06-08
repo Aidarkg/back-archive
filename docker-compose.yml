@@ -60,6 +60,10 @@ services:
     build: .
     container_name: celery
     command: celery -A config worker -l INFO
+    volumes:
+      - .:/app
+      - static_volume:/docker_demo/static
+      - media_volume:/docker_demo/media
     depends_on:
       - django
       - redis
