@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -9,11 +10,15 @@ class KodeksAPITests(APITestCase):
         self.kodeks = KODEKS.objects.create(
             title='Test title for Kodeks',
             pdf_file='Test pdf_file for Kodeks',
+            document_number=5,
+            date_file=datetime.now()
 
         )
         self.kodeks2 = KODEKS.objects.create(
             title='Test title 2 for Kodeks',
             pdf_file='Test pdf_file 2 for Kodeks',
+            document_number=5,
+            date_file=datetime.now()
 
         )
         self.list_url = reverse('kodeks-list')

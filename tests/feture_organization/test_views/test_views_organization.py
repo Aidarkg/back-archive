@@ -1,7 +1,8 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.urls import reverse
-from apps.data_media.models.organization import Organization
+from apps.information.models.organization import Organization
+
 
 class OrganizationListViewTest(APITestCase):
     @classmethod
@@ -18,5 +19,3 @@ class OrganizationListViewTest(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 4)
-
-

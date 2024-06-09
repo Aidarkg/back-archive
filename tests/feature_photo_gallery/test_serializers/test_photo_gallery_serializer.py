@@ -1,5 +1,6 @@
 from django.core.files.storage import default_storage
 from django.test import TestCase
+from django.utils import timezone
 from apps.information.models.photo_gallery_models import PhotoGallery, Photo
 from apps.information.serializers.photo_gallery_serializers import PhotoGallerySerializer, PhotoSerializer
 from PIL import Image
@@ -29,7 +30,8 @@ class PhotoGallerySerializerTestCase(TestCase):
         self.picture = PhotoGallery.objects.create(
             title='Test picture',
             description='Test description',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now()
         )
         self.serializer = PhotoGallerySerializer(self.picture)
 
@@ -39,7 +41,8 @@ class PhotoGallerySerializerTestCase(TestCase):
             'title',
             'description',
             'picture',
-            'photo'
+            'photo',
+            'public_date'
         }
         self.assertEqual(set(self.serializer.data.keys()), expected_fields)
 
@@ -65,7 +68,8 @@ class PhotoSerializerTestCase(TestCase):
         self.gallery = PhotoGallery.objects.create(
             title='Test Gallery',
             description='A description here',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now()
         )
         self.photo = Photo.objects.create(
             gallery=self.gallery,
@@ -76,7 +80,7 @@ class PhotoSerializerTestCase(TestCase):
     def test_photo_serializer(self):
         self.assertTrue(isinstance(self.serializer, PhotoSerializer))
         path = self.serializer.data['photo']
-        self.assertEquals(path, '/media/gallery_photo/test.jpg')
+        self.assertEquals(path, '/media/gallery/photos/test.jpg')
 
     def tearDown(self):
         for photo_object in Photo.objects.all():

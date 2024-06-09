@@ -74,5 +74,3 @@ class ManagementWorkTestCase(TestCase):
 
     def test_management_work_relationship(self):
         self.assertEqual(self.management.managements_work.first(), self.management_work)
-
-

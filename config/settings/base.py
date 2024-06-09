@@ -8,6 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 
+PRODUCTION = config('PRODUCTION', default=False, cast=bool)
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 if config('DEBUG') == 'True':
@@ -95,17 +96,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': config('POSTGRES_PORT'),
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -179,6 +169,11 @@ CACHES = {
         }
     }
 }
+
+if PRODUCTION:
+    from config.settings.prod import *
+else:
+    from config.settings.dev import *
 
 INTERNAL_IPS = [
     "127.0.0.1",

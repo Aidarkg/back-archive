@@ -1,6 +1,7 @@
 from django.test import TestCase
 from apps.information.models.service import Service
 
+
 class ServiceModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

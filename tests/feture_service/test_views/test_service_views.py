@@ -11,17 +11,13 @@ class ServiceListViewTest(APITestCase):
         cls.service1 = Service.objects.create(title='Тестовая услуга 1', status='Активный')
         cls.service2 = Service.objects.create(title='Тестовая услуга 2', status='Неактивный')
 
-
     def test_get_service_list(self):
         url = reverse('services-list')
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
         data = response.data['results']
 
-
         expected_data = ServiceSerializers(Service.objects.all(), many=True).data
-
 
         self.assertEqual(data, expected_data)

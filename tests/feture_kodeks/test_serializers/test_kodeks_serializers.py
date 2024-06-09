@@ -1,5 +1,5 @@
 import os
-
+from datetime import datetime, date
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from apps.information.models import KODEKS
@@ -8,13 +8,21 @@ from apps.information.serializers.kodeks import KODEKSSerializer
 
 class KODEKSSerializerTest(TestCase):
     def setUp(self):
-        self.kodeks_data = {'title': 'Example Title', 'pdf_file': 'path/to/valid_pdf_file.pdf'}
+        self.kodeks_data = {
+            'title': 'Example Title',
+            'pdf_file': 'path/to/valid_pdf_file.pdf',
+            'date_file': date.today(),
+            'document_number': 5
+        }
         self.kodeks = KODEKS.objects.create(**self.kodeks_data)
         self.serializer = KODEKSSerializer(instance=self.kodeks)
 
     def test_contains_expected_fields(self):
         data = self.serializer.data
-        self.assertEqual(set(data.keys()), {'title', 'pdf_file'})
+        self.assertEqual(
+            set(data.keys()),
+            {'id', 'title', 'pdf_file', 'date_file', 'document_number'}
+        )
 
     def test_title_field_content(self):
         data = self.serializer.data
@@ -32,6 +40,8 @@ class KODEKSSerializerTest(TestCase):
         data = {
             'title': 'Test title',
             'pdf_file': test_file,
+            'date_file': date.today(),
+            'document_number': 5
         }
 
         # Создаем сериализатор и проверяем валидацию

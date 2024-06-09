@@ -1,15 +1,17 @@
 from django.test import TestCase
+from django.utils import timezone
 from django.core.files.uploadedfile import SimpleUploadedFile
 from rest_framework.test import APIRequestFactory
 from apps.information.models import VideoData, VideoLink
 from apps.information.serializers import VideoDataSerializer, VideoLinkSerializer
+
 
 class VideoDataSerializerTest(TestCase):
     def setUp(self):
         self.video_data = VideoData.objects.create(
             title="Test Video",
             video=SimpleUploadedFile("test_video.mp4", b"file_content"),
-            public_date="2024-06-04"
+            public_date=timezone.now()
         )
         self.factory = APIRequestFactory()
 
@@ -28,7 +30,7 @@ class VideoLinkSerializerTest(TestCase):
             title="Test Video Link",
             video_link="https://www.example.com/video",
             cover=SimpleUploadedFile("test_cover.jpg", b"image_content"),
-            public_date="2024-06-04"
+            public_date=timezone.now()
         )
 
     def test_serialization(self):

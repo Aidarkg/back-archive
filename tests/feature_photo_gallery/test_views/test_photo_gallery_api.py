@@ -1,5 +1,6 @@
 from django.core.files.storage import default_storage
 from django.urls import reverse
+from django.utils import timezone
 from rest_framework import status
 from rest_framework.test import APITestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -21,12 +22,14 @@ class PhotoGalleryAPITests(APITestCase):
         self.photo1 = PhotoGallery.objects.create(
             title='Photo 1',
             description='Description 1',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now()
         )
         self.photo2 = PhotoGallery.objects.create(
             title='Photo 2',
             description='Description 2',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now()
         )
         self.list_url = reverse('photo-gallery-list')
         self.detail_url = reverse('photo-gallery-detail', kwargs={'pk': self.photo1.pk})

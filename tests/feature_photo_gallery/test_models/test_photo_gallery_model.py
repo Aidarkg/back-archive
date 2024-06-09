@@ -1,4 +1,6 @@
 from django.core.files.storage import default_storage
+from django.utils import timezone
+
 from apps.information.models.photo_gallery_models import PhotoGallery, Photo
 
 from django.test import TestCase
@@ -31,7 +33,8 @@ class PhotoGalleryModelTestCase(TestCase):
         cls.gallery = PhotoGallery.objects.create(
             title='Test Gallery',
             description='A description here',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now(),
         )
 
     def test_string_representation(self):
@@ -61,7 +64,8 @@ class PhotoTestCase(TestCase):
         self.gallery = PhotoGallery.objects.create(
             title='Test Gallery',
             description='A description here',
-            picture=get_test_image()
+            picture=get_test_image(),
+            public_date=timezone.now()
         )
         self.photo = Photo.objects.create(
             gallery=self.gallery,
@@ -71,7 +75,7 @@ class PhotoTestCase(TestCase):
     def test_photo_creation(self):
         self.assertTrue(isinstance(self.photo, Photo))
         path = self.photo._meta.get_field('photo').upload_to
-        self.assertEquals(path, 'gallery_photo')
+        self.assertEquals(path, 'gallery/photos')
 
     def test_photo_gallery_relation(self):
         self.assertEqual(self.photo.gallery, self.gallery)

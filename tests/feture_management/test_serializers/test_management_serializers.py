@@ -9,25 +9,32 @@ from apps.information.serializers.management import (
     ManagementWorkSerializer
 )
 
+
 class ManagementListSerializerTest(TestCase):
     def test_serializer_fields(self):
         serializer = ManagementListSerializers()
-        self.assertEqual(set(serializer.fields.keys()), {'id', 'full_name', 'image', 'position', 'start_year', 'end_year'})
+        self.assertEqual(set(serializer.fields.keys()),
+                         {'id', 'full_name', 'image', 'position', 'start_year', 'end_year'})
+
 
 class ManagementEducationSerializerTest(TestCase):
     def test_serializer_fields(self):
         serializer = ManagementEducationSerializers()
         self.assertEqual(set(serializer.fields.keys()), {'year', 'place', 'specialization'})
 
+
 class ManagementWorkSerializerTest(TestCase):
     def test_serializer_fields(self):
         serializer = ManagementWorkSerializer()
         self.assertEqual(set(serializer.fields.keys()), {'year', 'place', 'position'})
 
+
 class ManagementDetailsSerializerTest(TestCase):
     def test_serializer_fields(self):
         serializer = ManagementDetailsSerializers()
-        self.assertEqual(set(serializer.fields.keys()), {'id', 'full_name', 'image', 'position', 'birth_date', 'clas_chin', 'managements_education', 'managements_work'})
+        self.assertEqual(set(serializer.fields.keys()),
+                         {'id', 'full_name', 'image', 'position', 'birth_date', 'clas_chin', 'managements_education',
+                          'managements_work'})
 
     def test_nested_serializers(self):
         current_year = datetime.now().year

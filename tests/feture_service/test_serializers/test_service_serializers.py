@@ -2,6 +2,7 @@ from django.test import TestCase
 from apps.information.models import Service
 from apps.information.serializers.service import ServiceSerializers
 
+
 class ServiceSerializerTest(TestCase):
     @classmethod
     def setUpTestData(cls):
