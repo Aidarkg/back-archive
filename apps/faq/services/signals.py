@@ -17,7 +17,7 @@ def question_pre_save(sender, instance, created, **kwargs):
     email_list = [moderator.email for moderator in moder]
 
     if created and instance.answer is None:
-        send_mail.delay(instance.id, email_list, url)
+        send_mail(instance.id, email_list, url)
 
     elif instance.is_active:
         send_answer_mail.delay(instance.question_text, instance.answer, instance.email)
