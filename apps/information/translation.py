@@ -56,3 +56,7 @@ class VideoLinkTranslationOptions(TranslationOptions):
 @register(photo_gallery_models.PhotoHome)
 class PhotoHomeTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
+
+@register(service.PriceList)
+class PriceListTranslationOptions(TranslationOptions):
+    fields = ('file',)

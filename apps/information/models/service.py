@@ -14,3 +14,15 @@ class Service(DateTimeMixin):
 
     def __str__(self):
         return self.title
+
+
+class PriceList(DateTimeMixin):
+    title = models.CharField(max_length=50, default='Прейскурант услуг', verbose_name='Название')
+    file = models.FileField(upload_to='prices', verbose_name='Файл')
+
+    class Meta:
+        verbose_name = 'Прейскурант услуг'
+        verbose_name_plural = 'Прейскурант услуг'
+
+    def __str__(self):
+        return self.file.name

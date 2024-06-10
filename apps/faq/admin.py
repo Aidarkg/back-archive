@@ -30,6 +30,9 @@ class QuestionAdmin(admin.ModelAdmin):
 
         super().save_model(request, obj, form, change)
 
+    def has_add_permission(self, request):
+        return False
+
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Faq, FaqAdmin)

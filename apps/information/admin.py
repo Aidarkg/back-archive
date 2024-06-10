@@ -1,7 +1,7 @@
 from django.contrib import admin
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
-    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome
+    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -56,7 +56,7 @@ class KODEKSAdmin(BaseAdminMixin):
 
 class OrganizationAdmin(BaseAdminMixin):
     list_display = ['title', 'logo', 'created_at', 'updated_at']
-    fields = ['title', 'logo']
+    fields = ['logo', 'title', 'link']
 
 
 class ServiceAdmin(BaseAdminMixin):
@@ -84,6 +84,16 @@ class PhotoHomeAdmin(BaseAdminMixin):
     fields = ['photo', 'title', 'description']
 
 
+class PriceListAdmin(BaseAdminMixin):
+    list_display = ['title', 'file', 'created_at', 'updated_at']
+    list_display_links = ['title']
+    fields = ['title', 'file']
+    readonly_fields = ['title', 'file']
+
+    def has_add_permission(self, request):
+        return False
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
@@ -94,3 +104,4 @@ admin.site.register(Organization, OrganizationAdmin)
 admin.site.register(VideoLink, VideoLinkAdmin)
 admin.site.register(Logo, LogoAdmin)
 admin.site.register(PhotoHome, PhotoHomeAdmin)
+admin.site.register(PriceList, PriceListAdmin)

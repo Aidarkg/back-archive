@@ -2,7 +2,7 @@ from django.urls import path
 from apps.information.views import VideoDataAPIView, \
     NewsListAPIView, NewsDetailAPIView, \
     PhotoGalleryListAPIView, PhotoGalleryDetailAPIView, \
-    ServiceListView, \
+    ServiceListView, PriceListAPIView, \
     KODEKSListCreateAPIView, KODEKSRetrieveUpdateDestroyAPIView, \
     SearchAPIView, \
     VisitorsAPIView, \
@@ -22,6 +22,7 @@ urlpatterns = [
     path('photo_home/', PhotoHomeListAPIView.as_view(), name='photo-home-list'),
     path('photo_home/<int:pk>/', PhotoHomeDetailAPIView.as_view(), name='photo-home-detail'),
     path('service/', ServiceListView.as_view(), name='services-list'),
+    path('service_price/', PriceListAPIView.as_view(), name='price-list'),
     path('kodeks/', KODEKSListCreateAPIView.as_view(), name='kodeks-list'),
     path('kodeks/<int:pk>/', KODEKSRetrieveUpdateDestroyAPIView.as_view(), name='kodeks-detail'),
     path('search/', SearchAPIView.as_view(), name='search'),
