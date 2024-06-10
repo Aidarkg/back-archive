@@ -64,6 +64,7 @@ services:
       - .:/app
       - static_volume:/docker_demo/static
       - media_volume:/docker_demo/media
+      - postgres_data:/var/lib/postgresql/data
     depends_on:
       - django
       - redis
