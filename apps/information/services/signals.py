@@ -25,6 +25,7 @@ def video_download(sender, instance, **kwargs):
         pass
 
 
+@shared_task
 def save_file():
     price_ru = PriceListService('ru')
     price_en = PriceListService('en')
@@ -41,6 +42,6 @@ def save_file():
 @receiver(post_save, sender=Service)
 def price_list(sender, instance, **kwargs):
     try:
-        save_file()
+        save_file.delay()
     except Exception as e:
         pass
