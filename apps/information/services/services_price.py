@@ -35,8 +35,9 @@ class PriceListService:
                                      topMargin=20, bottomMargin=20,
                                      )
 
-        pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))
-        pdfmetrics.registerFont(TTFont('Arial-Bold', 'arialbd.ttf'))
+        # Используем шрифт DejaVuSans
+        pdfmetrics.registerFont(TTFont('DejaVuSans', 'DejaVuSans.ttf'))
+        pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', 'DejaVuSans-Bold.ttf'))
 
         model = Service.objects.all()
         titles = list(model.values_list(f'title_{language}', flat=True))
@@ -56,12 +57,12 @@ class PriceListService:
             ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
             ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Arial-Bold'),
+            ('FONTNAME', (0, 0), (-1, 0), 'DejaVuSans-Bold'),  # Используем DejaVuSans-Bold для заголовка
             ('FONTSIZE', (0, 0), (-1, 0), 12),
             ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
             ('BACKGROUND', (0, 1), (-1, -1), colors.white),
             ('GRID', (0, 0), (-1, -1), 1, colors.black),
-            ('FONTNAME', (0, 1), (-1, -1), 'Arial'),
+            ('FONTNAME', (0, 1), (-1, -1), 'DejaVuSans'),  # Используем DejaVuSans для текста
             ('FONTSIZE', (0, 1), (-1, -1), 10),
         ])
 
