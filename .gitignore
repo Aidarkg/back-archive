@@ -3,13 +3,12 @@ venv
 __pycache__
 media
 .env
-**/migrations/
 db.sqlite3
 static
 .idea
 **/.docker.env
-*/migrations/*
-!*/migrations/__init__.py
+**/migrations/*
+!**/migrations/__init__.py
 apps_cache
 faker.py
 bd.py
