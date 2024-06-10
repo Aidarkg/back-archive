@@ -25,4 +25,4 @@ class PriceList(DateTimeMixin):
         verbose_name_plural = 'Прейскурант услуг'
 
     def __str__(self):
-        return self.file.name
+        return self.title
