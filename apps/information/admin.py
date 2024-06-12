@@ -66,9 +66,9 @@ class ServiceAdmin(BaseAdminMixin):
 
 
 class VideoLinkAdmin(BaseAdminMixin):
-    list_display = ['title', 'video_link', 'cover', 'public_date']
+    list_display = ['title', 'video_link', 'public_date']
     list_display_links = ['title', 'video_link']
-    fields = ['title', 'video_link', 'cover', 'public_date']
+    fields = ['title', 'video_link', 'public_date']
 
 
 class EmblemInline(admin.TabularInline):

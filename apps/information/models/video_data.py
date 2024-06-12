@@ -21,13 +21,6 @@ class VideoLink(DateTimeMixin):
     title = models.CharField(max_length=500, verbose_name='Название')
     video_link = models.CharField(max_length=300, validators=[validate_link], verbose_name='Ссылка на видео')
     public_date = models.DateTimeField(verbose_name='Дата публикации')
-    cover = models.ImageField(
-        upload_to='video/cover',
-        null=True,
-        blank=True,
-        verbose_name='Обложка',
-        help_text='Обложка будет скачана с Youtube ECЛИ не выбрано'
-    )
 
     def __str__(self):
         return self.title

@@ -11,4 +11,4 @@ class VideoDataSerializer(serializers.ModelSerializer):
 class VideoLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoLink
-        fields = ('title', 'video_link', 'cover', 'public_date')
+        fields = ('title', 'video_link', 'public_date')

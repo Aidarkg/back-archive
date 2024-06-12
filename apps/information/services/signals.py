@@ -1,28 +1,8 @@
-import os.path
-
 from celery import shared_task
-from django.conf import settings
-
-from apps.information.services.video_data import cover_video
 from apps.information.services.services_price import PriceListService
-from apps.information.models import VideoLink, Service, PriceList
-from django.db.models.signals import pre_save, post_save
+from apps.information.models import Service, PriceList
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-
-@shared_task
-def save_cover(link):
-    path = cover_video(link)
-    VideoLink.objects.filter(video_link=link).update(cover=path)
-
-
-@receiver(post_save, sender=VideoLink)
-def video_download(sender, instance, **kwargs):
-    try:
-        link = instance.video_link
-        save_cover.delay(link)
-    except Exception as e:
-        pass
 
 
 @shared_task
