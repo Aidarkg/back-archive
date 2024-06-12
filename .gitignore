@@ -10,5 +10,4 @@ static
 **/migrations/*
 !**/migrations/__init__.py
 apps_cache
-faker.py
 bd.py
