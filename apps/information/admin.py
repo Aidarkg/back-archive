@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationTabularInline
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
+from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, AboutArchive, \
     Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList, Emblem
 
 
@@ -109,6 +109,11 @@ class PriceListAdmin(BaseAdminMixin):
         return False
 
 
+class AboutArchiveAdmin(BaseAdminMixin):
+    list_display = ['title', 'photo']
+    fields = ['photo', 'title', 'description']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(VideoData, VideoDataAdmin)
 admin.site.register(PhotoGallery, PhotoGalleryAdmin)
@@ -120,3 +125,4 @@ admin.site.register(VideoLink, VideoLinkAdmin)
 admin.site.register(Logo, LogoAdmin)
 admin.site.register(PhotoHome, PhotoHomeAdmin)
 admin.site.register(PriceList, PriceListAdmin)
+admin.site.register(AboutArchive, AboutArchiveAdmin)

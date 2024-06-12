@@ -1,6 +1,6 @@
 from modeltranslation.translator import register, TranslationOptions
 from .models import kodeks, management, news, photo_gallery_models, service, video_data, \
-    organization
+    organization, about_archive
 
 
 @register(kodeks.KODEKS)
@@ -57,6 +57,12 @@ class VideoLinkTranslationOptions(TranslationOptions):
 class PhotoHomeTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
+
 @register(service.PriceList)
 class PriceListTranslationOptions(TranslationOptions):
     fields = ('file',)
+
+
+@register(about_archive.AboutArchive)
+class AboutArchiveTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')

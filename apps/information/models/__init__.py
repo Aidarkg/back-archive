@@ -8,3 +8,4 @@ from apps.information.models.visitors import *
 from apps.information.models.organization import *
 from apps.information.models.visitors import *
 from apps.information.models.logo import *
+from apps.information.models.about_archive import *

@@ -82,8 +82,8 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": [
         'moderator',
         "auth",
-        'contacts', 'contacts.ArchiveContact',
-        'information', 'information.Logo', 'information.VideoData',
+        'contacts', 'contacts.ArchiveContact', 'information.Logo',
+        'information', 'information.AboutArchive', 'information.VideoData',
         'information.VideoLink', 'information.PhotoGallery',
         'information.PhotoHome', 'information.KODEKS',
         'information.Organization', 'information.News',
@@ -106,6 +106,7 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
+        "information.AboutArchive": "fas fa-inbox",
         "information.VideoData": "fas fa-video",
         "information.VideoLink": "fab fa-youtube",
         "information.PhotoGallery": "fas fa-image",
