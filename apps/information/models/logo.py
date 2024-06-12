@@ -5,8 +5,8 @@ from apps.information.services.exception import EmblemException
 
 
 class Logo(DateTimeMixin):
-    name = models.CharField(max_length=20, default='Логотип', verbose_name='Название')
-    logo = WEBPField(upload_to='main_logo', verbose_name='Логотип')
+    name = models.CharField(max_length=20, default='Баннер', verbose_name='Название')
+    logo = WEBPField(upload_to='main_logo', verbose_name='Баннер')
 
     def __str__(self):
         return self.name
@@ -17,14 +17,14 @@ class Logo(DateTimeMixin):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Логотип'
-        verbose_name_plural = 'Логотип'
+        verbose_name = 'Баннер и герб'
+        verbose_name_plural = 'Баннер и герб'
         ordering = ['-created_at']
 
 
 class Emblem(models.Model):
     emblem = models.ImageField(upload_to='main_logo/emblem', verbose_name='Герб')
-    logo = models.ForeignKey(Logo, on_delete=models.CASCADE, verbose_name='Лого')
+    logo = models.ForeignKey(Logo, on_delete=models.CASCADE, verbose_name='Баннер')
 
     def __str__(self):
         return self.emblem.name

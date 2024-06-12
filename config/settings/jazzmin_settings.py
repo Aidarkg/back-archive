@@ -82,8 +82,8 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": [
         'moderator',
         "auth",
-        'contacts', 'contacts.ArchiveContact', 'information.Logo',
-        'information', 'information.AboutArchive', 'information.VideoData',
+        'contacts', 'contacts.ArchiveContact', 'information.AboutArchive',
+        'information', 'information.Logo', 'information.VideoData',
         'information.VideoLink', 'information.PhotoGallery',
         'information.PhotoHome', 'information.KODEKS',
         'information.Organization', 'information.News',

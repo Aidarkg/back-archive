@@ -86,7 +86,7 @@ class LogoAdmin(admin.ModelAdmin):
     list_display_links = ['name']
     readonly_fields = ['name']
     fieldsets = (
-        ('Логотип', {
+        ('Баннер', {
             'fields': ('name', 'logo')
         }),
     )
