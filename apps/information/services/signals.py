@@ -42,6 +42,6 @@ def save_file():
 @receiver(post_save, sender=Service)
 def price_list(sender, instance, **kwargs):
     try:
-        save_file.delay()
+        save_file()
     except Exception as e:
         pass
