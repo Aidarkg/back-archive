@@ -1,7 +1,7 @@
 from django.db import models
 from apps.information.services.photo_compress import WEBPField
 from apps.common.models.mixins import DateTimeMixin
-from apps.information.services.photo_exception import PhotoException
+from apps.information.services.exception import PhotoException
 
 
 class Photo(models.Model):

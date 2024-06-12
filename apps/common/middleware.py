@@ -3,7 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.db import IntegrityError
 from apps.common.utils import set_current_request
-from apps.information.services.photo_exception import PhotoException
+from apps.information.services.exception import PhotoException, EmblemException
 
 
 def base_url(request):
@@ -49,6 +49,13 @@ class CustomErrorMiddleware:
             return render(
                 request,
                 'errors/photo_max.html',
+                status=500,
+                context={'url': base_url(request)}
+            )
+        elif isinstance(exception, EmblemException):
+            return render(
+                request,
+                'errors/logo_max.html',
                 status=500,
                 context={'url': base_url(request)}
             )

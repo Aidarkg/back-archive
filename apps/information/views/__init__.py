@@ -7,3 +7,4 @@ from apps.information.views.search import *
 from apps.information.views.visitors import *
 from apps.information.views.management import *
 from apps.information.views.main import *
+from apps.information.views.emblem import *

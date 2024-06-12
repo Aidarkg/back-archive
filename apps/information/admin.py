@@ -1,7 +1,8 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationTabularInline
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, \
-    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList
+    Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList, Emblem
 
 
 class VideoDataAdmin(BaseAdminMixin):
@@ -27,13 +28,13 @@ class NewsAdmin(BaseAdminMixin):
     fields = ['title', 'description', 'image', 'public_date']
 
 
-class ManagementWorkInline(admin.TabularInline):
+class ManagementWorkInline(TranslationTabularInline):
     model = ManagementWork
     extra = 2
     verbose_name_plural = 'Деятельность'
 
 
-class ManagementEducationInline(admin.TabularInline):
+class ManagementEducationInline(TranslationTabularInline):
     model = ManagementEducation
     extra = 2
     verbose_name_plural = 'Образование'
@@ -70,11 +71,25 @@ class VideoLinkAdmin(BaseAdminMixin):
     fields = ['title', 'video_link', 'cover', 'public_date']
 
 
+class EmblemInline(admin.TabularInline):
+    model = Emblem
+    extra = 1
+    verbose_name_plural = 'Герб'
+
+    def get_max_num(self, request, obj=None, **kwargs):
+        return 1
+
+
 class LogoAdmin(admin.ModelAdmin):
-    list_display = ['logo', 'created_at', 'updated_at']
-    list_display_links = ['logo']
-    fields = ['logo']
-    ordering = ['-created_at']
+    inlines = [EmblemInline]
+    list_display = ['name', 'logo', 'created_at', 'updated_at']
+    list_display_links = ['name']
+    readonly_fields = ['name']
+    fieldsets = (
+        ('Логотип', {
+            'fields': ('name', 'logo')
+        }),
+    )
 
 
 class PhotoHomeAdmin(BaseAdminMixin):

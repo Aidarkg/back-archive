@@ -1,2 +1,0 @@
-class PhotoException(Exception):
-    pass

@@ -68,6 +68,13 @@ class ManagementEducation(models.Model):
         verbose_name='Образование сотрудника'
     )
 
+    def __str__(self):
+        return self.place
+
+    class Meta:
+        verbose_name = 'Образование'
+        verbose_name_plural = 'Образование'
+
 
 class ManagementWork(models.Model):
     year = models.CharField(
@@ -91,3 +98,10 @@ class ManagementWork(models.Model):
         null=True,
         verbose_name='Опыт Работы сотрудника'
     )
+
+    def __str__(self):
+        return self.position
+
+    class Meta:
+        verbose_name = 'Деятельность'
+        verbose_name_plural = 'Деятельность'
