@@ -30,16 +30,16 @@ start_time = time.time()
 # Moderator.objects.all().delete()
 
 # create kodeks
-# for i in range(20):
-#     KODEKS.objects.create(
-#         title='Закон о содействии занятости населения',
-#         title_ru='Закон о содействии занятости населения',
-#         title_en='The Law on Public Assistance',
-#         title_ky='Калкка комоктошуу мыйзамы',
-#         pdf_file='pdf_files/ПИ.pdf',
-#         date_file=timezone.now().date(),
-#         document_number=i
-#     )
+for i in range(20):
+    KODEKS.objects.create(
+        title='Закон о содействии занятости населения',
+        title_ru='Закон о содействии занятости населения',
+        title_en='The Law on Public Assistance',
+        title_ky='Калкка комоктошуу мыйзамы',
+        pdf_file='pdf_files/git.pdf',
+        date_file=timezone.now().date(),
+        document_number=i*15
+    )
 
 # create news
 for i in range(15):
