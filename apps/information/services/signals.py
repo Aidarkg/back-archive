@@ -1,7 +1,7 @@
 from celery import shared_task
 from apps.information.services.services_price import PriceListService
 from apps.information.models import Service, PriceList
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 
@@ -20,7 +20,15 @@ def save_file():
 
 
 @receiver(post_save, sender=Service)
-def price_list(sender, instance, **kwargs):
+def price_list_save(sender, instance, **kwargs):
+    try:
+        save_file()
+    except Exception as e:
+        pass
+
+
+@receiver(post_delete, sender=Service)
+def price_list_delete(sender, instance, **kwargs):
     try:
         save_file()
     except Exception as e:
