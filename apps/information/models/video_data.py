@@ -5,11 +5,18 @@ from apps.information.services.validator import validate_link, validate_video_fo
 
 class VideoData(DateTimeMixin):
     title = models.CharField(max_length=500, verbose_name='Название')
-    video = models.FileField(upload_to='video', validators=[validate_video_format], verbose_name='Видео')
+    video = models.FileField(upload_to='video', verbose_name='Видео')
     public_date = models.DateTimeField(verbose_name='Дата публикации')
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        validate_video_format(self.video)
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super(VideoData, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Видеогалерея'
