@@ -1,7 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationTabularInline
 from apps.common.admin.mixins import BaseAdminMixin
-from apps.information.services.signals import video_data_save
 from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, AboutArchive, \
     Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList, Emblem
 
@@ -9,9 +8,6 @@ from apps.information.models import News, PhotoGallery, VideoData, Management, S
 class VideoDataAdmin(BaseAdminMixin):
     list_display = ['title', 'video', 'public_date']
     fields = ['video', 'title', 'public_date']
-
-    def save_model(self, request, obj, form, change):
-        video_data_save(obj.id, obj.video)
 
 
 class PhotoInline(admin.TabularInline):
