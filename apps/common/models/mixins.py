@@ -9,9 +9,3 @@ class DateTimeMixin(models.Model):
 
     class Meta:
         abstract = True
-
-    def save(self, *args, **kwargs):
-        if not self.pk and not self.created_at:
-            self.created_at = timezone.now()
-        self.updated_at = timezone.now()
-        return super(DateTimeMixin, self).save(*args, **kwargs)
