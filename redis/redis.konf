@@ -1,5 +1,4 @@
-# Bind to all network interfaces (лучше указывать конкретный интерфейс или IP)
-bind 0.0.0.0
+bind 127.0.0.1
 
 # Port на котором работает Redis
 port 6379
