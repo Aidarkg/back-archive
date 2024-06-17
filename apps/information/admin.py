@@ -1,5 +1,5 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationTabularInline
+from modeltranslation.admin import TranslationStackedInline
 from apps.common.admin.mixins import BaseAdminMixin
 from apps.information.models import News, PhotoGallery, VideoData, Management, Service, KODEKS, AboutArchive, \
     Organization, ManagementWork, ManagementEducation, Photo, VideoLink, Logo, PhotoHome, PriceList, Emblem
@@ -28,15 +28,15 @@ class NewsAdmin(BaseAdminMixin):
     fields = ['title', 'description', 'image', 'public_date']
 
 
-class ManagementWorkInline(TranslationTabularInline):
+class ManagementWorkInline(TranslationStackedInline):
     model = ManagementWork
-    extra = 2
+    extra = 1
     verbose_name_plural = 'Деятельность'
 
 
-class ManagementEducationInline(TranslationTabularInline):
+class ManagementEducationInline(TranslationStackedInline):
     model = ManagementEducation
-    extra = 2
+    extra = 1
     verbose_name_plural = 'Образование'
 
 

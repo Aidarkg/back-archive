@@ -1,22 +1,22 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationTabularInline
+from modeltranslation.admin import TranslationStackedInline
 from apps.contacts.models import Anticore, ArchiveContact, CollCenter, Reception, ReadingRoom, Schedule, Contact
 from apps.common.admin.mixins import BaseAdminMixin
 
 
-class ReceptionAdmin(TranslationTabularInline):
+class ReceptionAdmin(TranslationStackedInline):
     model = Reception
     extra = 1
     verbose_name_plural = 'Приём граждан'
 
 
-class ReadingRoomAdmin(TranslationTabularInline):
+class ReadingRoomAdmin(TranslationStackedInline):
     model = ReadingRoom
     extra = 1
     verbose_name_plural = 'Читальный зал'
 
 
-class ScheduleAdmin(TranslationTabularInline):
+class ScheduleAdmin(TranslationStackedInline):
     model = Schedule
     extra = 1
     verbose_name_plural = 'График работы'
