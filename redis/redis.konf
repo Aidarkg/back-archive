@@ -1,0 +1,12 @@
+# Bind to all network interfaces (лучше указывать конкретный интерфейс или IP)
+bind 0.0.0.0
+
+# Port на котором работает Redis
+port 6379
+
+# Запрет репликации
+replica-serve-stale-data yes
+slaveof no one
+
+# Включение персистенции
+appendonly yes
