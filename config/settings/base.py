@@ -182,16 +182,16 @@ CSRF_TRUSTED_ORIGINS = ['http://209.38.228.54', 'http://209.38.228.54:82', 'http
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "Accept-Encoding",
-    "authorization",
-    "content-type",
-    "Accept-Language",
-    "Accept-Location",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-]
+# CORS_ALLOW_HEADERS = [
+#     "accept",
+#     "Accept-Encoding",
+#     "authorization",
+#     "content-type",
+#     "Accept-Language",
+#     "Accept-Location",
+#     "dnt",
+#     "origin",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+# ]
