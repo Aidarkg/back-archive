@@ -32,10 +32,10 @@ class MainAPIView(APIView):
             faqs = Faq.objects.all()
             contacts = Contact.objects.all()
             visit = Visitors.objects.all()
-            logo = Logo.objects.all()[:1]
+            logo = Logo.objects.first()
 
             data = {
-                'logo': LogoSerializer(logo, many=True, context={'request': request}).data,
+                'logo': LogoSerializer(logo, context={'request': request}).data,
                 'news': NewsSerializer(news, many=True, context={'request': request}).data,
                 'photo_gallery': PhotoListSerializer(photogallery, many=True, context={'request': request}).data,
                 'video_gallery': VideoDataSerializer(video_data, many=True, context={'request': request}).data,
