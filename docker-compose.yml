@@ -56,6 +56,8 @@ services:
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     networks:
       - app_network
+    sysctls:
+      - vm.overcommit_memory=1
 
   celery:
     build: .
