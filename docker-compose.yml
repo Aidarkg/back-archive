@@ -46,6 +46,7 @@ services:
       - media_volume:/docker_demo/media
       - ./certbot/conf:/etc/letsencrypt
     depends_on:
+      - certbot
       - django
     networks:
       - app_network
