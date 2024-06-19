@@ -44,6 +44,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/docker_demo/static
       - media_volume:/docker_demo/media
+      - ./certbot/conf:/etc/letsencrypt
     depends_on:
       - django
     networks:
