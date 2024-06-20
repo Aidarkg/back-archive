@@ -29,7 +29,7 @@ class MainAPIView(APIView):
             photogallery = PhotoGallery.objects.all()[:4]
             video_data = VideoData.objects.all()[:4]
             organization = Organization.objects.all()
-            faqs = Faq.objects.all()
+            faqs = Faq.objects.all()[:5]
             contacts = Contact.objects.all()
             visit = Visitors.objects.all()
             logo = Logo.objects.first()
