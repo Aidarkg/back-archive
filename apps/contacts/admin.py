@@ -52,6 +52,12 @@ class ContactAdmin(BaseAdminMixin):
     search_fields = ('address', 'phone_number')
     fields = ('address', 'phone_number', 'index', 'fax', 'email', 'facebook')
 
+    def has_add_permission(self, request):
+        if Contact.objects.all().count() == 1:
+            return False
+        else:
+            return True
+
 
 admin.site.register(ArchiveContact, ArchiveContactAdmin)
 admin.site.register(CollCenter, CollCenterAdmin)
