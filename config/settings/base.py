@@ -178,7 +178,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://archive-gov.pp.ua']
+CSRF_TRUSTED_ORIGINS = ['https://archive-gov.pp.ua', 'https://archive-president.pp.ua']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # CORS_ALLOW_ALL_ORIGINS = True
