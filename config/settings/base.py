@@ -178,7 +178,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://35.188.11.136']
+CSRF_TRUSTED_ORIGINS = ['https://archive-gov.pp.ua']
 
 # CORS_ALLOW_ALL_ORIGINS = True
 
