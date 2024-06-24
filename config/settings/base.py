@@ -179,6 +179,7 @@ INTERNAL_IPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://archive-gov.pp.ua']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # CORS_ALLOW_ALL_ORIGINS = True
 
