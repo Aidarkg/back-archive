@@ -14,7 +14,6 @@ class Photo(models.Model):
 
 class PhotoGallery(DateTimeMixin):
     title = models.CharField(max_length=500, verbose_name='Заголовок')
-    description = models.TextField(verbose_name='Описание')
     picture = WEBPField(upload_to='gallery/logo', verbose_name='Картинка')
     public_date = models.DateTimeField(verbose_name='Дата публикации')
 

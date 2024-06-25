@@ -30,7 +30,7 @@ class NewsTranslationOptions(TranslationOptions):
 
 @register(photo_gallery_models.PhotoGallery)
 class PhotoTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title',)
 
 
 @register(service.Service)

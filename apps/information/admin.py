@@ -18,7 +18,7 @@ class PhotoInline(admin.TabularInline):
 
 class PhotoGalleryAdmin(BaseAdminMixin):
     list_display = ['title', 'picture', 'public_date']
-    fields = ['title', 'description', 'picture', 'public_date']
+    fields = ['title', 'picture', 'public_date']
     list_display_links = ['title']
     inlines = [PhotoInline]
 
