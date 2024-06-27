@@ -180,19 +180,3 @@ INTERNAL_IPS = [
 
 CSRF_TRUSTED_ORIGINS = ['https://archive-gov.pp.ua', 'https://archive-president.pp.ua']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# CORS_ALLOW_ALL_ORIGINS = True
-
-# CORS_ALLOW_HEADERS = [
-#     "accept",
-#     "Accept-Encoding",
-#     "authorization",
-#     "content-type",
-#     "Accept-Language",
-#     "Accept-Location",
-#     "dnt",
-#     "origin",
-#     "user-agent",
-#     "x-csrftoken",
-#     "x-requested-with",
-# ]
