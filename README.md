@@ -60,9 +60,8 @@ certbot --nginx</code></pre>
     <h2>Additional Notes</h2>
     <ul>
         <li>Ensure that your email host, user, and password are correctly configured in the <code>.docker.env</code> file.</li>
-        <li>You may need to adjust the email host if you are not using Yandex.</li>
+        <li>You may need to adjust the email host if you are not using Google.</li>
         <li>The project is configured to run in production mode (<code>PRODUCTION=True</code>), which ensures that debug mode is turned off and other production settings are applied.</li>
     </ul>
-    <p>For further customization and settings, refer to the project's documentation and the <code>settings.py</code> file within the Django application.</p>
 </body>
 </html>
